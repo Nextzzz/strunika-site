@@ -121,7 +121,7 @@
         const h = Math.max(3, song(gi, 1) * half);
         const played = x + bar / 2 < playX;
         ctx.fillStyle = played ? C.accent : C.text2; ctx.globalAlpha = played ? 0.78 : 0.42;
-        ctx.fillRect(x, cy - h, bar, h * 2);
+        rrect(ctx, x, cy - h, bar, h * 2, 2 * k); ctx.fill(); // the app's bars: a 2 pt corner on a 9 pt bar
       }
       // ruler: a tick every 4 bars (a beat), a longer one with the time every 16 (a bar of 4/4)
       ctx.globalAlpha = 0.7; ctx.fillStyle = C.text2; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
