@@ -5,7 +5,7 @@
 ## Key facts
 - Platform: iPhone, iOS 15 or later. No Android version.
 - Chord recognition: on-device neural network, 168 chords (12 roots × 14 qualities), key, tempo and beats; songs up to 15 minutes.
-- Sources: mp3/m4a/wav files from Files or iCloud, songs from the iPhone Music library (system picker; protected Apple Music tracks excluded), microphone recording, YouTube (video plays through the official embedded YouTube player; chords are found by analysing the sound on device; YouTube audio is never stored, exported or played outside the player).
+- Sources: mp3/m4a/wav files from Files or iCloud, songs from the iPhone Music library (system picker; protected Apple Music tracks excluded), microphone recording, YouTube (the video plays through the official embedded YouTube player; the library keeps only the chords, beats and the link).
 - Live: real-time chord recognition while you play; takes up to 15 minutes; count-in metronome 40–240 BPM; takes are saved as songs.
 - Tuner: chromatic, automatic string detection; tunings Standard (free), Drop D, half/whole step down, DADGAD, Open G, Open D, ukulele GCEA, bass EADG (Pro); A4 430–450 Hz (Pro); readout in "points" (10 points = 1 fret).
 - Free: tuner, live play, 20 song analyses for the lifetime of the install, simple chords (major/minor), metronome, diagrams, chord dictionary.
@@ -14,6 +14,6 @@
 - Coming soon: looper. Planned: stems, karaoke/backing track, bass tabs.
 
 ## Pages
-- [Home (Ukrainian)](https://strunika.com/): features, pricing and a 45-question FAQ.
+- [Home (Ukrainian)](https://strunika.com/): features, pricing and a 39-question FAQ.
 - [Home (English)](https://strunika.com/en/): the same in English.
 - [Privacy policy](https://strunika.com/privacy.html)
