@@ -23,6 +23,13 @@
     addEventListener('resize', () => { if (innerWidth > 860) set(false); });
   }
 
+  // ---- the brand link goes to the very top, above the sticky header ----
+  document.querySelectorAll('a[href="#top"]').forEach((a) => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    history.replaceState(null, '', location.pathname + location.search);
+  }));
+
   // ---- reveal on scroll ----
   const io = new IntersectionObserver((entries) => {
     for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
