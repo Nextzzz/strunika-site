@@ -128,7 +128,9 @@ p { margin: 0; }
   .nav .nav-extra { display: flex; align-items: center; gap: 10px; padding: 12px 0 6px; }
   .nav .nav-extra .lang { width: auto; padding: 0 16px; }
 }
-@media (max-width: 360px) { .nav .nav-extra .btn-sm { margin-left: auto; } }
+/* when even that is too much, the download button shrinks to an icon; the name and the logo never leave */
+.top .btn-sm .dl-ico { display: none; width: 22px; height: 22px; }
+@media (max-width: 360px) { .top .btn-sm { width: 44px; padding: 0; justify-content: center; } .top .btn-sm span { display: none; } .top .btn-sm .dl-ico { display: block; } }
 
 .tools { display: flex; align-items: center; gap: 8px; justify-self: end; }
 .lang { width: 44px; height: 44px; display: grid; place-items: center; font-size: 13px; font-weight: 600; letter-spacing: .06em; color: var(--text2); border-radius: 999px; border: 1px solid var(--sep); background: var(--surface1); }
