@@ -205,10 +205,14 @@
       const name = s.chords[(((gi / SEG_V) % s.chords.length) + s.chords.length) % s.chords.length];
       ctx.save(); ctx.translate(cx, Y(y) + (UPWARD ? -2 : 2)); ctx.scale(sc, sc); ctx.globalAlpha = al;
       ctx.font = `700 ${fs}px Vollkorn, Georgia, serif`;
-      const tw = ctx.measureText(name).width, pw = tw + fs * 1.0, ph = fs * 1.5;
+      // Vollkorn's 'middle' baseline sits below the middle of the capitals, so the name is centred
+      // on its own measured glyph box instead: baseline at half the ink height above the pill's middle.
+      ctx.textBaseline = 'alphabetic';
+      const m = ctx.measureText(name), tw = m.width, pw = tw + fs * 1.0, ph = fs * 1.5;
+      const ink = (m.actualBoundingBoxAscent || fs * 0.7) - (m.actualBoundingBoxDescent || 0);
       ctx.fillStyle = C.bg; rrect(ctx, -pw / 2, -ph / 2, pw, ph, ph / 2); ctx.fill();
       ctx.strokeStyle = C.accent; ctx.lineWidth = 1.5; ctx.stroke();
-      ctx.fillStyle = C.accent; ctx.fillText(name, 0, fs * 0.05);
+      ctx.fillStyle = C.accent; ctx.fillText(name, 0, ink / 2);
       ctx.restore();
     }
   }
