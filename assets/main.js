@@ -30,6 +30,27 @@
     history.replaceState(null, '', location.pathname + location.search);
   }));
 
+  // ---- an explicit language choice is remembered; the inline script in <head> then never redirects ----
+  document.querySelectorAll('.lang[hreflang]').forEach((a) => a.addEventListener('click', () => {
+    try { localStorage.setItem('lang', a.getAttribute('hreflang')); } catch (e) {}
+  }));
+
+  // ---- phones: the language and theme switches move into the menu, the header keeps the name and the download button ----
+  const tools = document.querySelector('.top .tools'), lang = document.querySelector('.top .lang');
+  if (nav && tools && lang && btn) {
+    const extra = document.createElement('div'); extra.className = 'nav-extra';
+    const dl = tools.querySelector('.btn-sm');
+    const mq = matchMedia('(max-width: 860px)'), mqNarrow = matchMedia('(max-width: 360px)');
+    const place = () => {
+      if (mq.matches) {
+        if (!extra.parentNode) nav.appendChild(extra);
+        extra.append(lang, btn);
+        if (dl) { if (mqNarrow.matches) extra.append(dl); else mb.before(dl); } // the narrowest phones keep only the name and the menu in the header
+      } else if (extra.parentNode) { tools.prepend(lang, btn); if (dl) mb.before(dl); extra.remove(); }
+    };
+    place(); mq.addEventListener('change', place); mqNarrow.addEventListener('change', place); addEventListener('resize', place); addEventListener('load', place);
+  }
+
   // ---- reveal on scroll ----
   const io = new IntersectionObserver((entries) => {
     for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }

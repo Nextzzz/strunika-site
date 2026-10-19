@@ -2,6 +2,18 @@
 <html lang="uk">
 <head>
 <meta charset="utf-8">
+<script>
+/* Language by the browser's preferences: Ukrainian or Russian stays here, everything else goes to /en/.
+   An explicit choice made with the EN/UA switch wins and is never overridden. */
+(function () {
+  try {
+    if (localStorage.getItem('lang')) return;
+    var langs = navigator.languages || [navigator.language || ''];
+    for (var i = 0; i < langs.length; i++) if (/^(uk|ru|be)(-|$)/i.test(langs[i])) return;
+    location.replace('/en/' + location.search + location.hash);
+  } catch (e) {}
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Strunika — акорди будь-якої пісні на iPhone: з файлу, запису чи YouTube</title>
 <meta name="description" content="Strunika розпізнає акорди пісні з файлу, запису чи YouTube прямо на iPhone, показує їх на конвеєрі під час гри, слухає гітару наживо та тюнить її. Без збору даних, українською та англійською.">
