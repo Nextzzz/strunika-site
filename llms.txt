@@ -9,7 +9,7 @@
 - Live: real-time chord recognition while you play; takes up to 15 minutes; count-in metronome 40–240 BPM; takes are saved as songs.
 - Tuner: chromatic, automatic string detection; tunings Standard (free), Drop D, half/whole step down, DADGAD, Open G, Open D, ukulele GCEA, bass EADG (Pro); A4 430–450 Hz (Pro); readout in "points" (10 points = 1 fret).
 - Free: tuner, live play, 20 song analyses for the lifetime of the install, simple chords (major/minor), metronome, diagrams, chord dictionary.
-- Pro (monthly or yearly subscription, no free trial, price in the App Store): unlimited analyses, chord editor, export to PDF / Excel / ChordPro / .strunika with import, alternative tunings, full chord vocabulary, transpose and capo, speed 0.5×–1.25× pitch-preserved, A–B loop, setlists, A4 reference.
+- Pro ($3 a month or $25 a year, yearly about 30% cheaper, local price shown in the App Store, no free trial): unlimited analyses, chord editor, export to PDF / Excel / ChordPro / .strunika with import, alternative tunings, full chord vocabulary, transpose and capo, speed 0.5×–1.25× pitch-preserved, A–B loop, setlists, A4 reference.
 - Privacy: no accounts, no analytics, no trackers, no third-party data-collection SDKs; audio and chords stay on the phone. Network is used only for YouTube and a small service-settings file.
 - Coming soon: looper. Planned: stems, karaoke/backing track, bass tabs.
 

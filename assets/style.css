@@ -273,6 +273,16 @@ section, .sec[id] { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px)
 .plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; color: var(--text2); font-size: 15.5px; }
 .plan li::before { content: "✓  "; color: var(--accent); font-weight: 700; }
 .plan .price { font-family: var(--display); font-size: 20px; color: var(--text); }
+/* Pro prices: a tile per period, the yearly one marked with the discount */
+.prices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 2px; }
+.tier { position: relative; display: grid; gap: 2px; align-content: start; padding: 14px 14px 12px; border-radius: 14px; border: 1px solid var(--sep); background: color-mix(in srgb, var(--bg) 55%, transparent); }
+.tier.best { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.tier .amt { font-family: var(--display); font-size: 30px; font-weight: 700; line-height: 1.1; color: var(--text); white-space: nowrap; }
+.tier .per { font-size: 13px; color: var(--text2); }
+.tier .note { font-size: 12px; color: var(--accent); margin-top: 4px; }
+.tier .badge { position: absolute; top: -11px; right: 10px; font-size: 11px; font-weight: 700; letter-spacing: .06em; padding: 3px 9px; border-radius: 999px; background: var(--fill); color: var(--on-fill); box-shadow: 0 4px 14px var(--glow); white-space: nowrap; }
+@media (max-width: 380px) { .prices { grid-template-columns: 1fr; } }
+.plan .price .pro { vertical-align: middle; margin-left: 6px; white-space: nowrap; }
 
 /* FAQ */
 .faq-band { background: var(--surface1); border-block: 1px solid var(--sep); }
