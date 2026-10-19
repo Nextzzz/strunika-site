@@ -1,0 +1,47 @@
+(function () {
+  document.documentElement.classList.add('js');
+
+  // ---- theme: system by default, explicit choice remembered ----
+  const root = document.documentElement;
+  try { const s = localStorage.getItem('theme'); if (s === 'dark' || s === 'light') root.dataset.theme = s; } catch (e) {}
+  const btn = document.getElementById('theme-toggle');
+  if (btn) btn.addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    const next = dark ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  // ---- phone menu ----
+  const mb = document.getElementById('menu-toggle'), nav = document.getElementById('site-nav');
+  if (mb && nav) {
+    const set = (open) => { nav.classList.toggle('open', open); mb.setAttribute('aria-expanded', String(open)); };
+    mb.addEventListener('click', () => set(!nav.classList.contains('open')));
+    nav.addEventListener('click', (e) => { if (e.target.tagName === 'A') set(false); });
+    document.addEventListener('click', (e) => { if (!e.target.closest('.top')) set(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+    addEventListener('resize', () => { if (innerWidth > 860) set(false); });
+  }
+
+  // ---- reveal on scroll ----
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  document.querySelectorAll('.rv').forEach((el) => io.observe(el));
+
+  // ---- FAQ: smooth open, one per group stays simple (details are native) ----
+  document.querySelectorAll('details').forEach((d) => {
+    d.addEventListener('toggle', () => { if (d.open) d.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); });
+  });
+
+  // ---- phone mock: a tiny playing waveform ----
+  const wave = document.querySelector('.screen .wave');
+  if (wave && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const bars = Array.from(wave.children);
+    let i = 0;
+    setInterval(() => {
+      bars.forEach((b, k) => b.classList.toggle('p', k <= i));
+      i = (i + 1) % bars.length;
+    }, 160);
+  }
+})();

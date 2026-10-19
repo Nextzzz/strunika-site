@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Strunika — chords of any song on iPhone: from a file, a recording or YouTube</title>
+<meta name="description" content="Strunika recognizes the chords of a song from a file, a recording or YouTube right on your iPhone, scrolls them past a playhead while you play, hears your guitar live and tunes it. No data collection. English and Ukrainian.">
+<meta name="keywords" content="chord recognition app, guitar chords from song, chords from YouTube, chord finder iPhone, guitar tuner app, live chord detection, chord detector, Strunika">
+<link rel="canonical" href="https://strunika.com/en/">
+<link rel="alternate" hreflang="uk" href="https://strunika.com/">
+<link rel="alternate" hreflang="en" href="https://strunika.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://strunika.com/en/">
+<meta name="theme-color" content="#FBF3E3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16110B" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Strunika">
+<meta property="og:title" content="Strunika — chords of any song on iPhone">
+<meta property="og:description" content="File, recording or YouTube → chords on a conveyor to play along with. Live recognition and a tuner. Everything on device, no data collected.">
+<meta property="og:url" content="https://strunika.com/en/">
+<meta property="og:image" content="https://strunika.com/assets/og.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t;}catch(e){}</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Strunika",
+  "applicationCategory": "MusicApplication",
+  "operatingSystem": "iOS 16+",
+  "url": "https://strunika.com/en/",
+  "inLanguage": ["en", "uk"],
+  "description": "Strunika recognizes the chords of a song from a file, a recording or YouTube on iPhone, scrolls them past a playhead while you play, hears your guitar live and has a tuner. Analysis runs on device; no data is collected.",
+  "featureList": [
+    "Chords from an audio file (mp3, m4a, wav)",
+    "Chords from your own recording",
+    "Chords from YouTube through the official player",
+    "Live chord recognition from the microphone",
+    "Chromatic tuner with 9 tunings",
+    "Chord conveyor with waveform and beats",
+    "Chord diagrams, CAGED shapes, capo, transpose",
+    "Chord editor",
+    "Export to PDF, Excel, ChordPro",
+    "Setlists",
+    "Dictionary of 168 chords"
+  ],
+  "offers": [
+    { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free: tuner, live recognition, 20 song analyses" },
+    { "@type": "Offer", "description": "Strunika Pro — monthly or yearly subscription, price shown in the App Store" }
+  ],
+  "author": { "@type": "Organization", "name": "Strunika", "url": "https://strunika.com/" }
+}
+</script>
+<!--FAQ-LD--><script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is Strunika?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Strunika is an iPhone app for guitarists that recognizes the chords of a song from an audio file, the Music library on the iPhone, your own recording or a YouTube video, scrolls them past a playhead while you play, hears your guitar live and includes a tuner. The name comes from the Ukrainian word \"struna\", a string."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How does Strunika detect the chords of a song?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A neural network trained on thousands of songs runs on the iPhone itself: it slices the sound into frequency frames, finds the beats and the tempo, then names the chord at every moment out of 168 possible ones. The result is aligned to the bar grid so chord changes land on beats, the way they are played."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does it need an internet connection?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Not for files and recordings: the analysis runs entirely on device. Internet is needed only for YouTube songs, because the video plays through the official YouTube player."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Which devices does Strunika run on?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "iPhone with iOS 16 or later. There is no Android version yet."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Which languages does the app come in?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "English and Ukrainian. The language is chosen on the first launch and can be changed in Settings at any time."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is there a dark mode?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Strunika has a dark and a light theme in warm wood and brass tones, and follows the system setting by default."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How is Strunika different from Chordify, Chord ai and similar apps?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Three things. The analysis runs entirely on device: a song is never uploaded to a server and the app collects no data. The conveyor shows the real waveform and the beats, and you can scrub, loop and edit chords on it like in a DAW. And the Live mode turns a take of your playing straight into a song with chords in the library."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I get the chords of a YouTube video?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Copy the video link and open Strunika: on the Songs tab the YouTube button offers to add the song from the clipboard. Or open the built-in YouTube, find the video and tap \"Add\". While you play, the video runs in the official YouTube player and the chords scroll on the conveyor beneath it."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I get chords from an mp3 or another audio file?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Tap \"File\" on the Songs tab and pick an mp3, m4a or wav from Files or iCloud Drive. You can also open a file in Strunika through \"Share\" from another app."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I use a song from the Music library on my iPhone?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The \"From Music\" button on the Songs tab opens the system song picker for your iPhone library: songs bought in iTunes or synced from a computer work. Apple Music subscription songs are protected and cannot be read, so the picker leaves them out."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I record a song with the microphone and get its chords?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The \"Record\" button captures sound through the iPhone microphone, and once you stop, Strunika analyses the recording and adds the song to the library with chords. It is a handy way to find chords for a song someone plays next to you, or for your own melody."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How accurate is the chord recognition?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "For most popular songs with a clear harmonic backing the chords match the studio ones more than 80–90 % of the time; best on acoustic music and pop/rock recordings, worse on very dense mixes and jazz harmony. With \"Simple chords\" on, everything reduces to major and minor and almost always sounds right for playing along. Where the model is wrong, there is the chord editor."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the maximum song length?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "15 minutes. Longer files and videos are not analysed, and no free analysis is spent on them."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Strunika show the key and tempo of a song?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes: the key, the tempo in BPM and the time signature appear in the row above the conveyor and on the song's card in the library. Beats are marked on the conveyor, and the metronome can click along at the song's tempo."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What are \"simple chords\"?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A mode in which every chord is reduced to a major or minor triad: Am7 becomes Am, Gsus4 becomes G, Bdim becomes Bm. It is on by default so a song can be played right away. The full vocabulary of 168 chords comes with Pro."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I transpose a song or use a capo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, with Pro. Transposing shifts every chord by the chosen number of semitones, and the capo shows the shapes to hold relative to it; the diagrams update by themselves."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I slow a song down to learn a hard part?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, with Pro: speed from 0.5× to 1.25× without changing the pitch, and an A–B loop that repeats the chosen passage. The loop ends snap to chords so you never have to catch them by hand."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What if a chord is detected wrong?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Open the chord editor. The track works like a DAW: a tap selects a chord, a drag moves the moment it begins, and the panel replaces, deletes or adds a chord; the step is a sixteenth note and there is undo. The editor is free for the first three songs."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I see how to play a chord on the guitar?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A fretboard diagram with fret numbers always sits beside the chord name. Tapping it opens every position of that chord: the open shapes and the five movable CAGED shapes; the chosen position is remembered for that song. Left-handed players get mirrored diagrams."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the chord conveyor?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It is the ribbon at the bottom of the song screen: the waveform, the beats, and the name of each chord at the moment it changes. The ribbon rides past the playhead with the song; tapping a chord seeks to it, dragging scrubs the song silently. You always see what sounds now and what comes in a few seconds."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Strunika recognize chords in real time while I play?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The Live tab listens to the microphone and writes the chords you play onto the track as you go: a quick guess first, then the confirmed chord a moment later. It works with acoustic and electric guitars through the iPhone microphone."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is the Live mode for?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "To find the chords of your own idea, to check yourself while working out a song, or simply to record a rehearsal take. The take is saved to the library as a ready song with chords, with no analysis and no free analysis spent."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is there a metronome?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, on the Live tab and on the song page. On Live it counts 3 · 2 · 1 · 0 before recording and clicks at a set tempo from 40 to 240 BPM; on the song page it clicks at the song's tempo. The clicks do not disturb the recognition."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How long can a live take be?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Up to 15 minutes. You can continue recording from the end or record over from any point."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Strunika have a guitar tuner?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, a chromatic tuner on the first tab. It detects which string you plucked by itself and shows the note and the offset; the string on screen sags while it is out of tune and snaps straight with a gold flash when it is in. Tuned strings are marked, and when all six are done the pegs bounce in a wave."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Which tunings does the tuner support?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Standard for free; with Pro also Drop D, half step down, whole step down, DADGAD, Open G, Open D, ukulele GCEA and bass EADG. The A4 reference can be shifted within 430–450 Hz."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why does the tuner show \"points\" instead of cents?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "So the number is easy to read: 10 points is one fret, that is 100 cents. \"+3\" means \"a little sharp, under a third of a fret\". No verdict words and no hints on the screen."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does the tuner work for ukulele and bass?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes: there are ukulele GCEA and bass EADG tunings, and the chromatic mode suits any stringed instrument."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I save a song's chords as a PDF?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, with Pro. The PDF comes in two layouts: \"Bars\" (four bars to a row, the chord where it begins) and \"Conveyor\" (the waveform with beats and chords). Both end with the diagrams of every chord in the song. Excel and ChordPro export are there too."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is a .strunika file?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A complete copy of a song: chords, beats, cover and audio (for YouTube only the link). Send it by AirDrop or mail, and on another iPhone with Strunika it opens with one tap, ready to play. Import is part of Pro."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I build a setlist for a gig?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, with Pro. A setlist is songs in your own order; a song can be in several setlists. Reorder by dragging the grip; removing a song from a setlist never touches the song itself."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Do my songs survive a reinstall?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The library lives in the app's storage and is part of the iPhone backup (iCloud or computer). To move single songs there is the .strunika file."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is free in Strunika?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The tuner with standard tuning, the Live tab with chord recognition, 20 song analyses for the lifetime of the install, simple chords, the metronome, diagrams, the chord dictionary and the chord editor for the first three songs. Analysed songs stay open forever."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What does Strunika Pro add?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Unlimited analyses, the chord editor without limits, export to PDF, Excel, ChordPro and .strunika with import, alternative tunings, the full vocabulary of 168 chords, transpose and capo, playback speed, the A–B loop, setlists and the A4 reference setting."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How much does Pro cost?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Pro is a monthly or yearly subscription; the yearly one is noticeably cheaper. The App Store shows the current price in your currency inside the app. There is no free trial, but the free version has no time limit."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I give Pro as a gift?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, through App Store offer codes: the app has a \"Redeem code\" button. Purchases are restored on a new device with \"Restore purchases\"."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What happens to my songs if the subscription ends?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nothing disappears: every song, chord and setlist stays. Only the Pro tools close, and the Pro settings go back to their defaults."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Strunika collect my data?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. The app has no accounts, no analytics, no advertising or third-party SDKs. Audio and analysis results are stored only on your iPhone. Only Apple's built-in crash reports are used, which you control in iOS settings."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "When does Strunika use the microphone?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Only while the Tuner or Live tab is on screen, or while you record a song. As soon as you switch to another tab or send the app to the background, the microphone turns off."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Strunika download YouTube videos?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. The video plays in the official embedded YouTube player. The on-device analysis uses a transient buffer that is never stored or exported; after the analysis only the chords remain."
+   }
+  }
+ ]
+}
+</script><!--/FAQ-LD-->
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Strunika">
+      <img class="mark mark-light" src="../assets/mark_light.svg" alt="" width="44" height="24">
+      <img class="mark mark-dark" src="../assets/mark.svg" alt="" width="44" height="24">
+      <span>Strunika</span>
+    </a>
+    <nav class="nav" id="site-nav" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#live">Live</a>
+      <a href="#pro">Pro</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="tools">
+      <a class="lang" href="../" hreflang="uk" lang="uk">UA</a>
+      <button class="theme" id="theme-toggle" type="button" aria-label="Toggle theme">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="https://strunika.app">App Store</a>
+      <button class="menu-btn" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <canvas class="hero-bg" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <p class="eyebrow rv">For guitarists · iPhone</p>
+    <h1 class="rv">Hear a song, <em>see its chords</em></h1>
+    <p class="lead rv">Strunika listens to a song, finds its chords and lays them on the audio track. Then it shows you how to play them.</p>
+    <div class="cta rv">
+      <a class="btn btn-primary" href="https://strunika.app">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.5 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.8-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.8-4.1zM14 5.3c.7-.9 1.2-2.1 1-3.3-1 0-2.3.7-3 1.5-.7.8-1.3 2-1.1 3.2 1.2.1 2.4-.6 3.1-1.4z"/></svg>
+        Download on the App Store
+      </a>
+      <a class="btn btn-ghost" href="#how">How it works</a>
+    </div>
+    
+  </div>
+</section>
+
+<section id="how" class="has-anim side-right">
+  <div class="wrap sec"><div class="sec-body">
+    <div class="sec-head">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps from a song to playing it</h2>
+      <p class="lead">Nothing to set up. Add a song and play.</p>
+    </div>
+    <div class="steps">
+      <article class="step rv">
+        <span class="n">1</span>
+        <h3>Add a song</h3>
+        <p>From Files, from the Music library on your iPhone, by a YouTube link, or just record it with the microphone.</p>
+      </article>
+      <article class="step rv">
+        <span class="n">2</span>
+        <h3>Wait for the analysis</h3>
+        <p>A neural network inside the iPhone finds the chords, the beats and the key. The song is never sent anywhere.</p>
+      </article>
+      <article class="step rv">
+        <span class="n">3</span>
+        <h3>Play</h3>
+        <p>The chords ride along the waveform with the song. The current one large, with its diagram, the next one beside it.</p>
+      </article>
+    </div>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="Em G D C"></canvas></aside></div>
+</section>
+
+<section id="features" class="has-anim side-left">
+  <div class="wrap sec"><div class="sec-body">
+    <div class="sec-head">
+      <p class="eyebrow">Features</p>
+      <h2>Everything a guitarist needs</h2>
+      <p class="lead">Tuner, Live and Songs. Three tabs, nothing in the way.</p>
+    </div>
+    <div class="grid">
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 12c3-6 6-6 9 0s6 6 9 0"/><path d="M12 3v3M12 18v3"/></svg></div>
+        <h3>Chords from any song</h3>
+        <p>File, Music, recording or YouTube. Chords, key, tempo and time signature, all on the iPhone itself.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+        <h3>Live play</h3>
+        <p>You play, Strunika names the chords and records the take. One tap and it becomes a song in your library.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 14c4-8 12-8 16 0"/><path d="M12 14v6M9 20h6"/><circle cx="12" cy="14" r="1.5" fill="currentColor"/></svg></div>
+        <h3>Tuner</h3>
+        <p>Chromatic, picks the string by itself. Standard, Drop D, DADGAD, open tunings, ukulele, bass.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 4v16M10 4v16M14 4v16M18 4v16M4 8h16M4 13h16M4 18h16"/><circle cx="10" cy="10.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="14" cy="15.5" r="1.6" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Diagrams and CAGED</h3>
+        <p>Open shapes and the five movable CAGED shapes for every chord. There is a mirror for left-handed players.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16M4 12l4-4M4 12l4 4"/><path d="M20 6v12"/></svg></div>
+        <h3>Simple chords</h3>
+        <p>One switch and the complex chords become major and minor. Play from the first minute.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Metronome at the song's tempo <span class="pro" title="Free">Free</span></h3>
+        <p>A click at the song's tempo, with a count-in.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M7 4h10M12 4v16M8 20h8"/><path d="M3 10l3 2-3 2M21 10l-3 2 3 2"/></svg></div>
+        <h3>Transpose and capo <span class="pro">Pro</span></h3>
+        <p>Fit the key to your voice, put on a capo. The diagrams follow by themselves.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h16"/><circle cx="18" cy="12" r="2"/></svg></div>
+        <h3>Speed and A–B loop <span class="pro">Pro</span></h3>
+        <p>Slow down to 0.5× without changing the pitch and loop the hard passage.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10-10-4-4L4 16v4z"/><path d="M12 8l4 4"/></svg></div>
+        <h3>Chord editor <span class="pro">Pro</span></h3>
+        <p>Move, replace, add and delete chords right on the track, like in a DAW.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v3h16v-3"/></svg></div>
+        <h3>Export <span class="pro">Pro</span></h3>
+        <p>PDF, Excel, ChordPro and a .strunika file that opens on another iPhone, audio included.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 6h14M5 12h14M5 18h9"/></svg></div>
+        <h3>Setlists <span class="pro">Pro</span></h3>
+        <p>Songs in your own order for a gig or a rehearsal.</p>
+      </article>
+      <article class="card rv">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 5h12a3 3 0 0 1 3 3v11H7a3 3 0 0 1-3-3V5z"/><path d="M8 9h7M8 13h7"/></svg></div>
+        <h3>Chord dictionary</h3>
+        <p>168 chords. Each can be heard and seen in every position.</p>
+      </article>
+    </div>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="C G Am F"></canvas></aside></div>
+</section>
+
+<section id="live" class="has-anim side-right">
+  <div class="wrap sec"><div class="sec-body split">
+    <div>
+      <p class="eyebrow">Live</p>
+      <h2>You play, Strunika writes the chords down</h2>
+      <p class="lead" style="margin-top:14px">Turn on the microphone and play. The chords appear on the track by themselves: first as a guess, then in gold once the network is sure.</p>
+      <ul>
+        <li>A count-in with the metronome to get into tempo</li>
+        <li>Takes up to 15 minutes, re-record from any point</li>
+        <li>One tap and the take becomes a song in your library</li>
+        <li>Acoustic or electric, no headphones needed</li>
+      </ul>
+    </div>
+    <figure class="shot rv" data-missing="App screenshot goes here: assets/screens/live.png"><img src="../assets/screens/live.png" width="640" height="1386" alt="The Live tab: chords appear on the track while you play" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>The Live tab: chords appear on the track while you play</figcaption></figure>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="Am F C G"></canvas></aside></div>
+</section>
+
+<section id="privacy" class="has-anim side-left">
+  <div class="wrap sec"><div class="sec-body split">
+    <figure class="shot rv" style="order:2" data-missing="App screenshot goes here: assets/screens/song.png"><img src="../assets/screens/song.png" width="640" height="1386" alt="The song page: current and next chord over the conveyor" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption>The song page: current and next chord over the conveyor</figcaption></figure>
+    <div>
+      <p class="eyebrow">Privacy</p>
+      <h2>Your music never leaves the phone</h2>
+      <p class="lead" style="margin-top:14px">The neural network lives inside the iPhone. No servers, no accounts, no analytics. We collect nothing.</p>
+      <ul>
+        <li>Audio and chords stay inside the app</li>
+        <li>The microphone is on only while the Tuner or Live tab is open</li>
+        <li>YouTube plays through the official player, nothing is stored</li>
+        <li>English and Ukrainian, dark and light themes</li>
+      </ul>
+    </div>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="D A Bm G"></canvas></aside></div>
+</section>
+
+<section id="pro" class="has-anim side-right">
+  <div class="wrap sec"><div class="sec-body">
+    <div class="sec-head">
+      <p class="eyebrow">Strunika Pro</p>
+      <h2>Free to start, Pro for the stage</h2>
+      <p class="lead">The tuner, live play and 20 song analyses are free for good. Pro lifts the limit and adds the tools for rehearsals.</p>
+    </div>
+    <div class="plans">
+      <article class="plan rv">
+        <h3>Free</h3>
+        <p class="price">$0, forever</p>
+        <ul>
+          <li>Tuner</li>
+          <li>Live play</li>
+          <li>20 song analyses</li>
+          <li>Simple chords, metronome, diagrams</li>
+          <li>Editor for the first 3 songs</li>
+          <li>Chord dictionary</li>
+        </ul>
+      </article>
+      <article class="plan hi rv">
+        <h3>Pro <span class="pro">monthly or yearly</span></h3>
+        <p class="price">Price shown in the App Store</p>
+        <ul>
+          <li>Unlimited analyses</li>
+          <li>Editor without limits</li>
+          <li>Export and import</li>
+          <li>Alternative tunings</li>
+          <li>All 168 chords</li>
+          <li>Transpose, capo, speed, A–B loop</li>
+          <li>Setlists</li>
+        </ul>
+        <a class="btn btn-primary" href="https://strunika.app">Try it on the App Store</a>
+        <p class="muted" style="font-size:13px">The subscription renews automatically and can be cancelled any time.</p>
+      </article>
+    </div>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="G D Em C"></canvas></aside></div>
+</section>
+
+<section id="roadmap" class="has-anim side-left">
+  <div class="wrap sec"><div class="sec-body">
+    <div class="sec-head">
+      <p class="eyebrow">Next</p>
+      <h2>What is coming</h2>
+    </div>
+    <div class="road">
+      <article class="card rv"><span class="tag">Coming soon</span><h3>Looper</h3><p>Loops of guitar parts to play live over. Each loop is a ring of its own.</p></article>
+      <article class="card rv"><span class="tag">Planned</span><h3>Stems</h3><p>Solo, mute and your own mix of a song's tracks.</p></article>
+      <article class="card rv"><span class="tag">Planned</span><h3>Karaoke</h3><p>A backing track to play and sing with the original.</p></article>
+      <article class="card rv"><span class="tag">Planned</span><h3>Bass tabs</h3><p>The song's bass line beside its chords.</p></article>
+    </div>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="E B C#m A"></canvas></aside></div>
+</section>
+
+<section id="faq" class="has-anim side-right faq-band">
+  <div class="wrap sec"><div class="sec-body">
+    <div class="sec-head">
+      <p class="eyebrow">Questions and answers</p>
+      <h2>Everything about Strunika</h2>
+      <p class="lead">Short and to the point: how the app finds chords, what is free, how YouTube works and why no data is collected.</p>
+    </div>
+    <div class="faq-groups">
+
+      <div class="faq-group">
+        <h3>About the app</h3>
+        <div class="faq">
+          <details><summary>What is Strunika?</summary><div class="a"><p>Strunika is an iPhone app for guitarists that recognizes the chords of a song from an audio file, the Music library on the iPhone, your own recording or a YouTube video, scrolls them past a playhead while you play, hears your guitar live and includes a tuner. The name comes from the Ukrainian word "struna", a string.</p></div></details>
+          <details><summary>How does Strunika detect the chords of a song?</summary><div class="a"><p>A neural network trained on thousands of songs runs on the iPhone itself: it slices the sound into frequency frames, finds the beats and the tempo, then names the chord at every moment out of 168 possible ones. The result is aligned to the bar grid so chord changes land on beats, the way they are played.</p></div></details>
+          <details><summary>Does it need an internet connection?</summary><div class="a"><p>Not for files and recordings: the analysis runs entirely on device. Internet is needed only for YouTube songs, because the video plays through the official YouTube player.</p></div></details>
+          <details><summary>Which devices does Strunika run on?</summary><div class="a"><p>iPhone with iOS 16 or later. There is no Android version yet.</p></div></details>
+          <details><summary>Which languages does the app come in?</summary><div class="a"><p>English and Ukrainian. The language is chosen on the first launch and can be changed in Settings at any time.</p></div></details>
+          <details><summary>Is there a dark mode?</summary><div class="a"><p>Yes. Strunika has a dark and a light theme in warm wood and brass tones, and follows the system setting by default.</p></div></details>
+          <details><summary>How is Strunika different from Chordify, Chord ai and similar apps?</summary><div class="a"><p>Three things. The analysis runs entirely on device: a song is never uploaded to a server and the app collects no data. The conveyor shows the real waveform and the beats, and you can scrub, loop and edit chords on it like in a DAW. And the Live mode turns a take of your playing straight into a song with chords in the library.</p></div></details>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3>Chords from a song</h3>
+        <div class="faq">
+          <details><summary>How do I get the chords of a YouTube video?</summary><div class="a"><p>Copy the video link and open Strunika: on the Songs tab the YouTube button offers to add the song from the clipboard. Or open the built-in YouTube, find the video and tap "Add". While you play, the video runs in the official YouTube player and the chords scroll on the conveyor beneath it.</p></div></details>
+          <details><summary>How do I get chords from an mp3 or another audio file?</summary><div class="a"><p>Tap "File" on the Songs tab and pick an mp3, m4a or wav from Files or iCloud Drive. You can also open a file in Strunika through "Share" from another app.</p></div></details>
+          <details><summary>Can I use a song from the Music library on my iPhone?</summary><div class="a"><p>Yes. The "From Music" button on the Songs tab opens the system song picker for your iPhone library: songs bought in iTunes or synced from a computer work. Apple Music subscription songs are protected and cannot be read, so the picker leaves them out.</p></div></details>
+          <details><summary>Can I record a song with the microphone and get its chords?</summary><div class="a"><p>Yes. The "Record" button captures sound through the iPhone microphone, and once you stop, Strunika analyses the recording and adds the song to the library with chords. It is a handy way to find chords for a song someone plays next to you, or for your own melody.</p></div></details>
+          <details><summary>How accurate is the chord recognition?</summary><div class="a"><p>For most popular songs with a clear harmonic backing the chords match the studio ones more than 80–90 % of the time; best on acoustic music and pop/rock recordings, worse on very dense mixes and jazz harmony. With "Simple chords" on, everything reduces to major and minor and almost always sounds right for playing along. Where the model is wrong, there is the chord editor.</p></div></details>
+          <details><summary>What is the maximum song length?</summary><div class="a"><p>15 minutes. Longer files and videos are not analysed, and no free analysis is spent on them.</p></div></details>
+          <details><summary>Does Strunika show the key and tempo of a song?</summary><div class="a"><p>Yes: the key, the tempo in BPM and the time signature appear in the row above the conveyor and on the song's card in the library. Beats are marked on the conveyor, and the metronome can click along at the song's tempo.</p></div></details>
+          <details><summary>What are "simple chords"?</summary><div class="a"><p>A mode in which every chord is reduced to a major or minor triad: Am7 becomes Am, Gsus4 becomes G, Bdim becomes Bm. It is on by default so a song can be played right away. The full vocabulary of 168 chords comes with Pro.</p></div></details>
+          <details><summary>Can I transpose a song or use a capo?</summary><div class="a"><p>Yes, with Pro. Transposing shifts every chord by the chosen number of semitones, and the capo shows the shapes to hold relative to it; the diagrams update by themselves.</p></div></details>
+          <details><summary>Can I slow a song down to learn a hard part?</summary><div class="a"><p>Yes, with Pro: speed from 0.5× to 1.25× without changing the pitch, and an A–B loop that repeats the chosen passage. The loop ends snap to chords so you never have to catch them by hand.</p></div></details>
+          <details><summary>What if a chord is detected wrong?</summary><div class="a"><p>Open the chord editor. The track works like a DAW: a tap selects a chord, a drag moves the moment it begins, and the panel replaces, deletes or adds a chord; the step is a sixteenth note and there is undo. The editor is free for the first three songs.</p></div></details>
+          <details><summary>How do I see how to play a chord on the guitar?</summary><div class="a"><p>A fretboard diagram with fret numbers always sits beside the chord name. Tapping it opens every position of that chord: the open shapes and the five movable CAGED shapes; the chosen position is remembered for that song. Left-handed players get mirrored diagrams.</p></div></details>
+          <details><summary>What is the chord conveyor?</summary><div class="a"><p>It is the ribbon at the bottom of the song screen: the waveform, the beats, and the name of each chord at the moment it changes. The ribbon rides past the playhead with the song; tapping a chord seeks to it, dragging scrubs the song silently. You always see what sounds now and what comes in a few seconds.</p></div></details>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3>Live</h3>
+        <div class="faq">
+          <details><summary>Does Strunika recognize chords in real time while I play?</summary><div class="a"><p>Yes. The Live tab listens to the microphone and writes the chords you play onto the track as you go: a quick guess first, then the confirmed chord a moment later. It works with acoustic and electric guitars through the iPhone microphone.</p></div></details>
+          <details><summary>What is the Live mode for?</summary><div class="a"><p>To find the chords of your own idea, to check yourself while working out a song, or simply to record a rehearsal take. The take is saved to the library as a ready song with chords, with no analysis and no free analysis spent.</p></div></details>
+          <details><summary>Is there a metronome?</summary><div class="a"><p>Yes, on the Live tab and on the song page. On Live it counts 3 · 2 · 1 · 0 before recording and clicks at a set tempo from 40 to 240 BPM; on the song page it clicks at the song's tempo. The clicks do not disturb the recognition.</p></div></details>
+          <details><summary>How long can a live take be?</summary><div class="a"><p>Up to 15 minutes. You can continue recording from the end or record over from any point.</p></div></details>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3>Tuner</h3>
+        <div class="faq">
+          <details><summary>Does Strunika have a guitar tuner?</summary><div class="a"><p>Yes, a chromatic tuner on the first tab. It detects which string you plucked by itself and shows the note and the offset; the string on screen sags while it is out of tune and snaps straight with a gold flash when it is in. Tuned strings are marked, and when all six are done the pegs bounce in a wave.</p></div></details>
+          <details><summary>Which tunings does the tuner support?</summary><div class="a"><p>Standard for free; with Pro also Drop D, half step down, whole step down, DADGAD, Open G, Open D, ukulele GCEA and bass EADG. The A4 reference can be shifted within 430–450 Hz.</p></div></details>
+          <details><summary>Why does the tuner show "points" instead of cents?</summary><div class="a"><p>So the number is easy to read: 10 points is one fret, that is 100 cents. "+3" means "a little sharp, under a third of a fret". No verdict words and no hints on the screen.</p></div></details>
+          <details><summary>Does the tuner work for ukulele and bass?</summary><div class="a"><p>Yes: there are ukulele GCEA and bass EADG tunings, and the chromatic mode suits any stringed instrument.</p></div></details>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3>Export and setlists</h3>
+        <div class="faq">
+          <details><summary>Can I save a song's chords as a PDF?</summary><div class="a"><p>Yes, with Pro. The PDF comes in two layouts: "Bars" (four bars to a row, the chord where it begins) and "Conveyor" (the waveform with beats and chords). Both end with the diagrams of every chord in the song. Excel and ChordPro export are there too.</p></div></details>
+          <details><summary>What is a .strunika file?</summary><div class="a"><p>A complete copy of a song: chords, beats, cover and audio (for YouTube only the link). Send it by AirDrop or mail, and on another iPhone with Strunika it opens with one tap, ready to play. Import is part of Pro.</p></div></details>
+          <details><summary>Can I build a setlist for a gig?</summary><div class="a"><p>Yes, with Pro. A setlist is songs in your own order; a song can be in several setlists. Reorder by dragging the grip; removing a song from a setlist never touches the song itself.</p></div></details>
+          <details><summary>Do my songs survive a reinstall?</summary><div class="a"><p>The library lives in the app's storage and is part of the iPhone backup (iCloud or computer). To move single songs there is the .strunika file.</p></div></details>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3>Pricing and Pro</h3>
+        <div class="faq">
+          <details><summary>What is free in Strunika?</summary><div class="a"><p>The tuner with standard tuning, the Live tab with chord recognition, 20 song analyses for the lifetime of the install, simple chords, the metronome, diagrams, the chord dictionary and the chord editor for the first three songs. Analysed songs stay open forever.</p></div></details>
+          <details><summary>What does Strunika Pro add?</summary><div class="a"><p>Unlimited analyses, the chord editor without limits, export to PDF, Excel, ChordPro and .strunika with import, alternative tunings, the full vocabulary of 168 chords, transpose and capo, playback speed, the A–B loop, setlists and the A4 reference setting.</p></div></details>
+          <details><summary>How much does Pro cost?</summary><div class="a"><p>Pro is a monthly or yearly subscription; the yearly one is noticeably cheaper. The App Store shows the current price in your currency inside the app. There is no free trial, but the free version has no time limit.</p></div></details>
+          <details><summary>Can I give Pro as a gift?</summary><div class="a"><p>Yes, through App Store offer codes: the app has a "Redeem code" button. Purchases are restored on a new device with "Restore purchases".</p></div></details>
+          <details><summary>What happens to my songs if the subscription ends?</summary><div class="a"><p>Nothing disappears: every song, chord and setlist stays. Only the Pro tools close, and the Pro settings go back to their defaults.</p></div></details>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3>Privacy and YouTube</h3>
+        <div class="faq">
+          <details><summary>Does Strunika collect my data?</summary><div class="a"><p>No. The app has no accounts, no analytics, no advertising or third-party SDKs. Audio and analysis results are stored only on your iPhone. Only Apple's built-in crash reports are used, which you control in iOS settings.</p></div></details>
+          <details><summary>When does Strunika use the microphone?</summary><div class="a"><p>Only while the Tuner or Live tab is on screen, or while you record a song. As soon as you switch to another tab or send the app to the background, the microphone turns off.</p></div></details>
+          <details><summary>Does Strunika download YouTube videos?</summary><div class="a"><p>No. The video plays in the official embedded YouTube player. The on-device analysis uses a transient buffer that is never stored or exported; after the analysis only the chords remain.</p></div></details>
+        </div>
+      </div>
+
+    </div>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="Dm Bb F C"></canvas></aside></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img class="mark mark-light" src="../assets/mark_light.svg" alt="" width="44" height="24">
+      <img class="mark mark-dark" src="../assets/mark.svg" alt="" width="44" height="24">
+      <span>Strunika</span>
+    </a>
+    <span>Chords of any song on iPhone · <code>strunika.com</code></span>
+    <div class="links">
+      <a href="https://strunika.app">App Store</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="mailto:hello@strunika.com">hello@strunika.com</a>
+      <a href="../" hreflang="uk">Українська</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/main.js" defer></script>
+<script src="../assets/conveyor.js" defer></script>
+</body>
+</html>
