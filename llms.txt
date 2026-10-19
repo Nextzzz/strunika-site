@@ -3,14 +3,14 @@
 > Strunika is an iPhone app for guitarists that recognizes the chords of any song (audio file, your own recording, or a YouTube video) entirely on device, scrolls them past a playhead while you play, recognizes chords live from the microphone, and includes a chromatic guitar tuner. Ukrainian and English interface, dark and light themes, no data collection. Website: https://strunika.com (Ukrainian), https://strunika.com/en/ (English). App Store: https://strunika.app
 
 ## Key facts
-- Platform: iPhone, iOS 16 or later. No Android version.
+- Platform: iPhone, iOS 15 or later. No Android version.
 - Chord recognition: on-device neural network, 168 chords (12 roots × 14 qualities), key, tempo and beats; songs up to 15 minutes.
-- Sources: mp3/m4a/wav files, microphone recording, YouTube (played through the official YouTube player; audio never stored or exported).
+- Sources: mp3/m4a/wav files from Files or iCloud, songs from the iPhone Music library (system picker; protected Apple Music tracks excluded), microphone recording, YouTube (video plays through the official embedded YouTube player; the sound is processed temporarily on device for chord analysis, the temporary copy is deleted after analysis and never stored, exported or played on its own).
 - Live: real-time chord recognition while you play; takes up to 15 minutes; count-in metronome 40–240 BPM; takes are saved as songs.
 - Tuner: chromatic, automatic string detection; tunings Standard (free), Drop D, half/whole step down, DADGAD, Open G, Open D, ukulele GCEA, bass EADG (Pro); A4 430–450 Hz (Pro); readout in "points" (10 points = 1 fret).
-- Free: tuner, live play, 20 song analyses for the lifetime of the install, simple chords (major/minor), metronome, diagrams, chord dictionary, chord editor for the first 3 songs.
+- Free: tuner, live play, 20 song analyses for the lifetime of the install, simple chords (major/minor), metronome, diagrams, chord dictionary.
 - Pro (monthly or yearly subscription, no free trial, price in the App Store): unlimited analyses, chord editor, export to PDF / Excel / ChordPro / .strunika with import, alternative tunings, full chord vocabulary, transpose and capo, speed 0.5×–1.25× pitch-preserved, A–B loop, setlists, A4 reference.
-- Privacy: no accounts, no analytics, no trackers, no third-party SDKs; audio and chords stay on the phone.
+- Privacy: no accounts, no analytics, no trackers, no third-party data-collection SDKs; audio and chords stay on the phone. Network is used only for YouTube and a small service-settings file.
 - Coming soon: looper. Planned: stems, karaoke/backing track, bass tabs.
 
 ## Pages

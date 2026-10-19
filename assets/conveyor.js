@@ -161,9 +161,10 @@
   /* ---------------- section conveyors (scroll-driven, vertical) ---------------- */
   const sections = Array.from(document.querySelectorAll('.sec-anim canvas')).map((canvas, idx) => ({
     canvas, chords: (canvas.dataset.chords || 'Em G D C').split(/\s+/), seed: idx * 37 + 5,
-    section: canvas.closest('section'), progress: -1
+    section: canvas.closest('.sec') || canvas.closest('section'), progress: -1 // a block of the screens section scrolls on its own
   }));
   const STEP_V = 16, SEG_V = 9, TRAVEL = 1400; // px of ribbon travelled over a section's scroll
+  const UPWARD = true; // true: raw bars rise from the bottom and the analysed ribbon climbs away above the stick
 
   function drawSection(s, force) {
     const { ctx, W, H, resized } = fit(s.canvas);
@@ -174,13 +175,14 @@
     s.progress = p;
     ctx.clearRect(0, 0, W, H);
     const stickY = H * 0.42, cx = W / 2;
+    const Y = (v) => (UPWARD ? H - v : v); // canvas y of a point measured along the ribbon's travel
     const shift = p * TRAVEL + 600;          // 600: the ribbon is already running when the page loads
     const rawW = Math.min(W * 0.92, 260), ribbonW = Math.max(26, Math.min(W * 0.36, 84));
     const first = Math.floor(shift / STEP_V);
     const fs = Math.max(13, Math.min(26, W * 0.13));
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.globalAlpha = 0.35; ctx.strokeStyle = C.sep; ctx.lineWidth = 1; ctx.setLineDash([2, 6]);
-    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, stickY - 8); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+    ctx.beginPath(); ctx.moveTo(cx, Y(0)); ctx.lineTo(cx, Y(stickY - 8)); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
     const above = Math.ceil(stickY / STEP_V) + 3;
     for (let i = -above; i < H / STEP_V + 3; i++) {
       const gi = first - i;                      // older bars are lower
@@ -191,9 +193,9 @@
       const w = rawW * a * (1 - morph) + ribbonW * (0.55 + 0.45 * a) * morph;
       const past = y > stickY;
       ctx.fillStyle = past ? C.fill : C.text2; ctx.globalAlpha = past ? 0.95 : 0.62;
-      rrect(ctx, cx - w / 2, y - 5, w, 10, 4); ctx.fill();
+      rrect(ctx, cx - w / 2, Y(y) - 5, w, 10, 4); ctx.fill();
     }
-    ctx.globalAlpha = 1; ctx.fillStyle = C.accent; rrect(ctx, cx - rawW / 2 - 6, stickY - 2.5, rawW + 12, 5, 2.5); ctx.fill();
+    ctx.globalAlpha = 1; ctx.fillStyle = C.accent; rrect(ctx, cx - rawW / 2 - 6, Y(stickY) - 2.5, rawW + 12, 5, 2.5); ctx.fill();
     ctx.shadowColor = C.glow; ctx.shadowBlur = 18; ctx.fill(); ctx.shadowBlur = 0;
     for (let i = -3; i < H / STEP_V + 3; i++) {
       const gi = first - i; if (((gi % SEG_V) + SEG_V) % SEG_V !== 0) continue;
@@ -201,7 +203,7 @@
       const k = Math.max(0, Math.min(1, (y - stickY) / 90));
       const sc = 1.35 - 0.35 * (1 - Math.pow(1 - k, 3)), al = k;
       const name = s.chords[(((gi / SEG_V) % s.chords.length) + s.chords.length) % s.chords.length];
-      ctx.save(); ctx.translate(cx, y + 2); ctx.scale(sc, sc); ctx.globalAlpha = al;
+      ctx.save(); ctx.translate(cx, Y(y) + (UPWARD ? -2 : 2)); ctx.scale(sc, sc); ctx.globalAlpha = al;
       ctx.font = `700 ${fs}px Vollkorn, Georgia, serif`;
       const tw = ctx.measureText(name).width, pw = tw + fs * 1.0, ph = fs * 1.5;
       ctx.fillStyle = C.bg; rrect(ctx, -pw / 2, -ph / 2, pw, ph, ph / 2); ctx.fill();
