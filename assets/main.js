@@ -54,10 +54,17 @@
   document.querySelectorAll('.rv').forEach((el) => io.observe(el));
 
   // ---- screenshots: the image shows up with a fade once it has loaded ----
-  document.querySelectorAll('.shot img').forEach((img) => {
+  // Phones start a lazy image only when it is almost on screen, so it arrives late; here the
+  // fetch starts two screens ahead (switching the image to eager starts it at once).
+  const shots = Array.from(document.querySelectorAll('.shot img'));
+  shots.forEach((img) => {
     const show = () => img.classList.add('loaded');
     if (img.complete && img.naturalWidth) show(); else { img.addEventListener('load', show, { once: true }); img.addEventListener('error', show, { once: true }); }
   });
+  const ahead = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.loading = 'eager'; ahead.unobserve(e.target); }
+  }, { rootMargin: '200% 0px 200% 0px' });
+  shots.forEach((img) => ahead.observe(img));
 
   // ---- FAQ: smooth open, one per group stays simple (details are native) ----
   document.querySelectorAll('details').forEach((d) => {
