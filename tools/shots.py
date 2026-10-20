@@ -158,10 +158,13 @@ PHONE_BAR = ROOT / "shots" / "statusbar"       # time.png, signal.png, wifi.png,
 def _status_bar_from_phone(canvas, ink):
     """The real thing: the time and the three icons cut from an iPhone screenshot
     at 3 px/pt (shots/statusbar/*.png, white on transparent, made from the
-    user's IMG_3070.PNG on 2026-10-20). Laid out with the offsets measured on
-    that phone: time centred 55 pt from the left, icons ending 19 pt before the
-    right edge with 7 pt between them, everything centred 29 pt down (the
-    Dynamic Island's own centre). Returns False when the files are missing."""
+    user's IMG_3070/3071.PNG on 2026-10-20). Laid out the way a Pro Max lays
+    them out, measured on Apple's own iPhone 16 Pro Max screenshot from the
+    Apple Music App Store page (iOS 26): each cluster is centred in its "ear"
+    beside the Dynamic Island — the time centred 78 pt from the left, the
+    icons centred 348 pt from the left (signal, 8 pt, Wi-Fi, 11 pt, battery) —
+    and everything is centred on the island's own middle, 29.5 pt down.
+    Returns False when the files are missing."""
     from PIL import Image
     files = {n: PHONE_BAR / f"{n}.png" for n in ("time", "signal", "wifi", "battery")}
     if not all(p.exists() for p in files.values()):
@@ -172,13 +175,15 @@ def _status_bar_from_phone(canvas, ink):
         tint = Image.new("RGBA", img.size, ink + (0,))
         tint.putalpha(img.getchannel("A"))
         canvas.paste(tint, (round(cx - img.width / 2), round(cy - img.height / 2)), tint)
-    cy = 29 * S
-    put(icons["time"], 55 * S, cy)
-    x = (PT_W - 19) * S                       # right edge of the battery
-    for n in ("battery", "wifi", "signal"):
+    cy = 29.5 * S
+    put(icons["time"], 78 * S, cy)
+    gaps = {"signal": 8 * S, "wifi": 11 * S, "battery": 0}
+    total = sum(icons[n].width + gaps[n] for n in ("signal", "wifi", "battery"))
+    x = 348 * S - total / 2
+    for n in ("signal", "wifi", "battery"):
         img = icons[n]
-        put(img, x - img.width / 2, cy)
-        x -= img.width + 7 * S
+        put(img, x + img.width / 2, cy)
+        x += img.width + gaps[n]
     # Dynamic Island, as before
     from PIL import ImageDraw
     d = ImageDraw.Draw(canvas)
