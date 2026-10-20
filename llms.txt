@@ -1,11 +1,11 @@
 # Strunika
 
-> Strunika is an iPhone app for guitarists that recognizes the chords of any song (audio file, your own recording, or a YouTube video) entirely on device, scrolls them past a playhead while you play, recognizes chords live from the microphone, and includes a chromatic guitar tuner. Ukrainian and English interface, dark and light themes, no data collection. Website: https://strunika.com (Ukrainian), https://strunika.com/en/ (English). App Store: https://strunika.app
+> Strunika is an iPhone app for guitarists that recognizes the chords of any song (a YouTube video, an audio file or your own recording) entirely on device, scrolls them past a playhead while you play, recognizes chords live from the microphone, and includes a chromatic guitar tuner. Ukrainian and English interface, dark and light themes, no data collection. Website: https://strunika.com (Ukrainian), https://strunika.com/en/ (English). App Store: https://strunika.app
 
 ## Key facts
 - Platform: iPhone, iOS 15 or later. No Android version.
 - Chord recognition: on-device neural network, 168 chords (12 roots × 14 qualities), key, tempo and beats; songs up to 15 minutes.
-- Sources: mp3/m4a/wav files from Files or iCloud, songs from the iPhone Music library (system picker; protected Apple Music tracks excluded), microphone recording, YouTube (the video plays through the official embedded YouTube player; the library keeps only the chords, beats and the link).
+- Sources: YouTube (the video plays through the official embedded YouTube player; the library keeps only the chords, beats and the link), mp3/m4a/wav files from Files or iCloud, songs from the iPhone Music library (system picker; protected Apple Music tracks excluded), microphone recording.
 - Live: real-time chord recognition while you play; takes up to 15 minutes; count-in metronome 40–240 BPM; takes are saved as songs.
 - Tuner: chromatic, automatic string detection; tunings Standard (free), Drop D, half/whole step down, DADGAD, Open G, Open D, ukulele GCEA, bass EADG (Pro); A4 430–450 Hz (Pro); readout in "points" (10 points = 1 fret).
 - Free: tuner, live play, 20 song analyses for the lifetime of the install, simple chords (major/minor), metronome, diagrams, chord dictionary.
