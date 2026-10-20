@@ -24,7 +24,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 RAW = ROOT / "shots" / "raw"
 STORE = ROOT / "shots" / "appstore"
 SITE = ROOT / "assets" / "screens"
-NAMES = ["song", "library", "live", "editor", "tuner", "dictionary"]
+NAMES = ["library", "song", "setlists", "live", "editor", "tuner", "dictionary"]
 
 PT_W, PT_H = 430, 878          # client area in points: the phone's screen minus the status bar;
                                # the 34-pt home-indicator zone is part of it, the tab bar floats above it
@@ -140,7 +140,9 @@ def compose() -> None:
         ink = (255, 255, 255) if _lum(top) < 128 else (0, 0, 0)
         if not _status_bar_from_phone(canvas, ink):
             _status_bar(d, font, ink)
-        home_ink = (255, 255, 255) if _lum(top) < 128 else (0, 0, 0)
+        # iOS tints the home indicator by what sits under it: white on the dark
+        # pages, black when a light sheet (an exported PDF page) runs to the edge.
+        home_ink = (255, 255, 255) if _lum(_edge_colour(raw, "bottom")) < 128 else (0, 0, 0)
         _home_indicator(d, home_ink)
         store = STORE / lang / f.name
         canvas.save(store, optimize=True)
