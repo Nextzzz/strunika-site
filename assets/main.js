@@ -20,7 +20,7 @@
     nav.addEventListener('click', (e) => { if (e.target.tagName === 'A') set(false); });
     document.addEventListener('click', (e) => { if (!e.target.closest('.top')) set(false); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
-    addEventListener('resize', () => { if (innerWidth > 860) set(false); });
+    addEventListener('resize', () => { if (innerWidth > 960) set(false); });
   }
 
   // ---- the brand link goes to the very top, above the sticky header ----
@@ -39,7 +39,7 @@
   const tools = document.querySelector('.top .tools'), lang = document.querySelector('.top .lang');
   if (nav && tools && lang && btn) {
     const extra = document.createElement('div'); extra.className = 'nav-extra';
-    const mq = matchMedia('(max-width: 860px)');
+    const mq = matchMedia('(max-width: 960px)');
     const place = () => {
       if (mq.matches) { if (!extra.parentNode) nav.appendChild(extra); extra.append(lang, btn); }
       else if (extra.parentNode) { tools.prepend(lang, btn); extra.remove(); }
