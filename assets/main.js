@@ -53,6 +53,12 @@
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
   document.querySelectorAll('.rv').forEach((el) => io.observe(el));
 
+  // ---- screenshots: the image shows up with a fade once it has loaded ----
+  document.querySelectorAll('.shot img').forEach((img) => {
+    const show = () => img.classList.add('loaded');
+    if (img.complete && img.naturalWidth) show(); else { img.addEventListener('load', show, { once: true }); img.addEventListener('error', show, { once: true }); }
+  });
+
   // ---- FAQ: smooth open, one per group stays simple (details are native) ----
   document.querySelectorAll('details').forEach((d) => {
     d.addEventListener('toggle', () => { if (d.open) d.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); });
