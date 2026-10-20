@@ -265,6 +265,8 @@ section, .sec[id] { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px)
 .screen .pills b { font-family: var(--display); font-weight: 700; padding: 6px 12px; border-radius: 999px; background: var(--surface2); color: var(--text); font-size: 15px; }
 .screen .pills b.now { background: var(--fill); color: var(--on-fill); }
 
+/* the one word in a lead that sells: YouTube in the brand's gold */
+.yt { color: var(--accent); font-weight: 600; }
 /* app screenshots */
 .shot { margin: 0; width: min(320px, 100%); margin-inline: auto; display: grid; gap: 12px; justify-items: center; }
 .shot img { width: 100%; height: auto; border-radius: 40px; box-shadow: var(--shadow); border: 1px solid var(--sep); background: var(--surface1); }
