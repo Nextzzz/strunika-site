@@ -193,7 +193,9 @@ p { margin: 0; }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero .lead { max-width: 30em; }
 .cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.cta-note { margin-top: 12px; font-size: 13px; color: var(--text2); text-align: center; }
+.cta { align-items: flex-start; }
+.cta .dl { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.cta-note { margin: 0; font-size: 11px; line-height: 1.2; color: var(--text2); opacity: .8; }
 
 
 /* ---------- sections ---------- */
