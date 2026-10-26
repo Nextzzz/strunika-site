@@ -1,6 +1,6 @@
 # Strunika
 
-> Strunika is an iPhone app for guitarists that recognizes the chords of any song (a YouTube video, an audio file or your own recording) entirely on device, scrolls them past a playhead while you play, recognizes chords live from the microphone, and includes a chromatic guitar tuner. Ukrainian and English interface, dark and light themes, no data collection. Website: https://strunika.com (Ukrainian), https://strunika.com/en/ (English). App Store: https://strunika.app
+> Strunika is an iPhone app for guitarists that recognizes the chords of any song (a YouTube video, an audio file or your own recording) entirely on device, scrolls them past a playhead while you play, recognizes chords live from the microphone, and includes a chromatic guitar tuner. Ukrainian and English interface, dark and light themes, no data collection. Website: https://strunika.com (English), https://strunika.com/ua/ (Ukrainian). App Store: https://strunika.app
 
 ## Key facts
 - Platform: iPhone, iOS 15 or later. No Android version.
@@ -14,6 +14,6 @@
 - Coming soon: looper. Planned: stems, karaoke/backing track, bass tabs.
 
 ## Pages
-- [Home (Ukrainian)](https://strunika.com/): features, pricing and a 39-question FAQ.
-- [Home (English)](https://strunika.com/en/): the same in English.
+- [Home (English)](https://strunika.com/): features, pricing and a 39-question FAQ.
+- [Home (Ukrainian)](https://strunika.com/ua/): the same in Ukrainian.
 - [Privacy policy](https://strunika.com/privacy.html)

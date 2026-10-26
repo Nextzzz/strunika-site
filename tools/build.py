@@ -8,7 +8,7 @@ Run from the site root:  python tools/build.py
 import html, json, re, sys, datetime, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-PAGES = {"index.html": "https://strunika.com/", "en/index.html": "https://strunika.com/en/"}
+PAGES = {"index.html": "https://strunika.com/", "ua/index.html": "https://strunika.com/ua/"}
 
 DETAILS = re.compile(r"<details>\s*<summary>(.*?)</summary>\s*<div class=\"a\">(.*?)</div>\s*</details>", re.S)
 TAG = re.compile(r"<[^>]+>")
@@ -38,8 +38,9 @@ for rel in PAGES:
 today = datetime.date.today().isoformat()
 urls = "\n".join(
     f"  <url><loc>{u}</loc><lastmod>{today}</lastmod>"
-    f'<xhtml:link rel="alternate" hreflang="uk" href="https://strunika.com/"/>'
-    f'<xhtml:link rel="alternate" hreflang="en" href="https://strunika.com/en/"/></url>'
+    f'<xhtml:link rel="alternate" hreflang="en" href="https://strunika.com/"/>'
+    f'<xhtml:link rel="alternate" hreflang="uk" href="https://strunika.com/ua/"/>'
+    f'<xhtml:link rel="alternate" hreflang="x-default" href="https://strunika.com/"/></url>'
     for u in PAGES.values())
 urls += f"\n  <url><loc>https://strunika.com/privacy.html</loc><lastmod>{today}</lastmod></url>"
 (ROOT / "sitemap.xml").write_text(

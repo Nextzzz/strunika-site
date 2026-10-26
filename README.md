@@ -1,6 +1,6 @@
 # strunika.com
 
-Static landing page for Strunika. No bundler, no framework: `index.html` (Ukrainian), `en/index.html` (English), `privacy.html`, `assets/`.
+Static landing page for Strunika. No bundler, no framework: `index.html` (English), `ua/index.html` (Ukrainian), `en/index.html` (a redirect to `/` for old links), `privacy.html`, `assets/`.
 
 ## Edit → build → deploy
 

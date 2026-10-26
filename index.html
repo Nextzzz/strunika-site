@@ -1,36 +1,37 @@
 <!doctype html>
-<html lang="uk">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <script>
-/* Language by the browser's preferences: Ukrainian or Russian stays here, everything else goes to /en/.
+/* Language by the browser's preferences: Ukrainian, Russian or Belarusian goes to /ua/, everything else stays here.
    An explicit choice made with the EN/UA switch wins and is never overridden. */
 (function () {
   try {
-    if (localStorage.getItem('lang')) return;
+    var go = function () { location.replace('/ua/' + location.search + location.hash); };
+    var chosen = localStorage.getItem('lang');
+    if (chosen) { if (chosen === 'uk') go(); return; }
     var langs = navigator.languages || [navigator.language || ''];
-    for (var i = 0; i < langs.length; i++) if (/^(uk|ru|be)(-|$)/i.test(langs[i])) return;
-    location.replace('/en/' + location.search + location.hash);
+    for (var i = 0; i < langs.length; i++) if (/^(uk|ru|be)(-|$)/i.test(langs[i])) return go();
   } catch (e) {}
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Strunika — акорди будь-якої пісні на iPhone: з YouTube, файлу чи запису</title>
-<meta name="description" content="Strunika розпізнає акорди пісні з YouTube, файлу чи запису прямо на iPhone, показує їх на конвеєрі під час гри, слухає гітару наживо та тюнить її. Без збору даних, українською та англійською.">
-<meta name="keywords" content="акорди пісні, розпізнавання акордів, застосунок акорди iPhone, акорди з YouTube, тюнер для гітари, акорди по слуху, chord recognition app, guitar chords from song, Strunika">
+<title>Strunika — chords of any song on iPhone: from YouTube, a file or a recording</title>
+<meta name="description" content="Strunika recognizes the chords of a song from YouTube, a file or a recording right on your iPhone, scrolls them past a playhead while you play, hears your guitar live and tunes it. No data collection. English and Ukrainian.">
+<meta name="keywords" content="chord recognition app, guitar chords from song, chords from YouTube, chord finder iPhone, guitar tuner app, live chord detection, chord detector, Strunika">
 <link rel="canonical" href="https://strunika.com/">
-<link rel="alternate" hreflang="uk" href="https://strunika.com/">
-<link rel="alternate" hreflang="en" href="https://strunika.com/en/">
-<link rel="alternate" hreflang="x-default" href="https://strunika.com/en/">
+<link rel="alternate" hreflang="uk" href="https://strunika.com/ua/">
+<link rel="alternate" hreflang="en" href="https://strunika.com/">
+<link rel="alternate" hreflang="x-default" href="https://strunika.com/">
 <meta name="theme-color" content="#FBF3E3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16110B" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Strunika">
-<meta property="og:title" content="Strunika — акорди будь-якої пісні на iPhone">
-<meta property="og:description" content="YouTube, файл або запис → акорди на конвеєрі, під які грати. Живе розпізнавання і тюнер. Усе на пристрої, без збору даних.">
+<meta property="og:title" content="Strunika — chords of any song on iPhone">
+<meta property="og:description" content="YouTube, file or recording → chords on a conveyor to play along with. Live recognition and a tuner. Everything on device, no data collected.">
 <meta property="og:url" content="https://strunika.com/">
 <meta property="og:image" content="https://strunika.com/assets/og.png">
-<meta property="og:locale" content="uk_UA">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/icon.svg?v=2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2">
@@ -44,28 +45,27 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Strunika",
-  "alternateName": "Струніка",
   "applicationCategory": "MusicApplication",
   "operatingSystem": "iOS 15+",
   "url": "https://strunika.com/",
-  "inLanguage": ["uk", "en"],
-  "description": "Strunika розпізнає акорди пісні з YouTube, файлу чи запису на iPhone, показує їх на конвеєрі під час гри, слухає гітару наживо та має тюнер. Аналіз іде на пристрої, дані не збираються.",
+  "inLanguage": ["en", "uk"],
+  "description": "Strunika recognizes the chords of a song from YouTube, a file or a recording on iPhone, scrolls them past a playhead while you play, hears your guitar live and has a tuner. Analysis runs on device; no data is collected.",
   "featureList": [
-    "Акорди з аудіофайлу (mp3, m4a, wav)",
-    "Акорди із власного запису",
-    "Акорди з YouTube через офіційний плеєр",
-    "Живе розпізнавання акордів з мікрофона",
-    "Хроматичний тюнер з 9 строями",
-    "Конвеєр акордів з хвилею та таймлайном",
-    "Діаграми акордів, CAGED-форми, капо, транспонування",
-    "Редактор акордів",
-    "Експорт у PDF, Excel, ChordPro",
-    "Сетлісти",
-    "Словник із 168 акордів"
+    "Chords from an audio file (mp3, m4a, wav)",
+    "Chords from your own recording",
+    "Chords from YouTube through the official player",
+    "Live chord recognition from the microphone",
+    "Chromatic tuner with 9 tunings",
+    "Chord conveyor with waveform and beats",
+    "Chord diagrams, CAGED shapes, capo, transpose",
+    "Chord editor",
+    "Export to PDF, Excel, ChordPro",
+    "Setlists",
+    "Dictionary of 168 chords"
   ],
   "offers": [
-    { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Безкоштовно: тюнер, живе розпізнавання, 20 аналізів пісень" },
-    { "@type": "Offer", "description": "Strunika Pro — підписка на місяць або рік, ціна в App Store" }
+    { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free: tuner, live recognition, 20 song analyses" },
+    { "@type": "Offer", "description": "Strunika Pro — monthly or yearly subscription, price shown in the App Store" }
   ],
   "author": { "@type": "Organization", "name": "Strunika", "url": "https://strunika.com/" }
 }
@@ -77,314 +77,314 @@
  "mainEntity": [
   {
    "@type": "Question",
-   "name": "Що таке Strunika?",
+   "name": "What is Strunika?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Strunika — це застосунок для гітаристів на iPhone, який розпізнає акорди пісні з відео на YouTube, аудіофайлу, медіатеки iPhone чи власного запису, показує їх на рухомому конвеєрі під час гри, слухає гітару наживо і має тюнер. Назва походить від українського слова «струна»."
+    "text": "Strunika is an iPhone app for guitarists that recognizes the chords of a song from a YouTube video, an audio file, the iPhone music library or your own recording, scrolls them past a playhead while you play, hears your guitar live and includes a tuner. The name comes from the Ukrainian word \"struna\", a string."
    }
   },
   {
    "@type": "Question",
-   "name": "Як Strunika визначає акорди пісні?",
+   "name": "How does Strunika detect the chords of a song?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Нейромережа, навчена на тисячах пісень, працює прямо на iPhone: вона розбиває звук на частотні зрізи, знаходить долі й темп, а потім для кожного моменту визначає акорд із 168 можливих. Результат вирівнюється по сітці тактів, щоб зміни акордів лягали на долі, як у реальній грі."
+    "text": "A neural network trained on thousands of songs runs on the iPhone itself: it slices the sound into frequency frames, finds the beats and the tempo, then names the chord at every moment out of 168 possible ones. The result is aligned to the bar grid so chord changes land on beats, the way they are played."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи потрібен інтернет?",
+   "name": "Does it need an internet connection?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Для файлів і записів — ні, аналіз іде повністю на пристрої. Інтернет потрібен лише для пісень із YouTube, бо відео відтворюється офіційним плеєром YouTube."
+    "text": "Not for files and recordings: the analysis runs entirely on device. Internet is needed only for YouTube songs, because the video plays through the official YouTube player."
    }
   },
   {
    "@type": "Question",
-   "name": "На яких пристроях працює Strunika?",
+   "name": "Which devices does Strunika run on?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "На iPhone з iOS 15 і новіше. Версії для Android поки немає."
+    "text": "iPhone with iOS 15 or later. There is no Android version yet."
    }
   },
   {
    "@type": "Question",
-   "name": "Якими мовами є застосунок?",
+   "name": "Which languages does the app come in?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Українською та англійською. Мова обирається при першому запуску і змінюється в Налаштуваннях у будь-який момент."
+    "text": "English and Ukrainian. The language is chosen on the first launch and can be changed in Settings at any time."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи є темна тема?",
+   "name": "Is there a dark mode?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так. Strunika має темну та світлу тему в теплих тонах дерева й латуні і за замовчуванням слідує за системною."
+    "text": "Yes. Strunika has a dark and a light theme in warm wood and brass tones, and follows the system setting by default."
    }
   },
   {
    "@type": "Question",
-   "name": "Що особливого в Strunika?",
+   "name": "What is special about Strunika?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Пісня, акорди і правки живуть на одній звуковій доріжці: по ній можна перемотувати, зациклювати фрагмент і пересувати акорди, як у редакторі. Дубль із «Наживо» одразу стає піснею з акордами в бібліотеці. Безкоштовний пакет не має терміну дії. Немає облікових записів і аналітики. Інтерфейс українською та англійською."
+    "text": "The song, its chords and your edits live on one audio track: you can scrub it, loop a passage and move chords on it like in an editor. A Live take becomes a song with chords in the library at once. The free plan never expires. There are no accounts and no analytics. The interface comes in English and Ukrainian."
    }
   },
   {
    "@type": "Question",
-   "name": "Як знайти акорди пісні з YouTube?",
+   "name": "How do I get the chords of a YouTube video?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "На вкладці «Пісні» натисни YouTube: відкриється вбудований YouTube, знайди в ньому відео і натисни «Додати». Або заходь у Strunika зі вже скопійованим посиланням, і кнопка YouTube сама запропонує додати пісню з буфера обміну. Під час гри відео відтворюється офіційним плеєром YouTube, а акорди біжать на конвеєрі під ним."
+    "text": "On the Songs tab tap YouTube: the built-in YouTube opens, find the video there and tap \"Add\". Or open Strunika with the link already copied, and the YouTube button offers to add the song from the clipboard. While you play, the video runs in the official YouTube player and the chords scroll on the conveyor beneath it."
    }
   },
   {
    "@type": "Question",
-   "name": "Як отримати акорди з mp3 або іншого аудіофайлу?",
+   "name": "How do I get chords from an mp3 or another audio file?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Натисни «Файл» на вкладці «Пісні» і вибери mp3, m4a або wav із Файлів чи iCloud Drive. Також можна відкрити файл у Strunika через «Поділитися» з іншого застосунку."
+    "text": "Tap \"File\" on the Songs tab and pick an mp3, m4a or wav from Files or iCloud Drive. You can also open a file in Strunika through \"Share\" from another app."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи можна взяти пісню з Музики на iPhone?",
+   "name": "Can I use a song from the Music library on my iPhone?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так. Кнопка «З Музики» на вкладці «Пісні» відкриває системний вибір пісень із бібліотеки iPhone: підходять пісні, куплені в iTunes або перенесені з комп'ютера. Пісні з підписки Apple Music захищені, їх прочитати не можна, тому вони не показуються."
+    "text": "Yes. The \"From Music\" button on the Songs tab opens the system song picker for your iPhone library: songs bought in iTunes or synced from a computer work. Apple Music subscription songs are protected and cannot be read, so the picker leaves them out."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи можна записати пісню на мікрофон і дізнатися акорди?",
+   "name": "Can I record a song with the microphone and get its chords?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так. Кнопка «Записати» пише звук через мікрофон iPhone, а після зупинки Strunika аналізує запис і додає пісню в бібліотеку з акордами. Так зручно підбирати акорди до пісні, яку хтось грає поруч, або до власної мелодії."
+    "text": "Yes. The \"Record\" button captures sound through the iPhone microphone, and once you stop, Strunika analyses the recording and adds the song to the library with chords. It is a handy way to find chords for a song someone plays next to you, or for your own melody."
    }
   },
   {
    "@type": "Question",
-   "name": "Наскільки точно розпізнаються акорди?",
+   "name": "How accurate is the chord recognition?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Для більшості популярних пісень з чітким гармонічним супроводом акорди збігаються зі студійними на понад 80–90 % часу; найкраще на акустичній музиці та поп/рок-записах, гірше на дуже щільних міксах і джазових гармоніях. Увімкнений режим «Прості акорди» зводить усе до мажору й мінору і майже завжди звучить правильно для гри під пісню. А там, де модель помилилася, є редактор акордів."
+    "text": "For most popular songs with a clear harmonic backing the chords match the studio ones more than 80–90 % of the time; best on acoustic music and pop/rock recordings, worse on very dense mixes and jazz harmony. With \"Simple chords\" on, everything reduces to major and minor and almost always sounds right for playing along. Where the model is wrong, there is the chord editor."
    }
   },
   {
    "@type": "Question",
-   "name": "Яка максимальна довжина пісні?",
+   "name": "What is the maximum song length?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "15 хвилин. Довші файли та відео не аналізуються, і безкоштовний аналіз за них не списується."
+    "text": "15 minutes. Longer files and videos are not analysed, and no free analysis is spent on them."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи показує Strunika тональність і темп пісні?",
+   "name": "Does Strunika show the key and tempo of a song?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так: тональність, темп у BPM і розмір видно у рядку над конвеєром, а також на картці пісні в бібліотеці. Долі позначені на конвеєрі, і за ними можна увімкнути метроном у темпі пісні."
+    "text": "Yes: the key, the tempo in BPM and the time signature appear in the row above the conveyor and on the song's card in the library. Beats are marked on the conveyor, and the metronome can click along at the song's tempo."
    }
   },
   {
    "@type": "Question",
-   "name": "Що таке «прості акорди»?",
+   "name": "What are \"simple chords\"?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Режим, у якому всі акорди зводяться до мажорних і мінорних тризвуків: Am7 стає Am, Gsus4 стає G, Bdim стає Bm. Він увімкнений за замовчуванням, щоб пісню можна було зіграти одразу. Повний словник із 168 акордів відкриває Pro."
+    "text": "A mode in which every chord is reduced to a major or minor triad: Am7 becomes Am, Gsus4 becomes G, Bdim becomes Bm. It is on by default so a song can be played right away. The full vocabulary of 168 chords comes with Pro."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи можна транспонувати пісню чи поставити капо?",
+   "name": "Can I transpose a song or use a capo?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так, у Pro. Транспонування зсуває всі акорди на потрібну кількість півтонів, а капо показує форми, які треба брати відносно капо; діаграми перераховуються автоматично."
+    "text": "Yes, with Pro. Transposing shifts every chord by the chosen number of semitones, and the capo shows the shapes to hold relative to it; the diagrams update by themselves."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи можна уповільнити пісню, щоб вивчити складне місце?",
+   "name": "Can I slow a song down to learn a hard part?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так, у Pro: швидкість від 0,5× до 1,25× без зміни висоти тону, і петля A–B, яка повторює вибраний фрагмент. Кінці петлі прилипають до акордів, щоб не ловити їх вручну."
+    "text": "Yes, with Pro: speed from 0.5× to 1.25× without changing the pitch, and an A–B loop that repeats the chosen passage. The loop ends snap to chords so you never have to catch them by hand."
    }
   },
   {
    "@type": "Question",
-   "name": "Що робити, якщо акорд визначено неправильно?",
+   "name": "What if a chord is detected wrong?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Відкрити редактор акордів. Доріжка працює як у DAW: дотик вибирає акорд, перетягування переносить момент його початку, у панелі можна замінити акорд, видалити чи додати новий; крок — шістнадцята нота, є відміна дій. Редактор входить у Pro."
+    "text": "Open the chord editor. The track works like a DAW: a tap selects a chord, a drag moves the moment it begins, and the panel replaces, deletes or adds a chord; the step is a sixteenth note and there is undo. The editor is part of Pro."
    }
   },
   {
    "@type": "Question",
-   "name": "Як дізнатися, як брати акорд на гітарі?",
+   "name": "How do I see how to play a chord on the guitar?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Поруч із назвою акорду завжди є діаграма грифа з ладами. Дотик до неї відкриває всі позиції цього акорду: відкриті форми і п'ять рухомих CAGED-форм; вибрана позиція запам'ятовується для цієї пісні. Для лівшів є дзеркальні діаграми."
+    "text": "A fretboard diagram with fret numbers always sits beside the chord name. Tapping it opens every position of that chord: the open shapes and the five movable CAGED shapes; the chosen position is remembered for that song. Left-handed players get mirrored diagrams."
    }
   },
   {
    "@type": "Question",
-   "name": "Що таке конвеєр акордів?",
+   "name": "What is the chord conveyor?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Це стрічка внизу екрана пісні: хвиля звуку, долі, і над кожним моментом зміни акорду — його назва. Стрічка їде повз плейхед разом із піснею; дотик до акорду перемотує до нього, перетягування гортає пісню беззвучно. Так видно, що звучить зараз і що буде за кілька секунд."
+    "text": "It is the ribbon at the bottom of the song screen: the waveform, the beats, and the name of each chord at the moment it changes. The ribbon rides past the playhead with the song; tapping a chord seeks to it, dragging scrubs the song silently. You always see what sounds now and what comes in a few seconds."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи розпізнає Strunika акорди в реальному часі, поки я граю?",
+   "name": "Does Strunika recognize chords in real time while I play?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так. Вкладка «Наживо» слухає мікрофон і підписує акорди, які ти граєш, одразу на доріжці: спочатку швидка здогадка, а за мить — підтверджений акорд. Працює з акустичною та електрогітарою через мікрофон iPhone."
+    "text": "Yes. The Live tab listens to the microphone and writes the chords you play onto the track as you go: a quick guess first, then the confirmed chord a moment later. It works with acoustic and electric guitars through the iPhone microphone."
    }
   },
   {
    "@type": "Question",
-   "name": "Навіщо потрібен режим «Наживо»?",
+   "name": "What is the Live mode for?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Щоб підібрати акорди до власної ідеї, перевірити себе під час розбору пісні або просто записати дубль репетиції. Дубль зберігається в бібліотеку як готова пісня з акордами, без аналізу і без витрати безкоштовних аналізів."
+    "text": "To find the chords of your own idea, to check yourself while working out a song, or simply to record a rehearsal take. The take is saved to the library as a ready song with chords, with no analysis and no free analysis spent."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи є в Strunika метроном?",
+   "name": "Is there a metronome?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так, на вкладці «Наживо» і на сторінці пісні. У «Наживо» він дає відлік 3 · 2 · 1 · 0 перед записом і клікає в заданому темпі від 40 до 240 BPM; на сторінці пісні клікає в її темпі. Кліки не заважають розпізнаванню, але з динаміка iPhone вони потрапляють у запис, тому під метроном краще грати в навушниках."
+    "text": "Yes, on the Live tab and on the song page. On Live it counts 3 · 2 · 1 · 0 before recording and clicks at a set tempo from 40 to 240 BPM; on the song page it clicks at the song's tempo. The clicks do not disturb the recognition, but from the iPhone speaker they end up in the recording, so it is best to wear headphones when playing to the metronome."
    }
   },
   {
    "@type": "Question",
-   "name": "Скільки може тривати дубль наживо?",
+   "name": "How long can a live take be?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "До 15 хвилин. Можна продовжити запис із кінця або перезаписати з будь-якого місця."
+    "text": "Up to 15 minutes. You can continue recording from the end or record over from any point."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи є в Strunika тюнер для гітари?",
+   "name": "Does Strunika have a guitar tuner?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так, хроматичний тюнер на першій вкладці. Він сам визначає, яку струну ти смикнув, і показує ноту та відхилення; струна на екрані «провисає», поки не в строї, і вирівнюється з золотим спалахом, коли стрій точний. Налаштовані струни позначаються, а коли готові всі шість, кілки пробігають хвилею."
+    "text": "Yes, a chromatic tuner on the first tab. It detects which string you plucked by itself and shows the note and the offset; the string on screen sags while it is out of tune and snaps straight with a gold flash when it is in. Tuned strings are marked, and when all six are done the pegs bounce in a wave."
    }
   },
   {
    "@type": "Question",
-   "name": "Які строї підтримує тюнер?",
+   "name": "Which tunings does the tuner support?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Standard безкоштовно; у Pro також Drop D, пів тону нижче, тон нижче, DADGAD, Open G, Open D, укулеле GCEA і бас EADG. Еталон A4 можна зсунути в межах 430–450 Гц."
+    "text": "Standard for free; with Pro also Drop D, half step down, whole step down, DADGAD, Open G, Open D, ukulele GCEA and bass EADG. The A4 reference can be shifted within 430–450 Hz."
    }
   },
   {
    "@type": "Question",
-   "name": "Чому тюнер показує «пункти», а не центи?",
+   "name": "Why does the tuner show \"points\" instead of cents?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Щоб число було зрозумілим: 10 пунктів — це один лад, тобто 100 центів. «+3» означає «трохи вище, менше третини ладу». Без зайвих слів і без підказок на екрані."
+    "text": "So the number is easy to read: 10 points is one fret, that is 100 cents. \"+3\" means \"a little sharp, under a third of a fret\". No verdict words and no hints on the screen."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи підходить тюнер для укулеле та бас-гітари?",
+   "name": "Does the tuner work for ukulele and bass?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так: є строї укулеле GCEA і баса EADG, а хроматичний режим підходить для будь-якого струнного інструмента."
+    "text": "Yes: there are ukulele GCEA and bass EADG tunings, and the chromatic mode suits any stringed instrument."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи можна зберегти акорди пісні в PDF?",
+   "name": "Can I save a song's chords as a PDF?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так, у Pro. PDF має два варіанти: «Такти» (чотири такти в рядку, акорд там, де він починається) і «Конвеєр» (хвиля з долями та акордами). Обидва закінчуються діаграмами всіх акордів пісні. Також є експорт у Excel і ChordPro."
+    "text": "Yes, with Pro. The PDF comes in two layouts: \"Bars\" (four bars to a row, the chord where it begins) and \"Conveyor\" (the waveform with beats and chords). Both end with the diagrams of every chord in the song. Excel and ChordPro export are there too."
    }
   },
   {
    "@type": "Question",
-   "name": "Що таке файл .strunika?",
+   "name": "What is a .strunika file?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Це повна копія пісні: акорди, долі, обкладинка та аудіо (для YouTube лише посилання). Його можна надіслати через AirDrop чи пошту, і на іншому iPhone зі Strunika він відкриється одним дотиком і одразу готовий до гри. Імпорт входить у Pro."
+    "text": "A complete copy of a song: chords, beats, cover and audio (for YouTube only the link). Send it by AirDrop or mail, and on another iPhone with Strunika it opens with one tap, ready to play. Import is part of Pro."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи можна скласти сетліст для виступу?",
+   "name": "Can I build a setlist for a gig?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так, у Pro. Сетліст — це пісні у твоєму порядку; одна пісня може бути в кількох сетлістах. Порядок змінюється перетягуванням за ручку, а видалення із сетліста не чіпає саму пісню."
+    "text": "Yes, with Pro. A setlist is songs in your own order; a song can be in several setlists. Reorder by dragging the grip; removing a song from a setlist never touches the song itself."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи зберігаються пісні, якщо перевстановити застосунок?",
+   "name": "Do my songs survive a reinstall?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Бібліотека зберігається у сховищі застосунку і входить у резервну копію iPhone (iCloud або комп'ютер). Для переносу окремих пісень є файл .strunika."
+    "text": "The library lives in the app's storage and is part of the iPhone backup (iCloud or computer). To move single songs there is the .strunika file."
    }
   },
   {
    "@type": "Question",
-   "name": "Що в Strunika безкоштовно?",
+   "name": "What is free in Strunika?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Тюнер зі стандартним строєм, вкладка «Наживо» з розпізнаванням акордів, 20 аналізів пісень на весь час користування, прості акорди, метроном, діаграми, словник акордів. Проаналізовані пісні залишаються відкритими назавжди."
+    "text": "The tuner with standard tuning, the Live tab with chord recognition, 20 song analyses for the lifetime of the install, simple chords, the metronome, diagrams, the chord dictionary. Analysed songs stay open forever."
    }
   },
   {
    "@type": "Question",
-   "name": "Що дає Strunika Pro?",
+   "name": "What does Strunika Pro add?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Необмежену кількість аналізів, редактор акордів, експорт у PDF, Excel, ChordPro і .strunika з імпортом, альтернативні строї тюнера, повний словник із 168 акордів, транспонування і капо, зміну швидкості, петлю A–B, сетлісти та налаштування еталона A4."
+    "text": "Unlimited analyses, the chord editor, export to PDF, Excel, ChordPro and .strunika with import, alternative tunings, the full vocabulary of 168 chords, transpose and capo, playback speed, the A–B loop, setlists and the A4 reference setting."
    }
   },
   {
    "@type": "Question",
-   "name": "Скільки коштує Pro?",
+   "name": "How much does Pro cost?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "2,99 $ на місяць або 24,99 $ на рік, тобто річна підписка на 30 % вигідніша. Точну ціну у своїй валюті побачиш в App Store всередині застосунку. Безкоштовного пробного періоду немає, але безкоштовна версія не обмежена в часі."
+    "text": "$2.99 a month or $24.99 a year, so the yearly subscription is 30% cheaper. The exact price in your currency is shown by the App Store inside the app. There is no free trial, but the free version has no time limit."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи можна подарувати Pro?",
+   "name": "Can I give Pro as a gift?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так, через коди пропозицій App Store: у застосунку є кнопка «Промокод». Покупки відновлюються на новому пристрої кнопкою «Відновити покупки»."
+    "text": "Yes, through App Store offer codes: the app has a \"Promo code\" button. Purchases are restored on a new device with \"Restore purchases\"."
    }
   },
   {
    "@type": "Question",
-   "name": "Що станеться з моїми піснями, якщо підписка закінчиться?",
+   "name": "What happens to my songs if the subscription ends?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Нічого не зникає: усі пісні, акорди і сетлісти залишаються. Закриваються лише Pro-інструменти, а Pro-налаштування повертаються до стандартних."
+    "text": "Nothing disappears: every song, chord and setlist stays. Only the Pro tools close, and the Pro settings go back to their defaults."
    }
   },
   {
    "@type": "Question",
-   "name": "Чи збирає Strunika мої дані?",
+   "name": "Does Strunika collect my data?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Ні. У застосунку немає облікових записів, аналітики, реклами та сторонніх SDK для збору даних. Аудіо та результати аналізу зберігаються лише на твоєму iPhone. В інтернет застосунок виходить тільки заради YouTube і невеликого файлу налаштувань сервісу, без жодних ідентифікаторів. Звіти про збої збирає сама Apple, і ти керуєш ними в налаштуваннях iOS."
+    "text": "No. The app has no accounts, no analytics, no advertising and no third-party data-collection SDKs. Audio and analysis results are stored only on your iPhone. The app goes online only for YouTube and for a small service-settings file, with no identifiers attached. Crash reports are collected by Apple itself, and you control them in iOS settings."
    }
   },
   {
    "@type": "Question",
-   "name": "Коли Strunika використовує мікрофон?",
+   "name": "When does Strunika use the microphone?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Лише коли на екрані вкладка «Тюнер» або «Наживо», або під час запису пісні. Щойно ти переходиш на іншу вкладку або згортаєш застосунок, мікрофон вимикається."
+    "text": "Only while the Tuner or Live tab is on screen, or while you record a song. As soon as you switch to another tab or send the app to the background, the microphone turns off."
    }
   }
  ]
@@ -400,22 +400,22 @@
       <img class="mark mark-dark" src="assets/mark.svg" alt="" width="44" height="24">
       <span>Strunika</span>
     </a>
-    <nav class="nav" id="site-nav" aria-label="Розділи">
-      <a href="#how">Як працює</a>
-      <a href="#screens">Скріншоти</a>
-      <a href="#features">Можливості</a>
+    <nav class="nav" id="site-nav" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#screens">Screenshots</a>
+      <a href="#features">Features</a>
       <a href="#pro">Pro</a>
-      <a href="#faq">Питання</a>
-      <a href="/privacy.html">Приватність</a>
+      <a href="#faq">FAQ</a>
+      <a href="/privacy.html">Privacy</a>
     </nav>
     <div class="tools">
-      <a class="lang" href="/en/" hreflang="en" lang="en">EN</a>
-      <button class="theme" id="theme-toggle" type="button" aria-label="Перемкнути тему">
+      <a class="lang" href="/ua/" hreflang="uk" lang="uk">UA</a>
+      <button class="theme" id="theme-toggle" type="button" aria-label="Toggle theme">
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
-      <a class="btn btn-primary btn-sm" href="https://strunika.app" aria-label="Завантажити"><svg class="dl-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v10.5"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M4 16.5v2a1.5 1.5 0 0 0 1.5 1.5h13a1.5 1.5 0 0 0 1.5-1.5v-2"/></svg><span>Завантажити</span></a>
-      <button class="menu-btn" id="menu-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg></button>
+      <a class="btn btn-primary btn-sm" href="https://strunika.app" aria-label="Download"><svg class="dl-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v10.5"/><path d="M7.5 10.5L12 15l4.5-4.5"/><path d="M4 16.5v2a1.5 1.5 0 0 0 1.5 1.5h13a1.5 1.5 0 0 0 1.5-1.5v-2"/></svg><span>Download</span></a>
+      <button class="menu-btn" id="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg></button>
     </div>
   </div>
 </header>
@@ -425,18 +425,18 @@
 <section class="hero">
   <canvas class="hero-bg" aria-hidden="true"></canvas>
   <div class="wrap">
-    <p class="eyebrow rv">Для гітаристів · iPhone</p>
-    <h1 class="rv">Чуєш пісню — <em>бачиш акорди</em></h1>
-    <p class="lead rv">Обери пісню (<span class="yt">YouTube</span>, файл, медіатека чи запис) і одразу отримай акорди на звуковій доріжці з діаграмами.</p>
+    <p class="eyebrow rv">For guitarists · iPhone</p>
+    <h1 class="rv">Hear a song, <em>see its chords</em></h1>
+    <p class="lead rv">Pick a song (<span class="yt">YouTube</span>, a file, music library or a recording) and get its chords on the audio track at once, diagrams included.</p>
     <div class="cta rv">
       <div class="dl">
       <a class="btn btn-primary" href="https://strunika.app">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.5 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.8-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.8-4.1zM14 5.3c.7-.9 1.2-2.1 1-3.3-1 0-2.3.7-3 1.5-.7.8-1.3 2-1.1 3.2 1.2.1 2.4-.6 3.1-1.4z"/></svg>
-        Завантажити в App Store
+        Download on the App Store
       </a>
         <p class="cta-note">iOS 15+</p>
       </div>
-      <a class="btn btn-ghost" href="#how">Як це працює</a>
+      <a class="btn btn-ghost" href="#how">How it works</a>
     </div>
     
   </div>
@@ -445,25 +445,25 @@
 <section id="how" class="has-anim side-right">
   <div class="wrap sec"><div class="sec-body">
     <div class="sec-head">
-      <p class="eyebrow">Як працює</p>
-      <h2>Три кроки від пісні до гри</h2>
-      <p class="lead">Ні реєстрації, ні налаштувань. Додай пісню і грай.</p>
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps from a song to playing it</h2>
+      <p class="lead">No account, nothing to set up. Add a song and play.</p>
     </div>
     <div class="steps">
       <article class="step rv">
         <span class="n">1</span>
-        <h3>Додай пісню</h3>
-        <p>Пісня з YouTube, файл із сховища чи iCloud, пісня з медіатеки iPhone. Або просто зіграй її в мікрофон.</p>
+        <h3>Add a song</h3>
+        <p>A song from YouTube, a file from storage or iCloud, a song from your iPhone music library. Or just play it into the microphone.</p>
       </article>
       <article class="step rv">
         <span class="n">2</span>
-        <h3>Зачекай кілька секунд</h3>
-        <p>Strunika знаходить акорди, долі, темп і тональність. Пісня не покидає телефон.</p>
+        <h3>Wait a few seconds</h3>
+        <p>Strunika finds the chords, the beats, the tempo and the key. The song stays on the phone.</p>
       </article>
       <article class="step rv">
         <span class="n">3</span>
-        <h3>Грай</h3>
-        <p>Акорди пливуть по звуковій доріжці разом із піснею, а на екрані видно їх діаграми.</p>
+        <h3>Play</h3>
+        <p>The chords ride along the audio track with the song, and the screen shows their diagrams.</p>
       </article>
     </div>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="Em G D C"></canvas></aside></div>
@@ -472,161 +472,161 @@
 <section id="screens" class="has-anim">
   <div class="wrap sec side-left"><div class="sec-body split">
     <div>
-      <p class="eyebrow">Пісні</p>
-      <h2>Будь-яка пісня за кілька секунд</h2>
-      <p class="lead" style="margin-top:14px"><span class="yt">YouTube</span>, файл зі сховища, медіатека iPhone або запис у мікрофон. Обери пісню, і за кілька секунд отримай її акорди.</p>
+      <p class="eyebrow">Songs</p>
+      <h2>Any song in a few seconds</h2>
+      <p class="lead" style="margin-top:14px"><span class="yt">YouTube</span>, a file from storage, the iPhone music library or a recording from the mic. Pick a song and get its chords in seconds.</p>
       <ul>
-        <li>Обкладинка, тональність і темп на картці</li>
-        <li>Пошук, обрані та сортування</li>
-        <li>Пісня передається другові файлом Strunika</li>
+        <li>Cover, key and tempo on every card</li>
+        <li>Search, favourites and sorting</li>
+        <li>Hand a song to a friend as a Strunika file</li>
       </ul>
     </div>
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/library.png"><picture><source type="image/webp" srcset="assets/screens/uk/library.webp"><img src="assets/screens/uk/library.png" width="640" height="1386" alt="Вкладка «Пісні»: усі способи додати пісню і бібліотека з обкладинками" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Вкладка «Пісні»: усі способи додати пісню і бібліотека з обкладинками</figcaption></figure>
+    <figure class="shot rv" data-missing="App screenshot goes here: assets/screens/en/library.png"><picture><source type="image/webp" srcset="assets/screens/en/library.webp"><img src="assets/screens/en/library.png" width="640" height="1386" alt="The Songs tab: every way to add a song, and the library with covers" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>The Songs tab: every way to add a song, and the library with covers</figcaption></figure>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="D A Bm G"></canvas></aside></div>
   <div class="wrap sec side-right"><div class="sec-body split">
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/song.png"><picture><source type="image/webp" srcset="assets/screens/uk/song.webp"><img src="assets/screens/uk/song.png" width="640" height="1386" alt="Сторінка пісні: акорди над звуковою доріжкою" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Сторінка пісні: акорди над звуковою доріжкою</figcaption></figure>
+    <figure class="shot rv" data-missing="App screenshot goes here: assets/screens/en/song.png"><picture><source type="image/webp" srcset="assets/screens/en/song.webp"><img src="assets/screens/en/song.png" width="640" height="1386" alt="The song page: chords above the audio track" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>The song page: chords above the audio track</figcaption></figure>
     <div>
-      <p class="eyebrow">Сторінка пісні</p>
-      <h2>Акорди на звуковій доріжці</h2>
-      <p class="lead" style="margin-top:14px">Пісня їде повз плейхед, акорди стоять там, де звучать. Торкнись акорду, і пісня перемотається до нього.</p>
+      <p class="eyebrow">Song page</p>
+      <h2>Chords on the audio track</h2>
+      <p class="lead" style="margin-top:14px">The song rides past the playhead and the chords sit where they sound. Tap a chord and the song jumps to it.</p>
       <ul>
-        <li>Тональність, темп і розмір над доріжкою</li>
-        <li>Діаграма поточного акорду завжди поруч</li>
-        <li>Метроном у темпі пісні</li>
+        <li>Key, tempo and time signature above the track</li>
+        <li>The current chord's diagram always beside it</li>
+        <li>A metronome at the song's tempo</li>
       </ul>
     </div>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="Am F C G"></canvas></aside></div>
   <div class="wrap sec side-left"><div class="sec-body split">
     <div>
-      <p class="eyebrow">Сетлісти</p>
-      <h2>Всі твої пісні в сетлістах</h2>
-      <p class="lead" style="margin-top:14px">Збери пісні для виступу чи репетиції в тому порядку, як гратимеш. Одна пісня може бути в кількох сетлістах.</p>
+      <p class="eyebrow">Setlists</p>
+      <h2>All your songs in setlists</h2>
+      <p class="lead" style="margin-top:14px">Gather songs for a gig or a rehearsal in the order you will play them. One song can sit in several setlists.</p>
       <ul>
-        <li>Обкладинка, кількість пісень і тривалість на картці</li>
-        <li>Перетягни, щоб змінити порядок</li>
-        <li>Сетлісти в Pro</li>
+        <li>Cover, song count and length on every card</li>
+        <li>Drag to reorder</li>
+        <li>Setlists are a Pro feature</li>
       </ul>
     </div>
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/setlists.png"><picture><source type="image/webp" srcset="assets/screens/uk/setlists.webp"><img src="assets/screens/uk/setlists.png" width="640" height="1386" alt="Сетлісти: пісні для виступу в потрібному порядку" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Сетлісти: пісні для виступу в потрібному порядку</figcaption></figure>
+    <figure class="shot rv" data-missing="App screenshot goes here: assets/screens/en/setlists.png"><picture><source type="image/webp" srcset="assets/screens/en/setlists.webp"><img src="assets/screens/en/setlists.png" width="640" height="1386" alt="Setlists: songs for a gig in the right order" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Setlists: songs for a gig in the right order</figcaption></figure>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="G Em C D"></canvas></aside></div>
   <div class="wrap sec side-right" id="live"><div class="sec-body split">
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/live.png"><picture><source type="image/webp" srcset="assets/screens/uk/live.webp"><img src="assets/screens/uk/live.png" width="640" height="1386" alt="Вкладка «Наживо»: акорди з'являються на доріжці, поки ти граєш" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Вкладка «Наживо»: акорди з'являються на доріжці, поки ти граєш</figcaption></figure>
+    <figure class="shot rv" data-missing="App screenshot goes here: assets/screens/en/live.png"><picture><source type="image/webp" srcset="assets/screens/en/live.webp"><img src="assets/screens/en/live.png" width="640" height="1386" alt="The Live tab: chords appear on the track while you play" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>The Live tab: chords appear on the track while you play</figcaption></figure>
     <div>
-      <p class="eyebrow">Наживо</p>
-      <h2>Грай, а Strunika підпише акорди</h2>
-      <p class="lead" style="margin-top:14px">Увімкни мікрофон і грай. Акорди лягають на звукову доріжку самі, поки ти граєш.</p>
+      <p class="eyebrow">Live</p>
+      <h2>You play, Strunika writes the chords down</h2>
+      <p class="lead" style="margin-top:14px">Turn on the microphone and play. The chords land on the audio track by themselves as you go.</p>
       <ul>
-        <li>Відлік метронома, щоб увійти в темп</li>
-        <li>Дубль до 15 хвилин, перезапис із будь-якого місця</li>
-        <li>Один дотик, і дубль стає піснею в бібліотеці</li>
+        <li>A metronome count-in to get into tempo</li>
+        <li>Takes up to 15 minutes, re-record from any point</li>
+        <li>One tap and the take becomes a song in your library</li>
       </ul>
     </div>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="G Em C D"></canvas></aside></div>
   <div class="wrap sec side-left"><div class="sec-body split">
     <div>
-      <p class="eyebrow">Редактор акордів</p>
-      <h2>Поправ те, що чуєш інакше</h2>
-      <p class="lead" style="margin-top:14px">Перетягуй акорд пальцем, заміняй, додавай новий або видаляй прямо на доріжці.</p>
+      <p class="eyebrow">Chord editor</p>
+      <h2>Fix what you hear differently</h2>
+      <p class="lead" style="margin-top:14px">Drag a chord with your finger, replace it, add a new one or delete it right on the track.</p>
       <ul>
-        <li>Крок у шістнадцяту ноту</li>
-        <li>Входить у Strunika Pro</li>
+        <li>Steps of a sixteenth note</li>
+        <li>Part of Strunika Pro</li>
       </ul>
     </div>
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/editor.png"><picture><source type="image/webp" srcset="assets/screens/uk/editor.webp"><img src="assets/screens/uk/editor.png" width="640" height="1386" alt="Редактор акордів: акорд пересувається по доріжці" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Редактор акордів: акорд пересувається по доріжці</figcaption></figure>
+    <figure class="shot rv" data-missing="App screenshot goes here: assets/screens/en/editor.png"><picture><source type="image/webp" srcset="assets/screens/en/editor.webp"><img src="assets/screens/en/editor.png" width="640" height="1386" alt="The chord editor: a chord dragged along the track" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>The chord editor: a chord dragged along the track</figcaption></figure>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="F Dm Bb C"></canvas></aside></div>
   <div class="wrap sec side-right"><div class="sec-body split">
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/tuner.png"><picture><source type="image/webp" srcset="assets/screens/uk/tuner.webp"><img src="assets/screens/uk/tuner.png" width="640" height="1386" alt="Тюнер: струна вирівнюється, коли стрій точний" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Тюнер: струна вирівнюється, коли стрій точний</figcaption></figure>
+    <figure class="shot rv" data-missing="App screenshot goes here: assets/screens/en/tuner.png"><picture><source type="image/webp" srcset="assets/screens/en/tuner.webp"><img src="assets/screens/en/tuner.png" width="640" height="1386" alt="The tuner: the string straightens when it is in tune" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>The tuner: the string straightens when it is in tune</figcaption></figure>
     <div>
-      <p class="eyebrow">Тюнер</p>
-      <h2>Струна сама скаже, коли в строї</h2>
-      <p class="lead" style="margin-top:14px">Смикни струну, Strunika впізнає її сама. Струна на екрані провисає, поки не в строї, і спалахує золотом, коли все точно.</p>
+      <p class="eyebrow">Tuner</p>
+      <h2>The string tells you when it is in tune</h2>
+      <p class="lead" style="margin-top:14px">Pluck a string and Strunika picks it by itself. The string on screen sags while it is out of tune and flashes gold when it is right.</p>
       <ul>
-        <li>Standard безкоштовно, Drop D, DADGAD, відкриті строї, укулеле і бас у Pro</li>
-        <li>Еталон A4 від 430 до 450 Гц</li>
+        <li>Standard for free; Drop D, DADGAD, open tunings, ukulele and bass with Pro</li>
+        <li>A4 reference from 430 to 450 Hz</li>
       </ul>
     </div>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="A F#m D E"></canvas></aside></div>
   <div class="wrap sec side-left"><div class="sec-body split">
     <div>
-      <p class="eyebrow">Словник акордів</p>
-      <h2>168 акордів, кожен у всіх позиціях</h2>
-      <p class="lead" style="margin-top:14px">Відкриті форми і п'ять рухомих CAGED-форм для кожного акорду. Торкнись, щоб послухати.</p>
+      <p class="eyebrow">Chord dictionary</p>
+      <h2>168 chords, each in every position</h2>
+      <p class="lead" style="margin-top:14px">Open shapes and the five movable CAGED shapes for every chord. Tap to hear it.</p>
       <ul>
-        <li>Дзеркальні діаграми для лівшів</li>
-        <li>Вибрана позиція запам'ятовується для пісні</li>
+        <li>Mirrored diagrams for left-handed players</li>
+        <li>The chosen position is remembered for the song</li>
       </ul>
     </div>
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/dictionary.png"><picture><source type="image/webp" srcset="assets/screens/uk/dictionary.webp"><img src="assets/screens/uk/dictionary.png" width="640" height="1386" alt="Словник акордів: усі позиції акорду на грифі" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Словник акордів: усі позиції акорду на грифі</figcaption></figure>
+    <figure class="shot rv" data-missing="App screenshot goes here: assets/screens/en/dictionary.png"><picture><source type="image/webp" srcset="assets/screens/en/dictionary.webp"><img src="assets/screens/en/dictionary.png" width="640" height="1386" alt="The chord dictionary: every position of a chord on the neck" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>The chord dictionary: every position of a chord on the neck</figcaption></figure>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="Am C G F"></canvas></aside></div>
 </section>
 
 <section id="features" class="has-anim side-left">
   <div class="wrap sec"><div class="sec-body">
     <div class="sec-head">
-      <p class="eyebrow">Можливості</p>
-      <h2>Три вкладки замість трьох застосунків</h2>
-      <p class="lead">Тюнер, Наживо і Пісні. Нічого зайвого, усе під рукою.</p>
+      <p class="eyebrow">Features</p>
+      <h2>Three tabs instead of three apps</h2>
+      <p class="lead">Tuner, Live and Songs. Nothing in the way, everything at hand.</p>
     </div>
     <div class="grid">
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15V9M8 18V6M12 14.5V9.5M16 17V7M20 15V9"/></svg></div>
-        <h3>Акорди з будь-якої пісні</h3>
-        <p>YouTube, файл, медіатека iPhone або запис. Акорди, тональність, темп і розмір для кожної.</p>
+        <h3>Chords from any song</h3>
+        <p>YouTube, file, iPhone music library or recording. Chords, key, tempo and time signature for each one.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0z"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6"/></svg></div>
-        <h3>Гра наживо</h3>
-        <p>Грай, а Strunika підписує акорди і пише дубль. Один дотик, і він уже пісня в бібліотеці.</p>
+        <h3>Live play</h3>
+        <p>You play, Strunika names the chords and records the take. One tap and it is a song in your library.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v7a4 4 0 0 0 8 0V3"/><path d="M12 14v7"/><path d="M9.5 21h5"/></svg></div>
-        <h3>Тюнер</h3>
-        <p>Хроматичний, сам упізнає струну. Standard, Drop D, DADGAD, відкриті строї, укулеле, бас.</p>
+        <h3>Tuner</h3>
+        <p>Chromatic, picks the string by itself. Standard, Drop D, DADGAD, open tunings, ukulele, bass.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v16M10 4v16M14 4v16M18 4v16M4 8h16M4 13h16M4 18h16"/><path fill="currentColor" stroke="none" d="M10 10.5m-1.6 0a1.6 1.6 0 1 0 3.2 0a1.6 1.6 0 1 0-3.2 0"/><path fill="currentColor" stroke="none" d="M14 15.5m-1.6 0a1.6 1.6 0 1 0 3.2 0a1.6 1.6 0 1 0-3.2 0"/></svg></div>
-        <h3>Діаграми та CAGED</h3>
-        <p>Відкриті форми і п'ять рухомих CAGED-форм для кожного акорду. Лівшам дзеркало.</p>
+        <h3>Diagrams and CAGED</h3>
+        <p>Open shapes and the five movable CAGED shapes for every chord. Left-handed players get a mirror.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4.5 4.5L19 7"/></svg></div>
-        <h3>Прості акорди</h3>
-        <p>Один перемикач, і складні акорди стають мажором і мінором. Грай із першої хвилини.</p>
+        <h3>Simple chords</h3>
+        <p>One switch and the complex chords become major and minor. Play from the first minute.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3.5h5L18 20H6z"/><path d="M12 15l5.5-9"/></svg></div>
-        <h3>Метроном у темпі пісні</h3>
-        <p>Клік у темпі пісні, з відліком перед стартом.</p>
+        <h3>Metronome at the song's tempo</h3>
+        <p>A click at the song's tempo, with a count-in before you start.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6-6 6 6"/><path d="M6 15l6 6 6-6"/></svg></div>
-        <h3>Транспонування і капо</h3>
-        <p>Підбери тональність під голос, постав капо. Діаграми перерахуються самі.</p>
+        <h3>Transpose and capo</h3>
+        <p>Fit the key to your voice, put on a capo. The diagrams follow by themselves.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 4l3 3-3 3"/><path d="M20 7H8a4 4 0 0 0-4 4v1"/><path d="M7 20l-3-3 3-3"/><path d="M4 17h12a4 4 0 0 0 4-4v-1"/></svg></div>
-        <h3>Швидкість і петля A–B</h3>
-        <p>Уповільни пісню без зміни тону і повторюй складний фрагмент, доки не ляже в пальці.</p>
+        <h3>Speed and A–B loop</h3>
+        <p>Slow the song down without changing the pitch and repeat the hard passage until it sits in your fingers.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1L19 8l-3-3L5 16z"/><path d="M14 7l3 3"/></svg></div>
-        <h3>Редактор акордів</h3>
-        <p>Пересувай, заміняй, додавай і видаляй акорди прямо на звуковій доріжці.</p>
+        <h3>Chord editor</h3>
+        <p>Move, replace, add and delete chords right on the audio track.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 15.5h6"/></svg></div>
-        <h3>Експорт</h3>
-        <p>PDF, Excel, ChordPro або файл Strunika, щоб поділитися піснею з другом разом з аудіо.</p>
+        <h3>Export</h3>
+        <p>PDF, Excel, ChordPro or a Strunika file to share a song with a friend, audio included.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6.5H20M9.5 12H20M9.5 17.5H20"/><circle cx="5" cy="6.5" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="5" cy="17.5" r="1"/></svg></div>
-        <h3>Сетлісти</h3>
-        <p>Пісні у твоєму порядку для виступу чи репетиції.</p>
+        <h3>Setlists</h3>
+        <p>Songs in your own order for a gig or a rehearsal.</p>
       </article>
       <article class="card rv">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 4.5h6v6h-6z"/><path d="M13.5 4.5h6v6h-6z"/><path d="M4.5 13.5h6v6h-6z"/><path d="M13.5 13.5h6v6h-6z"/></svg></div>
-        <h3>Словник акордів</h3>
-        <p>168 акордів. Кожен можна послухати і побачити в усіх позиціях на грифі.</p>
+        <h3>Chord dictionary</h3>
+        <p>168 chords. Hear each one and see it in every position on the neck.</p>
       </article>
     </div>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="C G Am F"></canvas></aside></div>
@@ -636,41 +636,41 @@
   <div class="wrap sec"><div class="sec-body">
     <div class="sec-head">
       <p class="eyebrow">Strunika Pro</p>
-      <h2>Щедрий безкоштовний пакет, Pro без лімітів</h2>
-      <p class="lead">Тюнер, Наживо і 20 аналізів пісень безкоштовно назавжди. Pro знімає ліміт і додає інструменти для розбору пісень.</p>
+      <h2>A generous free plan, Pro without limits</h2>
+      <p class="lead">The tuner, Live and 20 song analyses are free for good. Pro lifts the limit and adds the tools for working songs out.</p>
     </div>
     <div class="plans">
       <article class="plan rv">
-        <h3>Безкоштовно</h3>
-        <p class="price">0 $ назавжди</p>
+        <h3>Free</h3>
+        <p class="price">$0, forever</p>
         <ul>
-          <li>Тюнер</li>
-          <li>Наживо</li>
-          <li>20 аналізів пісень</li>
-          <li>Прості акорди, метроном, діаграми</li>
-          <li>Словник акордів (прості акорди)</li>
+          <li>Tuner</li>
+          <li>Live</li>
+          <li>20 song analyses</li>
+          <li>Simple chords, metronome, diagrams</li>
+          <li>Chord dictionary (simple chords)</li>
         </ul>
       </article>
       <article class="plan hi rv">
-        <h3><span class="pro-name">Pro<svg class="string" viewBox="0 0 342 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path vector-effect="non-scaling-stroke" d="M0 32H118c6 0 8-14 12-14s6 30 10 30 5-44 9-44 7 56 11 56 5-40 9-40 6 24 10 24 5-14 9-14 6 10 10 10c5 0 7-8 12-8H342"/></svg></span> <span class="pro">місяць або рік</span></h3>
+        <h3><span class="pro-name">Pro<svg class="string" viewBox="0 0 342 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path vector-effect="non-scaling-stroke" d="M0 32H118c6 0 8-14 12-14s6 30 10 30 5-44 9-44 7 56 11 56 5-40 9-40 6 24 10 24 5-14 9-14 6 10 10 10c5 0 7-8 12-8H342"/></svg></span> <span class="pro">monthly or yearly</span></h3>
         <div class="prices">
-          <div class="tier"><span class="amt">2,99 $</span><span class="per">на місяць</span></div>
-          <div class="tier best"><span class="badge">−30 %</span><span class="amt">24,99 $</span><span class="per">на рік</span><span class="note">≈ 2,08 $ на місяць</span></div>
+          <div class="tier"><span class="amt">$2.99</span><span class="per">a month</span></div>
+          <div class="tier best"><span class="badge">30% off</span><span class="amt">$24.99</span><span class="per">a year</span><span class="note">≈ $2.08 a month</span></div>
         </div>
         <ul>
-          <li>Аналізи без ліміту</li>
-          <li>Редактор акордів</li>
-          <li>Експорт та імпорт</li>
-          <li>Альтернативні строї</li>
-          <li>Усі 168 акордів</li>
-          <li>Транспонування, капо, швидкість, петля A–B</li>
-          <li>Сетлісти</li>
+          <li>Unlimited analyses</li>
+          <li>Chord editor</li>
+          <li>Export and import</li>
+          <li>Alternative tunings</li>
+          <li>All 168 chords</li>
+          <li>Transpose, capo, speed, A–B loop</li>
+          <li>Setlists</li>
         </ul>
         <a class="btn btn-primary" href="https://strunika.app">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.5 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.8-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.8-4.1zM14 5.3c.7-.9 1.2-2.1 1-3.3-1 0-2.3.7-3 1.5-.7.8-1.3 2-1.1 3.2 1.2.1 2.4-.6 3.1-1.4z"/></svg>
-          Спробувати в App Store
+          Try it on the App Store
         </a>
-        <p class="muted" style="font-size:13px">Підписка поновлюється автоматично, скасувати можна будь-коли.</p>
+        <p class="muted" style="font-size:13px">The subscription renews automatically and can be cancelled any time.</p>
       </article>
     </div>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="G D Em C"></canvas></aside></div>
@@ -679,14 +679,14 @@
 <section id="roadmap" class="has-anim side-left">
   <div class="wrap sec"><div class="sec-body">
     <div class="sec-head">
-      <p class="eyebrow">Далі</p>
-      <h2>Що на підході</h2>
+      <p class="eyebrow">Next</p>
+      <h2>What is coming</h2>
     </div>
     <div class="road">
-      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="4.2"/><circle cx="7" cy="16" r="4.2"/><circle cx="17" cy="16" r="4.2"/></svg></div><span class="tag">Незабаром</span><h3>Лупер</h3><p>Зациклюй гітарні партії і грай наживо під власні лупи.</p></article>
-      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg></div><span class="tag">У планах</span><h3>Стеми</h3><p>Прибери ударні, залиш бас або вимкни свій інструмент і зіграй його партію сам.</p></article>
-      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0z"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6"/></svg></div><span class="tag">У планах</span><h3>Караоке</h3><p>Прибери вокал і співай або грай під оригінал.</p></article>
-      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2.5l2-5 3 10 3-14 3 12 2-6 1.5 3H22"/></svg></div><span class="tag">У планах</span><h3>Бас-таби</h3><p>Басова партія нотами й табами поруч із акордами.</p></article>
+      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="4.2"/><circle cx="7" cy="16" r="4.2"/><circle cx="17" cy="16" r="4.2"/></svg></div><span class="tag">Coming soon</span><h3>Looper</h3><p>Loop your guitar parts and play live over your own loops.</p></article>
+      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg></div><span class="tag">Planned</span><h3>Stems</h3><p>Drop the drums, keep the bass, or mute your own instrument and play its part yourself.</p></article>
+      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0z"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6"/></svg></div><span class="tag">Planned</span><h3>Karaoke</h3><p>Remove the vocal and sing or play along with the original.</p></article>
+      <article class="card rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2.5l2-5 3 10 3-14 3 12 2-6 1.5 3H22"/></svg></div><span class="tag">Planned</span><h3>Bass tabs</h3><p>The bass part as notes and tabs beside the chords.</p></article>
     </div>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="E B C#m A"></canvas></aside></div>
 </section>
@@ -694,90 +694,90 @@
 <section id="faq" class="has-anim side-right faq-band">
   <div class="wrap sec"><div class="sec-body">
     <div class="sec-head">
-      <p class="eyebrow">Питання і відповіді</p>
-      <h2>Усе про Strunika</h2>
-      <p class="lead">Як Strunika знаходить акорди, що в ній безкоштовно, як працює YouTube і чому ми нічого не збираємо.</p>
+      <p class="eyebrow">Questions and answers</p>
+      <h2>Everything about Strunika</h2>
+      <p class="lead">How Strunika finds chords, what is free, how YouTube works and why we collect nothing.</p>
     </div>
     <div class="faq-groups">
 
       <div class="faq-group">
-        <h3>Про застосунок</h3>
+        <h3>About the app</h3>
         <div class="faq">
-          <details><summary>Що таке Strunika?</summary><div class="a"><p>Strunika — це застосунок для гітаристів на iPhone, який розпізнає акорди пісні з відео на YouTube, аудіофайлу, медіатеки iPhone чи власного запису, показує їх на рухомому конвеєрі під час гри, слухає гітару наживо і має тюнер. Назва походить від українського слова «струна».</p></div></details>
-          <details><summary>Як Strunika визначає акорди пісні?</summary><div class="a"><p>Нейромережа, навчена на тисячах пісень, працює прямо на iPhone: вона розбиває звук на частотні зрізи, знаходить долі й темп, а потім для кожного моменту визначає акорд із 168 можливих. Результат вирівнюється по сітці тактів, щоб зміни акордів лягали на долі, як у реальній грі.</p></div></details>
-          <details><summary>Чи потрібен інтернет?</summary><div class="a"><p>Для файлів і записів — ні, аналіз іде повністю на пристрої. Інтернет потрібен лише для пісень із YouTube, бо відео відтворюється офіційним плеєром YouTube.</p></div></details>
-          <details><summary>На яких пристроях працює Strunika?</summary><div class="a"><p>На iPhone з iOS 15 і новіше. Версії для Android поки немає.</p></div></details>
-          <details><summary>Якими мовами є застосунок?</summary><div class="a"><p>Українською та англійською. Мова обирається при першому запуску і змінюється в Налаштуваннях у будь-який момент.</p></div></details>
-          <details><summary>Чи є темна тема?</summary><div class="a"><p>Так. Strunika має темну та світлу тему в теплих тонах дерева й латуні і за замовчуванням слідує за системною.</p></div></details>
-          <details><summary>Що особливого в Strunika?</summary><div class="a"><p>Пісня, акорди і правки живуть на одній звуковій доріжці: по ній можна перемотувати, зациклювати фрагмент і пересувати акорди, як у редакторі. Дубль із «Наживо» одразу стає піснею з акордами в бібліотеці. Безкоштовний пакет не має терміну дії. Немає облікових записів і аналітики. Інтерфейс українською та англійською.</p></div></details>
+          <details><summary>What is Strunika?</summary><div class="a"><p>Strunika is an iPhone app for guitarists that recognizes the chords of a song from a YouTube video, an audio file, the iPhone music library or your own recording, scrolls them past a playhead while you play, hears your guitar live and includes a tuner. The name comes from the Ukrainian word "struna", a string.</p></div></details>
+          <details><summary>How does Strunika detect the chords of a song?</summary><div class="a"><p>A neural network trained on thousands of songs runs on the iPhone itself: it slices the sound into frequency frames, finds the beats and the tempo, then names the chord at every moment out of 168 possible ones. The result is aligned to the bar grid so chord changes land on beats, the way they are played.</p></div></details>
+          <details><summary>Does it need an internet connection?</summary><div class="a"><p>Not for files and recordings: the analysis runs entirely on device. Internet is needed only for YouTube songs, because the video plays through the official YouTube player.</p></div></details>
+          <details><summary>Which devices does Strunika run on?</summary><div class="a"><p>iPhone with iOS 15 or later. There is no Android version yet.</p></div></details>
+          <details><summary>Which languages does the app come in?</summary><div class="a"><p>English and Ukrainian. The language is chosen on the first launch and can be changed in Settings at any time.</p></div></details>
+          <details><summary>Is there a dark mode?</summary><div class="a"><p>Yes. Strunika has a dark and a light theme in warm wood and brass tones, and follows the system setting by default.</p></div></details>
+          <details><summary>What is special about Strunika?</summary><div class="a"><p>The song, its chords and your edits live on one audio track: you can scrub it, loop a passage and move chords on it like in an editor. A Live take becomes a song with chords in the library at once. The free plan never expires. There are no accounts and no analytics. The interface comes in English and Ukrainian.</p></div></details>
         </div>
       </div>
 
       <div class="faq-group">
-        <h3>Акорди з пісні</h3>
+        <h3>Chords from a song</h3>
         <div class="faq">
-          <details><summary>Як знайти акорди пісні з YouTube?</summary><div class="a"><p>На вкладці «Пісні» натисни YouTube: відкриється вбудований YouTube, знайди в ньому відео і натисни «Додати». Або заходь у Strunika зі вже скопійованим посиланням, і кнопка YouTube сама запропонує додати пісню з буфера обміну. Під час гри відео відтворюється офіційним плеєром YouTube, а акорди біжать на конвеєрі під ним.</p></div></details>
-          <details><summary>Як отримати акорди з mp3 або іншого аудіофайлу?</summary><div class="a"><p>Натисни «Файл» на вкладці «Пісні» і вибери mp3, m4a або wav із Файлів чи iCloud Drive. Також можна відкрити файл у Strunika через «Поділитися» з іншого застосунку.</p></div></details>
-          <details><summary>Чи можна взяти пісню з Музики на iPhone?</summary><div class="a"><p>Так. Кнопка «З Музики» на вкладці «Пісні» відкриває системний вибір пісень із бібліотеки iPhone: підходять пісні, куплені в iTunes або перенесені з комп'ютера. Пісні з підписки Apple Music захищені, їх прочитати не можна, тому вони не показуються.</p></div></details>
-          <details><summary>Чи можна записати пісню на мікрофон і дізнатися акорди?</summary><div class="a"><p>Так. Кнопка «Записати» пише звук через мікрофон iPhone, а після зупинки Strunika аналізує запис і додає пісню в бібліотеку з акордами. Так зручно підбирати акорди до пісні, яку хтось грає поруч, або до власної мелодії.</p></div></details>
-          <details><summary>Наскільки точно розпізнаються акорди?</summary><div class="a"><p>Для більшості популярних пісень з чітким гармонічним супроводом акорди збігаються зі студійними на понад 80–90 % часу; найкраще на акустичній музиці та поп/рок-записах, гірше на дуже щільних міксах і джазових гармоніях. Увімкнений режим «Прості акорди» зводить усе до мажору й мінору і майже завжди звучить правильно для гри під пісню. А там, де модель помилилася, є редактор акордів.</p></div></details>
-          <details><summary>Яка максимальна довжина пісні?</summary><div class="a"><p>15 хвилин. Довші файли та відео не аналізуються, і безкоштовний аналіз за них не списується.</p></div></details>
-          <details><summary>Чи показує Strunika тональність і темп пісні?</summary><div class="a"><p>Так: тональність, темп у BPM і розмір видно у рядку над конвеєром, а також на картці пісні в бібліотеці. Долі позначені на конвеєрі, і за ними можна увімкнути метроном у темпі пісні.</p></div></details>
-          <details><summary>Що таке «прості акорди»?</summary><div class="a"><p>Режим, у якому всі акорди зводяться до мажорних і мінорних тризвуків: Am7 стає Am, Gsus4 стає G, Bdim стає Bm. Він увімкнений за замовчуванням, щоб пісню можна було зіграти одразу. Повний словник із 168 акордів відкриває Pro.</p></div></details>
-          <details><summary>Чи можна транспонувати пісню чи поставити капо?</summary><div class="a"><p>Так, у Pro. Транспонування зсуває всі акорди на потрібну кількість півтонів, а капо показує форми, які треба брати відносно капо; діаграми перераховуються автоматично.</p></div></details>
-          <details><summary>Чи можна уповільнити пісню, щоб вивчити складне місце?</summary><div class="a"><p>Так, у Pro: швидкість від 0,5× до 1,25× без зміни висоти тону, і петля A–B, яка повторює вибраний фрагмент. Кінці петлі прилипають до акордів, щоб не ловити їх вручну.</p></div></details>
-          <details><summary>Що робити, якщо акорд визначено неправильно?</summary><div class="a"><p>Відкрити редактор акордів. Доріжка працює як у DAW: дотик вибирає акорд, перетягування переносить момент його початку, у панелі можна замінити акорд, видалити чи додати новий; крок — шістнадцята нота, є відміна дій. Редактор входить у Pro.</p></div></details>
-          <details><summary>Як дізнатися, як брати акорд на гітарі?</summary><div class="a"><p>Поруч із назвою акорду завжди є діаграма грифа з ладами. Дотик до неї відкриває всі позиції цього акорду: відкриті форми і п'ять рухомих CAGED-форм; вибрана позиція запам'ятовується для цієї пісні. Для лівшів є дзеркальні діаграми.</p></div></details>
-          <details><summary>Що таке конвеєр акордів?</summary><div class="a"><p>Це стрічка внизу екрана пісні: хвиля звуку, долі, і над кожним моментом зміни акорду — його назва. Стрічка їде повз плейхед разом із піснею; дотик до акорду перемотує до нього, перетягування гортає пісню беззвучно. Так видно, що звучить зараз і що буде за кілька секунд.</p></div></details>
+          <details><summary>How do I get the chords of a YouTube video?</summary><div class="a"><p>On the Songs tab tap YouTube: the built-in YouTube opens, find the video there and tap "Add". Or open Strunika with the link already copied, and the YouTube button offers to add the song from the clipboard. While you play, the video runs in the official YouTube player and the chords scroll on the conveyor beneath it.</p></div></details>
+          <details><summary>How do I get chords from an mp3 or another audio file?</summary><div class="a"><p>Tap "File" on the Songs tab and pick an mp3, m4a or wav from Files or iCloud Drive. You can also open a file in Strunika through "Share" from another app.</p></div></details>
+          <details><summary>Can I use a song from the Music library on my iPhone?</summary><div class="a"><p>Yes. The "From Music" button on the Songs tab opens the system song picker for your iPhone library: songs bought in iTunes or synced from a computer work. Apple Music subscription songs are protected and cannot be read, so the picker leaves them out.</p></div></details>
+          <details><summary>Can I record a song with the microphone and get its chords?</summary><div class="a"><p>Yes. The "Record" button captures sound through the iPhone microphone, and once you stop, Strunika analyses the recording and adds the song to the library with chords. It is a handy way to find chords for a song someone plays next to you, or for your own melody.</p></div></details>
+          <details><summary>How accurate is the chord recognition?</summary><div class="a"><p>For most popular songs with a clear harmonic backing the chords match the studio ones more than 80–90 % of the time; best on acoustic music and pop/rock recordings, worse on very dense mixes and jazz harmony. With "Simple chords" on, everything reduces to major and minor and almost always sounds right for playing along. Where the model is wrong, there is the chord editor.</p></div></details>
+          <details><summary>What is the maximum song length?</summary><div class="a"><p>15 minutes. Longer files and videos are not analysed, and no free analysis is spent on them.</p></div></details>
+          <details><summary>Does Strunika show the key and tempo of a song?</summary><div class="a"><p>Yes: the key, the tempo in BPM and the time signature appear in the row above the conveyor and on the song's card in the library. Beats are marked on the conveyor, and the metronome can click along at the song's tempo.</p></div></details>
+          <details><summary>What are "simple chords"?</summary><div class="a"><p>A mode in which every chord is reduced to a major or minor triad: Am7 becomes Am, Gsus4 becomes G, Bdim becomes Bm. It is on by default so a song can be played right away. The full vocabulary of 168 chords comes with Pro.</p></div></details>
+          <details><summary>Can I transpose a song or use a capo?</summary><div class="a"><p>Yes, with Pro. Transposing shifts every chord by the chosen number of semitones, and the capo shows the shapes to hold relative to it; the diagrams update by themselves.</p></div></details>
+          <details><summary>Can I slow a song down to learn a hard part?</summary><div class="a"><p>Yes, with Pro: speed from 0.5× to 1.25× without changing the pitch, and an A–B loop that repeats the chosen passage. The loop ends snap to chords so you never have to catch them by hand.</p></div></details>
+          <details><summary>What if a chord is detected wrong?</summary><div class="a"><p>Open the chord editor. The track works like a DAW: a tap selects a chord, a drag moves the moment it begins, and the panel replaces, deletes or adds a chord; the step is a sixteenth note and there is undo. The editor is part of Pro.</p></div></details>
+          <details><summary>How do I see how to play a chord on the guitar?</summary><div class="a"><p>A fretboard diagram with fret numbers always sits beside the chord name. Tapping it opens every position of that chord: the open shapes and the five movable CAGED shapes; the chosen position is remembered for that song. Left-handed players get mirrored diagrams.</p></div></details>
+          <details><summary>What is the chord conveyor?</summary><div class="a"><p>It is the ribbon at the bottom of the song screen: the waveform, the beats, and the name of each chord at the moment it changes. The ribbon rides past the playhead with the song; tapping a chord seeks to it, dragging scrubs the song silently. You always see what sounds now and what comes in a few seconds.</p></div></details>
         </div>
       </div>
 
       <div class="faq-group">
-        <h3>Наживо</h3>
+        <h3>Live</h3>
         <div class="faq">
-          <details><summary>Чи розпізнає Strunika акорди в реальному часі, поки я граю?</summary><div class="a"><p>Так. Вкладка «Наживо» слухає мікрофон і підписує акорди, які ти граєш, одразу на доріжці: спочатку швидка здогадка, а за мить — підтверджений акорд. Працює з акустичною та електрогітарою через мікрофон iPhone.</p></div></details>
-          <details><summary>Навіщо потрібен режим «Наживо»?</summary><div class="a"><p>Щоб підібрати акорди до власної ідеї, перевірити себе під час розбору пісні або просто записати дубль репетиції. Дубль зберігається в бібліотеку як готова пісня з акордами, без аналізу і без витрати безкоштовних аналізів.</p></div></details>
-          <details><summary>Чи є в Strunika метроном?</summary><div class="a"><p>Так, на вкладці «Наживо» і на сторінці пісні. У «Наживо» він дає відлік 3 · 2 · 1 · 0 перед записом і клікає в заданому темпі від 40 до 240 BPM; на сторінці пісні клікає в її темпі. Кліки не заважають розпізнаванню, але з динаміка iPhone вони потрапляють у запис, тому під метроном краще грати в навушниках.</p></div></details>
-          <details><summary>Скільки може тривати дубль наживо?</summary><div class="a"><p>До 15 хвилин. Можна продовжити запис із кінця або перезаписати з будь-якого місця.</p></div></details>
+          <details><summary>Does Strunika recognize chords in real time while I play?</summary><div class="a"><p>Yes. The Live tab listens to the microphone and writes the chords you play onto the track as you go: a quick guess first, then the confirmed chord a moment later. It works with acoustic and electric guitars through the iPhone microphone.</p></div></details>
+          <details><summary>What is the Live mode for?</summary><div class="a"><p>To find the chords of your own idea, to check yourself while working out a song, or simply to record a rehearsal take. The take is saved to the library as a ready song with chords, with no analysis and no free analysis spent.</p></div></details>
+          <details><summary>Is there a metronome?</summary><div class="a"><p>Yes, on the Live tab and on the song page. On Live it counts 3 · 2 · 1 · 0 before recording and clicks at a set tempo from 40 to 240 BPM; on the song page it clicks at the song's tempo. The clicks do not disturb the recognition, but from the iPhone speaker they end up in the recording, so it is best to wear headphones when playing to the metronome.</p></div></details>
+          <details><summary>How long can a live take be?</summary><div class="a"><p>Up to 15 minutes. You can continue recording from the end or record over from any point.</p></div></details>
         </div>
       </div>
 
       <div class="faq-group">
-        <h3>Тюнер</h3>
+        <h3>Tuner</h3>
         <div class="faq">
-          <details><summary>Чи є в Strunika тюнер для гітари?</summary><div class="a"><p>Так, хроматичний тюнер на першій вкладці. Він сам визначає, яку струну ти смикнув, і показує ноту та відхилення; струна на екрані «провисає», поки не в строї, і вирівнюється з золотим спалахом, коли стрій точний. Налаштовані струни позначаються, а коли готові всі шість, кілки пробігають хвилею.</p></div></details>
-          <details><summary>Які строї підтримує тюнер?</summary><div class="a"><p>Standard безкоштовно; у Pro також Drop D, пів тону нижче, тон нижче, DADGAD, Open G, Open D, укулеле GCEA і бас EADG. Еталон A4 можна зсунути в межах 430–450 Гц.</p></div></details>
-          <details><summary>Чому тюнер показує «пункти», а не центи?</summary><div class="a"><p>Щоб число було зрозумілим: 10 пунктів — це один лад, тобто 100 центів. «+3» означає «трохи вище, менше третини ладу». Без зайвих слів і без підказок на екрані.</p></div></details>
-          <details><summary>Чи підходить тюнер для укулеле та бас-гітари?</summary><div class="a"><p>Так: є строї укулеле GCEA і баса EADG, а хроматичний режим підходить для будь-якого струнного інструмента.</p></div></details>
+          <details><summary>Does Strunika have a guitar tuner?</summary><div class="a"><p>Yes, a chromatic tuner on the first tab. It detects which string you plucked by itself and shows the note and the offset; the string on screen sags while it is out of tune and snaps straight with a gold flash when it is in. Tuned strings are marked, and when all six are done the pegs bounce in a wave.</p></div></details>
+          <details><summary>Which tunings does the tuner support?</summary><div class="a"><p>Standard for free; with Pro also Drop D, half step down, whole step down, DADGAD, Open G, Open D, ukulele GCEA and bass EADG. The A4 reference can be shifted within 430–450 Hz.</p></div></details>
+          <details><summary>Why does the tuner show "points" instead of cents?</summary><div class="a"><p>So the number is easy to read: 10 points is one fret, that is 100 cents. "+3" means "a little sharp, under a third of a fret". No verdict words and no hints on the screen.</p></div></details>
+          <details><summary>Does the tuner work for ukulele and bass?</summary><div class="a"><p>Yes: there are ukulele GCEA and bass EADG tunings, and the chromatic mode suits any stringed instrument.</p></div></details>
         </div>
       </div>
 
       <div class="faq-group">
-        <h3>Експорт і сетлісти</h3>
+        <h3>Export and setlists</h3>
         <div class="faq">
-          <details><summary>Чи можна зберегти акорди пісні в PDF?</summary><div class="a"><p>Так, у Pro. PDF має два варіанти: «Такти» (чотири такти в рядку, акорд там, де він починається) і «Конвеєр» (хвиля з долями та акордами). Обидва закінчуються діаграмами всіх акордів пісні. Також є експорт у Excel і ChordPro.</p></div></details>
-          <details><summary>Що таке файл .strunika?</summary><div class="a"><p>Це повна копія пісні: акорди, долі, обкладинка та аудіо (для YouTube лише посилання). Його можна надіслати через AirDrop чи пошту, і на іншому iPhone зі Strunika він відкриється одним дотиком і одразу готовий до гри. Імпорт входить у Pro.</p></div></details>
-          <details><summary>Чи можна скласти сетліст для виступу?</summary><div class="a"><p>Так, у Pro. Сетліст — це пісні у твоєму порядку; одна пісня може бути в кількох сетлістах. Порядок змінюється перетягуванням за ручку, а видалення із сетліста не чіпає саму пісню.</p></div></details>
-          <details><summary>Чи зберігаються пісні, якщо перевстановити застосунок?</summary><div class="a"><p>Бібліотека зберігається у сховищі застосунку і входить у резервну копію iPhone (iCloud або комп'ютер). Для переносу окремих пісень є файл .strunika.</p></div></details>
+          <details><summary>Can I save a song's chords as a PDF?</summary><div class="a"><p>Yes, with Pro. The PDF comes in two layouts: "Bars" (four bars to a row, the chord where it begins) and "Conveyor" (the waveform with beats and chords). Both end with the diagrams of every chord in the song. Excel and ChordPro export are there too.</p></div></details>
+          <details><summary>What is a .strunika file?</summary><div class="a"><p>A complete copy of a song: chords, beats, cover and audio (for YouTube only the link). Send it by AirDrop or mail, and on another iPhone with Strunika it opens with one tap, ready to play. Import is part of Pro.</p></div></details>
+          <details><summary>Can I build a setlist for a gig?</summary><div class="a"><p>Yes, with Pro. A setlist is songs in your own order; a song can be in several setlists. Reorder by dragging the grip; removing a song from a setlist never touches the song itself.</p></div></details>
+          <details><summary>Do my songs survive a reinstall?</summary><div class="a"><p>The library lives in the app's storage and is part of the iPhone backup (iCloud or computer). To move single songs there is the .strunika file.</p></div></details>
         </div>
       </div>
 
       <div class="faq-group">
-        <h3>Ціни та Pro</h3>
+        <h3>Pricing and Pro</h3>
         <div class="faq">
-          <details><summary>Що в Strunika безкоштовно?</summary><div class="a"><p>Тюнер зі стандартним строєм, вкладка «Наживо» з розпізнаванням акордів, 20 аналізів пісень на весь час користування, прості акорди, метроном, діаграми, словник акордів. Проаналізовані пісні залишаються відкритими назавжди.</p></div></details>
-          <details><summary>Що дає Strunika Pro?</summary><div class="a"><p>Необмежену кількість аналізів, редактор акордів, експорт у PDF, Excel, ChordPro і .strunika з імпортом, альтернативні строї тюнера, повний словник із 168 акордів, транспонування і капо, зміну швидкості, петлю A–B, сетлісти та налаштування еталона A4.</p></div></details>
-          <details><summary>Скільки коштує Pro?</summary><div class="a"><p>2,99 $ на місяць або 24,99 $ на рік, тобто річна підписка на 30 % вигідніша. Точну ціну у своїй валюті побачиш в App Store всередині застосунку. Безкоштовного пробного періоду немає, але безкоштовна версія не обмежена в часі.</p></div></details>
-          <details><summary>Чи можна подарувати Pro?</summary><div class="a"><p>Так, через коди пропозицій App Store: у застосунку є кнопка «Промокод». Покупки відновлюються на новому пристрої кнопкою «Відновити покупки».</p></div></details>
-          <details><summary>Що станеться з моїми піснями, якщо підписка закінчиться?</summary><div class="a"><p>Нічого не зникає: усі пісні, акорди і сетлісти залишаються. Закриваються лише Pro-інструменти, а Pro-налаштування повертаються до стандартних.</p></div></details>
+          <details><summary>What is free in Strunika?</summary><div class="a"><p>The tuner with standard tuning, the Live tab with chord recognition, 20 song analyses for the lifetime of the install, simple chords, the metronome, diagrams, the chord dictionary. Analysed songs stay open forever.</p></div></details>
+          <details><summary>What does Strunika Pro add?</summary><div class="a"><p>Unlimited analyses, the chord editor, export to PDF, Excel, ChordPro and .strunika with import, alternative tunings, the full vocabulary of 168 chords, transpose and capo, playback speed, the A–B loop, setlists and the A4 reference setting.</p></div></details>
+          <details><summary>How much does Pro cost?</summary><div class="a"><p>$2.99 a month or $24.99 a year, so the yearly subscription is 30% cheaper. The exact price in your currency is shown by the App Store inside the app. There is no free trial, but the free version has no time limit.</p></div></details>
+          <details><summary>Can I give Pro as a gift?</summary><div class="a"><p>Yes, through App Store offer codes: the app has a "Promo code" button. Purchases are restored on a new device with "Restore purchases".</p></div></details>
+          <details><summary>What happens to my songs if the subscription ends?</summary><div class="a"><p>Nothing disappears: every song, chord and setlist stays. Only the Pro tools close, and the Pro settings go back to their defaults.</p></div></details>
         </div>
       </div>
 
       <div class="faq-group">
-        <h3>Приватність і YouTube</h3>
+        <h3>Privacy and YouTube</h3>
         <div class="faq">
-          <details><summary>Чи збирає Strunika мої дані?</summary><div class="a"><p>Ні. У застосунку немає облікових записів, аналітики, реклами та сторонніх SDK для збору даних. Аудіо та результати аналізу зберігаються лише на твоєму iPhone. В інтернет застосунок виходить тільки заради YouTube і невеликого файлу налаштувань сервісу, без жодних ідентифікаторів. Звіти про збої збирає сама Apple, і ти керуєш ними в налаштуваннях iOS.</p></div></details>
-          <details><summary>Коли Strunika використовує мікрофон?</summary><div class="a"><p>Лише коли на екрані вкладка «Тюнер» або «Наживо», або під час запису пісні. Щойно ти переходиш на іншу вкладку або згортаєш застосунок, мікрофон вимикається.</p></div></details>
+          <details><summary>Does Strunika collect my data?</summary><div class="a"><p>No. The app has no accounts, no analytics, no advertising and no third-party data-collection SDKs. Audio and analysis results are stored only on your iPhone. The app goes online only for YouTube and for a small service-settings file, with no identifiers attached. Crash reports are collected by Apple itself, and you control them in iOS settings.</p></div></details>
+          <details><summary>When does Strunika use the microphone?</summary><div class="a"><p>Only while the Tuner or Live tab is on screen, or while you record a song. As soon as you switch to another tab or send the app to the background, the microphone turns off.</p></div></details>
         </div>
       </div>
 
@@ -794,12 +794,12 @@
       <img class="mark mark-dark" src="assets/mark.svg" alt="" width="44" height="24">
       <span>Strunika</span>
     </a>
-    <span>Акорди будь-якої пісні на iPhone · <code>strunika.com</code><br><span class="muted">Грай те, що чуєш</span></span>
+    <span>Chords of any song on iPhone · <code>strunika.com</code><br><span class="muted">Play what you hear</span></span>
     <div class="links">
       <a href="https://strunika.app">App Store</a>
-      <a href="/privacy.html">Приватність</a>
+      <a href="/privacy.html">Privacy</a>
       <a href="mailto:taras.nekh@strunika.app">taras.nekh@strunika.app</a>
-      <a href="/en/" hreflang="en">English</a>
+      <a href="/ua/" hreflang="uk">Українська</a>
     </div>
   </div>
 </footer>
