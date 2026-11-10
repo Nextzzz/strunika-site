@@ -195,7 +195,7 @@ p { margin: 0; }
 .cta .dl { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .cta-note { margin: 0; font-size: 15px; line-height: 1.2; color: var(--text2); opacity: .8; }
 .hero-shot { margin: 0; justify-self: center; width: min(340px, 100%, calc((100svh - 164px) / 2.165)); min-width: 220px; position: relative; margin-top: 0; }
-.hero-shot img { width: 100%; height: auto; border-radius: 44px; box-shadow: var(--shadow); border: 1px solid var(--sep); background: var(--surface1); }
+.hero-shot img { width: 100%; height: auto; border-radius: 13% / 6%; box-shadow: var(--shadow); border: 1px solid var(--sep); background: var(--surface1); }
 /* the screenshot rises in once with the page; it is visible at rest without this */
 @keyframes shot-in { from { opacity: 0; transform: translateY(24px) scale(.98); } }
 .js .hero-shot { animation: shot-in .9s cubic-bezier(.23,1,.32,1) .15s backwards; }
@@ -207,14 +207,14 @@ p { margin: 0; }
   /* The first screen of a phone is the screenshot and the headline, nothing more. The shot takes the height
      the headline leaves (capped by the width); the headline's row fills the rest of the screen and centres it,
      so the description always starts below the screen's edge, whatever the phone. */
-  .hero { --gut: 16px; --pad: clamp(12px, 2vw, 28px); --gap: 28px;
-          --shot-w: max(150px, min(0.82 * (100vw - 2 * var(--gut)), (100svh - 64px - 210px) / 2.165)); }
+  .hero { --gut: 16px; --pad: 8px; --gap: 16px; padding-top: var(--pad);
+          --shot-w: max(150px, min(0.82 * (100vw - 2 * var(--gut)), (100svh - 64px - 112px) / 2.165)); }
   @media (min-width: 641px) { .hero { --gut: 20px; } }
   .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: var(--gap); justify-items: center; text-align: center;
                 grid-template-rows: auto minmax(min-content, calc(100svh - 64px - var(--pad) - var(--shot-w) * 2.165 - var(--gap))) auto auto; }
   .hero-shot { order: -1; width: var(--shot-w); min-width: 0; margin-top: 0; }
   .hero-text { display: contents; } /* its headline, description and button become rows of the hero's grid */
-  .hero h1 { align-self: center; }
+  .hero h1 { align-self: center; font-size: clamp(30px, 8.6vw, 38px); } /* a smaller headline gives the screenshot more room */
   .hero::after { display: none; }
   .hero-bg { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%); }
 }
@@ -303,7 +303,7 @@ section { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px) + 24px - 
 .yt { color: var(--accent); font-weight: 600; }
 /* app screenshots */
 .shot { margin: 0; width: min(320px, 100%); margin-inline: auto; display: grid; gap: 12px; justify-items: center; }
-.shot img { width: 100%; height: auto; border-radius: 40px; box-shadow: var(--shadow); border: 1px solid var(--sep); background: var(--surface1); }
+.shot img { width: 100%; height: auto; border-radius: 13% / 6%; box-shadow: var(--shadow); border: 1px solid var(--sep); background: var(--surface1); }
 .shot figcaption { font-size: 13px; color: var(--text2); text-align: center; max-width: 30ch; }
 .shot.missing picture { display: none; }
 .shot picture { display: block; width: 100%; }
