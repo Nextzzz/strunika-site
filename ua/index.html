@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&display=swap">
-<link rel="stylesheet" href="../assets/style.css?v=2">
+<link rel="stylesheet" href="../assets/style.css?v=11">
 <script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t;}catch(e){}</script>
 <script type="application/ld+json">
 {
@@ -68,7 +68,7 @@
    "name": "Що таке Strunika?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Strunika — це застосунок для гітаристів на iPhone, який розпізнає акорди пісні з відео на YouTube, аудіофайлу, медіатеки iPhone чи власного запису, показує їх на рухомому конвеєрі під час гри, слухає гітару наживо і має тюнер. Назва походить від українського слова «струна»."
+    "text": "Strunika — це застосунок для гітаристів на iPhone, який розпізнає акорди пісні з відео на YouTube, аудіофайлу, медіатеки iPhone чи власного запису, показує їх на рухомому конвеєрі під час гри, слухає гітару наживо і має тюнер. У застосунку три вкладки: Тюнер, Наживо і Пісні. Назва походить від українського слова «струна»."
    }
   },
   {
@@ -117,6 +117,14 @@
    "acceptedAnswer": {
     "@type": "Answer",
     "text": "Пісня, акорди і правки живуть на одній звуковій доріжці: по ній можна перемотувати, зациклювати фрагмент і пересувати акорди, як у редакторі. Дубль із «Наживо» одразу стає піснею з акордами в бібліотеці. Безкоштовний пакет не має терміну дії. Немає облікових записів і аналітики. Інтерфейс українською та англійською."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Як влаштована бібліотека пісень?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Кожна пісня на вкладці «Пісні» має картку з обкладинкою, тональністю, темпом і тривалістю. Є пошук, обрані та сортування за датою, назвою чи тональністю."
    }
   },
   {
@@ -308,7 +316,7 @@
    "name": "Чи можна скласти сетліст для виступу?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Так, у Pro. Сетліст — це пісні у твоєму порядку; одна пісня може бути в кількох сетлістах. Порядок змінюється перетягуванням за ручку, а видалення із сетліста не чіпає саму пісню."
+    "text": "Так, у Pro. Сетліст — це пісні у твоєму порядку; одна пісня може бути в кількох сетлістах. Порядок змінюється перетягуванням за ручку, а видалення із сетліста не чіпає саму пісню. На картці сетліста видно обкладинку, кількість пісень і загальну тривалість."
    }
   },
   {
@@ -340,7 +348,7 @@
    "name": "Скільки коштує Pro?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "2,99 $ на місяць або 24,99 $ на рік, тобто річна підписка на 30 % вигідніша. Точну ціну у своїй валюті побачиш в App Store всередині застосунку. Безкоштовного пробного періоду немає, але безкоштовна версія не обмежена в часі."
+    "text": "2,99 $ на місяць або 24,99 $ на рік, тобто річна підписка на 30 % вигідніша. Точну ціну у своїй валюті побачиш в App Store всередині застосунку. Безкоштовного пробного періоду немає, але безкоштовна версія не обмежена в часі. Підписка поновлюється автоматично, скасувати можна будь-коли."
    }
   },
   {
@@ -389,7 +397,6 @@
       <span>Strunika</span>
     </a>
     <nav class="nav" id="site-nav" aria-label="Розділи">
-      <a href="#how">Як працює</a>
       <a href="#screens">Скріншоти</a>
       <a href="#features">Можливості</a>
       <a href="#pro">Pro</a>
@@ -413,147 +420,79 @@
 <section class="hero">
   <canvas class="hero-bg" aria-hidden="true"></canvas>
   <div class="wrap">
-    <p class="eyebrow rv">Для гітаристів · iPhone</p>
-    <h1 class="rv">Чуєш пісню — <em>бачиш акорди</em></h1>
-    <p class="lead rv">Обери пісню (<span class="yt">YouTube</span>, файл, медіатека чи запис) і одразу отримай акорди на звуковій доріжці з діаграмами.</p>
-    <div class="cta rv">
-      <div class="dl">
-      <a class="btn btn-primary" href="https://strunika.app">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.5 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.8-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.8-4.1zM14 5.3c.7-.9 1.2-2.1 1-3.3-1 0-2.3.7-3 1.5-.7.8-1.3 2-1.1 3.2 1.2.1 2.4-.6 3.1-1.4z"/></svg>
-        Завантажити в App Store
-      </a>
-        <p class="cta-note">iOS 15+</p>
+    <div class="hero-text">
+      <h1>Чуєш пісню — <em>бачиш акорди</em></h1>
+      <p class="lead">Обери пісню (<span class="yt">YouTube</span>, файл, медіатека чи запис) і одразу отримай акорди на звуковій доріжці з діаграмами.</p>
+      <div class="cta">
+        <div class="dl">
+          <a class="btn btn-primary" href="https://strunika.app">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.5 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.8-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.8-4.1zM14 5.3c.7-.9 1.2-2.1 1-3.3-1 0-2.3.7-3 1.5-.7.8-1.3 2-1.1 3.2 1.2.1 2.4-.6 3.1-1.4z"/></svg>
+            Отримати безкоштовно
+          </a>
+        </div>
       </div>
-      <a class="btn btn-ghost" href="#how">Як це працює</a>
     </div>
-    
+    <figure class="hero-shot"><picture><source type="image/webp" srcset="../assets/screens/uk/song.webp"><img src="../assets/screens/uk/song.png" width="640" height="1386" alt="Сторінка пісні: акорди над звуковою доріжкою" fetchpriority="high" decoding="async"></picture></figure>
   </div>
 </section>
 
-<section id="how" class="has-anim side-right">
-  <div class="wrap sec"><div class="sec-body">
-    <div class="sec-head">
-      <p class="eyebrow">Як працює</p>
-      <h2>Три кроки від пісні до гри</h2>
-      <p class="lead">Ні реєстрації, ні налаштувань. Додай пісню і грай.</p>
-    </div>
-    <div class="steps">
-      <article class="step rv">
-        <span class="n">1</span>
-        <h3>Додай пісню</h3>
-        <p>Пісня з YouTube, файл із сховища чи iCloud, пісня з медіатеки iPhone. Або просто зіграй її в мікрофон.</p>
-      </article>
-      <article class="step rv">
-        <span class="n">2</span>
-        <h3>Зачекай кілька секунд</h3>
-        <p>Strunika знаходить акорди, долі, темп і тональність. Пісня не покидає телефон.</p>
-      </article>
-      <article class="step rv">
-        <span class="n">3</span>
-        <h3>Грай</h3>
-        <p>Акорди пливуть по звуковій доріжці разом із піснею, а на екрані видно їх діаграми.</p>
-      </article>
-    </div>
-  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="Em G D C"></canvas></aside></div>
-</section>
 
 <section id="screens" class="has-anim">
-  <div class="wrap sec side-left"><div class="sec-body split">
+  <div class="wrap sec side-right"><div class="sec-body split">
+    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/library.png"><picture><source type="image/webp" srcset="../assets/screens/uk/library.webp"><img src="../assets/screens/uk/library.png" width="640" height="1386" alt="Вкладка «Пісні»: усі способи додати пісню і бібліотека з обкладинками" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture></figure>
     <div>
-      <p class="eyebrow">Пісні</p>
       <h2>Будь-яка пісня за кілька секунд</h2>
-      <p class="lead" style="margin-top:14px"><span class="yt">YouTube</span>, файл зі сховища, медіатека iPhone або запис у мікрофон. Обери пісню, і за кілька секунд отримай її акорди.</p>
-      <ul>
-        <li>Обкладинка, тональність і темп на картці</li>
-        <li>Пошук, обрані та сортування</li>
-        <li>Пісня передається другові файлом Strunika</li>
-      </ul>
+      <p class="lead" style="margin-top:16px"><span class="yt">YouTube</span>, файл зі сховища, медіатека iPhone або запис у мікрофон. Обери пісню, і за кілька секунд отримай її акорди.</p>
     </div>
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/library.png"><picture><source type="image/webp" srcset="../assets/screens/uk/library.webp"><img src="../assets/screens/uk/library.png" width="640" height="1386" alt="Вкладка «Пісні»: усі способи додати пісню і бібліотека з обкладинками" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Вкладка «Пісні»: усі способи додати пісню і бібліотека з обкладинками</figcaption></figure>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="D A Bm G"></canvas></aside></div>
-  <div class="wrap sec side-right"><div class="sec-body split">
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/song.png"><picture><source type="image/webp" srcset="../assets/screens/uk/song.webp"><img src="../assets/screens/uk/song.png" width="640" height="1386" alt="Сторінка пісні: акорди над звуковою доріжкою" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Сторінка пісні: акорди над звуковою доріжкою</figcaption></figure>
+  <div class="wrap sec side-left"><div class="sec-body split">
     <div>
-      <p class="eyebrow">Сторінка пісні</p>
-      <h2>Акорди на звуковій доріжці</h2>
-      <p class="lead" style="margin-top:14px">Пісня їде повз плейхед, акорди стоять там, де звучать. Торкнись акорду, і пісня перемотається до нього.</p>
-      <ul>
-        <li>Тональність, темп і розмір над доріжкою</li>
-        <li>Діаграма поточного акорду завжди поруч</li>
-        <li>Метроном у темпі пісні</li>
-      </ul>
+      <h2>Кожен акорд на своїй долі</h2>
+      <p class="lead" style="margin-top:16px">Після аналізу акордів і біту Strunika розставляє кожен акорд на його місце.</p>
     </div>
+    <figure class="shot rv" data-missing="assets/screens/uk/squares.png"><picture><source type="image/webp" srcset="../assets/screens/uk/squares.webp"><img src="../assets/screens/uk/squares.png" width="640" height="1386" alt="Сітка долей: кожен акорд пісні на своїй долі" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture></figure>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="Am F C G"></canvas></aside></div>
-  <div class="wrap sec side-left"><div class="sec-body split">
-    <div>
-      <p class="eyebrow">Сетлісти</p>
-      <h2>Всі твої пісні в сетлістах</h2>
-      <p class="lead" style="margin-top:14px">Збери пісні для виступу чи репетиції в тому порядку, як гратимеш. Одна пісня може бути в кількох сетлістах.</p>
-      <ul>
-        <li>Обкладинка, кількість пісень і тривалість на картці</li>
-        <li>Перетягни, щоб змінити порядок</li>
-        <li>Сетлісти в Pro</li>
-      </ul>
-    </div>
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/setlists.png"><picture><source type="image/webp" srcset="../assets/screens/uk/setlists.webp"><img src="../assets/screens/uk/setlists.png" width="640" height="1386" alt="Сетлісти: пісні для виступу в потрібному порядку" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Сетлісти: пісні для виступу в потрібному порядку</figcaption></figure>
-  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="G Em C D"></canvas></aside></div>
-  <div class="wrap sec side-right" id="live"><div class="sec-body split">
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/live.png"><picture><source type="image/webp" srcset="../assets/screens/uk/live.webp"><img src="../assets/screens/uk/live.png" width="640" height="1386" alt="Вкладка «Наживо»: акорди з'являються на доріжці, поки ти граєш" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Вкладка «Наживо»: акорди з'являються на доріжці, поки ти граєш</figcaption></figure>
-    <div>
-      <p class="eyebrow">Наживо</p>
-      <h2>Грай, а Strunika підпише акорди</h2>
-      <p class="lead" style="margin-top:14px">Увімкни мікрофон і грай. Акорди лягають на звукову доріжку самі, поки ти граєш.</p>
-      <ul>
-        <li>Відлік метронома, щоб увійти в темп</li>
-        <li>Дубль до 15 хвилин, перезапис із будь-якого місця</li>
-        <li>Один дотик, і дубль стає піснею в бібліотеці</li>
-      </ul>
-    </div>
-  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="G Em C D"></canvas></aside></div>
-  <div class="wrap sec side-left"><div class="sec-body split">
-    <div>
-      <p class="eyebrow">Редактор акордів</p>
-      <h2>Поправ те, що чуєш інакше</h2>
-      <p class="lead" style="margin-top:14px">Перетягуй акорд пальцем, заміняй, додавай новий або видаляй прямо на доріжці.</p>
-      <ul>
-        <li>Крок у шістнадцяту ноту</li>
-        <li>Входить у Strunika Pro</li>
-      </ul>
-    </div>
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/editor.png"><picture><source type="image/webp" srcset="../assets/screens/uk/editor.webp"><img src="../assets/screens/uk/editor.png" width="640" height="1386" alt="Редактор акордів: акорд пересувається по доріжці" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Редактор акордів: акорд пересувається по доріжці</figcaption></figure>
-  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="F Dm Bb C"></canvas></aside></div>
   <div class="wrap sec side-right"><div class="sec-body split">
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/tuner.png"><picture><source type="image/webp" srcset="../assets/screens/uk/tuner.webp"><img src="../assets/screens/uk/tuner.png" width="640" height="1386" alt="Тюнер: струна вирівнюється, коли стрій точний" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Тюнер: струна вирівнюється, коли стрій точний</figcaption></figure>
+    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/setlists.png"><picture><source type="image/webp" srcset="../assets/screens/uk/setlists.webp"><img src="../assets/screens/uk/setlists.png" width="640" height="1386" alt="Сетлісти: пісні для виступу в потрібному порядку" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture></figure>
     <div>
-      <p class="eyebrow">Тюнер</p>
-      <h2>Струна сама скаже, коли в строї</h2>
-      <p class="lead" style="margin-top:14px">Смикни струну, Strunika впізнає її сама. Струна на екрані провисає, поки не в строї, і спалахує золотом, коли все точно.</p>
-      <ul>
-        <li>Standard безкоштовно, Drop D, DADGAD, відкриті строї, укулеле і бас у Pro</li>
-        <li>Еталон A4 від 430 до 450 Гц</li>
-      </ul>
+      <h2>Всі твої пісні в сетлістах</h2>
+      <p class="lead" style="margin-top:16px">Збери пісні для виступу чи репетиції в тому порядку, як гратимеш. Одна пісня може бути в кількох сетлістах.</p>
     </div>
-  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="A F#m D E"></canvas></aside></div>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="G Em C D"></canvas></aside></div>
+  <div class="wrap sec side-left" id="live"><div class="sec-body split">
+    <div>
+      <h2>Грай, а Strunika підпише акорди</h2>
+      <p class="lead" style="margin-top:16px">Увімкни мікрофон і грай. Акорди лягають на звукову доріжку самі, поки ти граєш.</p>
+    </div>
+    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/live.png"><picture><source type="image/webp" srcset="../assets/screens/uk/live.webp"><img src="../assets/screens/uk/live.png" width="640" height="1386" alt="Вкладка «Наживо»: акорди з'являються на доріжці, поки ти граєш" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture></figure>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="G Em C D"></canvas></aside></div>
+  <div class="wrap sec side-right"><div class="sec-body split">
+    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/editor.png"><picture><source type="image/webp" srcset="../assets/screens/uk/editor.webp"><img src="../assets/screens/uk/editor.png" width="640" height="1386" alt="Редактор акордів: акорд пересувається по доріжці" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture></figure>
+    <div>
+      <h2>Поправ те, що чуєш інакше</h2>
+      <p class="lead" style="margin-top:16px">Перетягуй акорд пальцем, заміняй, додавай новий або видаляй прямо на доріжці.</p>
+    </div>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="F Dm Bb C"></canvas></aside></div>
   <div class="wrap sec side-left"><div class="sec-body split">
     <div>
-      <p class="eyebrow">Словник акордів</p>
-      <h2>168 акордів, кожен у всіх позиціях</h2>
-      <p class="lead" style="margin-top:14px">Відкриті форми і п'ять рухомих CAGED-форм для кожного акорду. Торкнись, щоб послухати.</p>
-      <ul>
-        <li>Дзеркальні діаграми для лівшів</li>
-        <li>Вибрана позиція запам'ятовується для пісні</li>
-      </ul>
+      <h2>Струна сама скаже, коли в строї</h2>
+      <p class="lead" style="margin-top:16px">Смикни струну, Strunika впізнає її сама. Струна на екрані провисає, поки не в строї, і спалахує золотом, коли все точно.</p>
     </div>
-    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/dictionary.png"><picture><source type="image/webp" srcset="../assets/screens/uk/dictionary.webp"><img src="../assets/screens/uk/dictionary.png" width="640" height="1386" alt="Словник акордів: усі позиції акорду на грифі" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture><figcaption>Словник акордів: усі позиції акорду на грифі</figcaption></figure>
+    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/tuner.png"><picture><source type="image/webp" srcset="../assets/screens/uk/tuner.webp"><img src="../assets/screens/uk/tuner.png" width="640" height="1386" alt="Тюнер: струна вирівнюється, коли стрій точний" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture></figure>
+  </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="A F#m D E"></canvas></aside></div>
+  <div class="wrap sec side-right"><div class="sec-body split">
+    <figure class="shot rv" data-missing="Сюди стане скрін застосунку: assets/screens/uk/dictionary.png"><picture><source type="image/webp" srcset="../assets/screens/uk/dictionary.webp"><img src="../assets/screens/uk/dictionary.png" width="640" height="1386" alt="Словник акордів: усі позиції акорду на грифі" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('missing')"></picture></figure>
+    <div>
+      <h2>168 акордів, кожен у всіх позиціях</h2>
+      <p class="lead" style="margin-top:16px">Відкриті форми і п'ять рухомих CAGED-форм для кожного акорду. Торкнись, щоб послухати.</p>
+    </div>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="Am C G F"></canvas></aside></div>
 </section>
 
 <section id="features" class="has-anim side-left">
   <div class="wrap sec"><div class="sec-body">
     <div class="sec-head">
-      <p class="eyebrow">Можливості</p>
       <h2>Три вкладки замість трьох застосунків</h2>
-      <p class="lead">Тюнер, Наживо і Пісні. Нічого зайвого, усе під рукою.</p>
     </div>
     <div class="grid">
       <article class="card rv">
@@ -623,9 +562,7 @@
 <section id="pro" class="has-anim side-right">
   <div class="wrap sec"><div class="sec-body">
     <div class="sec-head">
-      <p class="eyebrow">Strunika Pro</p>
-      <h2>Щедрий безкоштовний пакет, Pro без лімітів</h2>
-      <p class="lead">Тюнер, Наживо і 20 аналізів пісень безкоштовно назавжди. Pro знімає ліміт і додає інструменти для розбору пісень.</p>
+      <h2>Щедрий безкоштовний пакет, <em class="gold">Pro</em> без лімітів</h2>
     </div>
     <div class="plans">
       <article class="plan rv">
@@ -658,7 +595,6 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.5 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.8-1.7 0-3.2 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 1.9 2.6 3.2 2.5 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.8-4.1zM14 5.3c.7-.9 1.2-2.1 1-3.3-1 0-2.3.7-3 1.5-.7.8-1.3 2-1.1 3.2 1.2.1 2.4-.6 3.1-1.4z"/></svg>
           Спробувати в App Store
         </a>
-        <p class="muted" style="font-size:13px">Підписка поновлюється автоматично, скасувати можна будь-коли.</p>
       </article>
     </div>
   </div><aside class="sec-anim" aria-hidden="true"><canvas data-chords="G D Em C"></canvas></aside></div>
@@ -667,7 +603,6 @@
 <section id="roadmap" class="has-anim side-left">
   <div class="wrap sec"><div class="sec-body">
     <div class="sec-head">
-      <p class="eyebrow">Далі</p>
       <h2>Що на підході</h2>
     </div>
     <div class="road">
@@ -682,22 +617,21 @@
 <section id="faq" class="has-anim side-right faq-band">
   <div class="wrap sec"><div class="sec-body">
     <div class="sec-head">
-      <p class="eyebrow">Питання і відповіді</p>
       <h2>Усе про Strunika</h2>
-      <p class="lead">Як Strunika знаходить акорди, що в ній безкоштовно, як працює YouTube і чому ми нічого не збираємо.</p>
     </div>
     <div class="faq-groups">
 
       <div class="faq-group">
         <h3>Про застосунок</h3>
         <div class="faq">
-          <details><summary>Що таке Strunika?</summary><div class="a"><p>Strunika — це застосунок для гітаристів на iPhone, який розпізнає акорди пісні з відео на YouTube, аудіофайлу, медіатеки iPhone чи власного запису, показує їх на рухомому конвеєрі під час гри, слухає гітару наживо і має тюнер. Назва походить від українського слова «струна».</p></div></details>
+          <details><summary>Що таке Strunika?</summary><div class="a"><p>Strunika — це застосунок для гітаристів на iPhone, який розпізнає акорди пісні з відео на YouTube, аудіофайлу, медіатеки iPhone чи власного запису, показує їх на рухомому конвеєрі під час гри, слухає гітару наживо і має тюнер. У застосунку три вкладки: Тюнер, Наживо і Пісні. Назва походить від українського слова «струна».</p></div></details>
           <details><summary>Як Strunika визначає акорди пісні?</summary><div class="a"><p>Нейромережа, навчена на тисячах пісень, працює прямо на iPhone: вона розбиває звук на частотні зрізи, знаходить долі й темп, а потім для кожного моменту визначає акорд із 168 можливих. Результат вирівнюється по сітці тактів, щоб зміни акордів лягали на долі, як у реальній грі.</p></div></details>
           <details><summary>Чи потрібен інтернет?</summary><div class="a"><p>Для файлів і записів — ні, аналіз іде повністю на пристрої. Інтернет потрібен лише для пісень із YouTube, бо відео відтворюється офіційним плеєром YouTube.</p></div></details>
           <details><summary>На яких пристроях працює Strunika?</summary><div class="a"><p>На iPhone з iOS 15 і новіше. Версії для Android поки немає.</p></div></details>
           <details><summary>Якими мовами є застосунок?</summary><div class="a"><p>Українською та англійською. Мова обирається при першому запуску і змінюється в Налаштуваннях у будь-який момент.</p></div></details>
           <details><summary>Чи є темна тема?</summary><div class="a"><p>Так. Strunika має темну та світлу тему в теплих тонах дерева й латуні і за замовчуванням слідує за системною.</p></div></details>
           <details><summary>Що особливого в Strunika?</summary><div class="a"><p>Пісня, акорди і правки живуть на одній звуковій доріжці: по ній можна перемотувати, зациклювати фрагмент і пересувати акорди, як у редакторі. Дубль із «Наживо» одразу стає піснею з акордами в бібліотеці. Безкоштовний пакет не має терміну дії. Немає облікових записів і аналітики. Інтерфейс українською та англійською.</p></div></details>
+          <details><summary>Як влаштована бібліотека пісень?</summary><div class="a"><p>Кожна пісня на вкладці «Пісні» має картку з обкладинкою, тональністю, темпом і тривалістю. Є пошук, обрані та сортування за датою, назвою чи тональністю.</p></div></details>
         </div>
       </div>
 
@@ -745,7 +679,7 @@
         <div class="faq">
           <details><summary>Чи можна зберегти акорди пісні в PDF?</summary><div class="a"><p>Так, у Pro. PDF має два варіанти: «Такти» (чотири такти в рядку, акорд там, де він починається) і «Конвеєр» (хвиля з долями та акордами). Обидва закінчуються діаграмами всіх акордів пісні. Також є експорт у Excel і ChordPro.</p></div></details>
           <details><summary>Що таке файл .strunika?</summary><div class="a"><p>Це повна копія пісні: акорди, долі, обкладинка та аудіо (для YouTube лише посилання). Його можна надіслати через AirDrop чи пошту, і на іншому iPhone зі Strunika він відкриється одним дотиком і одразу готовий до гри. Імпорт входить у Pro.</p></div></details>
-          <details><summary>Чи можна скласти сетліст для виступу?</summary><div class="a"><p>Так, у Pro. Сетліст — це пісні у твоєму порядку; одна пісня може бути в кількох сетлістах. Порядок змінюється перетягуванням за ручку, а видалення із сетліста не чіпає саму пісню.</p></div></details>
+          <details><summary>Чи можна скласти сетліст для виступу?</summary><div class="a"><p>Так, у Pro. Сетліст — це пісні у твоєму порядку; одна пісня може бути в кількох сетлістах. Порядок змінюється перетягуванням за ручку, а видалення із сетліста не чіпає саму пісню. На картці сетліста видно обкладинку, кількість пісень і загальну тривалість.</p></div></details>
           <details><summary>Чи зберігаються пісні, якщо перевстановити застосунок?</summary><div class="a"><p>Бібліотека зберігається у сховищі застосунку і входить у резервну копію iPhone (iCloud або комп'ютер). Для переносу окремих пісень є файл .strunika.</p></div></details>
         </div>
       </div>
@@ -755,7 +689,7 @@
         <div class="faq">
           <details><summary>Що в Strunika безкоштовно?</summary><div class="a"><p>Тюнер зі стандартним строєм, вкладка «Наживо» з розпізнаванням акордів, 20 аналізів пісень на весь час користування, прості акорди, метроном, діаграми, словник акордів. Проаналізовані пісні залишаються відкритими назавжди.</p></div></details>
           <details><summary>Що дає Strunika Pro?</summary><div class="a"><p>Необмежену кількість аналізів, редактор акордів, експорт у PDF, Excel, ChordPro і .strunika з імпортом, альтернативні строї тюнера, повний словник із 168 акордів, транспонування і капо, зміну швидкості, петлю A–B, сетлісти та налаштування еталона A4.</p></div></details>
-          <details><summary>Скільки коштує Pro?</summary><div class="a"><p>2,99 $ на місяць або 24,99 $ на рік, тобто річна підписка на 30 % вигідніша. Точну ціну у своїй валюті побачиш в App Store всередині застосунку. Безкоштовного пробного періоду немає, але безкоштовна версія не обмежена в часі.</p></div></details>
+          <details><summary>Скільки коштує Pro?</summary><div class="a"><p>2,99 $ на місяць або 24,99 $ на рік, тобто річна підписка на 30 % вигідніша. Точну ціну у своїй валюті побачиш в App Store всередині застосунку. Безкоштовного пробного періоду немає, але безкоштовна версія не обмежена в часі. Підписка поновлюється автоматично, скасувати можна будь-коли.</p></div></details>
           <details><summary>Чи можна подарувати Pro?</summary><div class="a"><p>Так, через коди пропозицій App Store: у застосунку є кнопка «Промокод». Покупки відновлюються на новому пристрої кнопкою «Відновити покупки».</p></div></details>
           <details><summary>Що станеться з моїми піснями, якщо підписка закінчиться?</summary><div class="a"><p>Нічого не зникає: усі пісні, акорди і сетлісти залишаються. Закриваються лише Pro-інструменти, а Pro-налаштування повертаються до стандартних.</p></div></details>
         </div>
@@ -793,6 +727,6 @@
 </footer>
 
 <script src="../assets/main.js" defer></script>
-<script src="../assets/conveyor.js" defer></script>
+<script src="../assets/conveyor.js?v=5" defer></script>
 </body>
 </html>

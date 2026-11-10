@@ -164,43 +164,68 @@ p { margin: 0; }
 .btn svg { width: 20px; height: 20px; flex: none; }
 .btn-sm { height: 44px; padding: 0 18px; font-size: 14px; }
 
-/* ---------- hero ---------- */
-.hero { position: relative; overflow: hidden; padding-block: clamp(28px, 4vw, 55px) clamp(220px, 30vw, 380px); }
+/* ---------- hero ----------
+   The song page screenshot on the right, the headline on the left, the conveyor running behind both.
+   The text column keeps a strip free at the bottom where the conveyor's chord pills ride. */
+.hero { position: relative; overflow: hidden; padding-block: clamp(12px, 2vw, 28px) clamp(48px, 7vw, 120px); } /* room under the screenshot for the conveyor's wave and ruler */
 .hero::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
-  background: linear-gradient(to bottom, var(--bg) 0, color-mix(in srgb, var(--bg) 92%, transparent) 30%, color-mix(in srgb, var(--bg) 50%, transparent) 46%, transparent 62%);
+  background: linear-gradient(to bottom, var(--bg) 0, color-mix(in srgb, var(--bg) 90%, transparent) 26%, color-mix(in srgb, var(--bg) 40%, transparent) 44%, transparent 58%);
 }
-.hero .wrap { position: relative; z-index: 2; }
 .hero-bg {
   position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none;
-  filter: blur(3px); opacity: .85; transform: translateZ(0);
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 30%, #000 86%, transparent 100%);
+  filter: blur(2px); opacity: .85; transform: translateZ(0);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 30%, #000 88%, transparent 100%);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 30%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 10%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 30%, #000 88%, transparent 100%);
   mask-composite: intersect;
 }
-@media (max-width: 640px) { .hero-bg { filter: blur(2px); opacity: .8; } .hero { padding-bottom: clamp(240px, 70vw, 320px); } }
 .hero::before {
-  content: ""; position: absolute; inset: -20% -10% auto; height: 70%; pointer-events: none;
-  background: radial-gradient(60% 60% at 50% 40%, var(--glow), transparent 70%);
-  opacity: .9;
+  content: ""; position: absolute; inset: -20% -10% auto; height: 70%; pointer-events: none; z-index: 1;
+  background: radial-gradient(50% 60% at 72% 40%, var(--glow), transparent 70%);
+  opacity: .8;
 }
-.hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; text-align: center; justify-items: center; }
-.hero .wrap > * { max-width: 100%; min-width: 0; }
-.hero .lead { text-shadow: 0 1px 24px var(--bg); }
-.hero::before { z-index: 1; }
-.hero h1 { max-width: 14ch; }
+.hero .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+/* the words end above the conveyor's pill row, which sits at 69 % of the screenshot's height */
+.hero-text { display: grid; gap: 24px; justify-items: start; align-content: start; min-width: 0; padding-top: 0; }
+.hero h1 { max-width: 12ch; font-size: clamp(42px, 6.4vw, 80px); letter-spacing: -.02em; line-height: 1.04; }
 .hero h1 em { font-style: normal; color: var(--accent); }
-.hero .lead { max-width: 30em; }
-.cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-.cta { align-items: flex-start; }
+.hero .lead { max-width: 28em; text-shadow: 0 1px 24px var(--bg); }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
 .cta .dl { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .cta-note { margin: 0; font-size: 15px; line-height: 1.2; color: var(--text2); opacity: .8; }
+.hero-shot { margin: 0; justify-self: center; width: min(340px, 100%, calc((100svh - 164px) / 2.165)); min-width: 220px; position: relative; margin-top: 0; }
+.hero-shot img { width: 100%; height: auto; border-radius: 44px; box-shadow: var(--shadow); border: 1px solid var(--sep); background: var(--surface1); }
+/* the screenshot rises in once with the page; it is visible at rest without this */
+@keyframes shot-in { from { opacity: 0; transform: translateY(24px) scale(.98); } }
+.js .hero-shot { animation: shot-in .9s cubic-bezier(.23,1,.32,1) .15s backwards; }
+@media (prefers-reduced-motion: reduce) { .js .hero-shot { animation: none; } }
+/* wide screens: the first screen is exactly the window under the header, the conveyor's ruler at its bottom edge */
+@media (min-width: 861px) { .hero { min-height: calc(100svh - 64px); padding-bottom: 0; } }
+/* phones and narrow windows: the screenshot first, the words under it, the conveyor behind the screenshot */
+@media (max-width: 860px) {
+  /* The first screen of a phone is the screenshot and the headline, nothing more. The shot takes the height
+     the headline leaves (capped by the width); the headline's row fills the rest of the screen and centres it,
+     so the description always starts below the screen's edge, whatever the phone. */
+  .hero { --gut: 16px; --pad: clamp(12px, 2vw, 28px); --gap: 28px;
+          --shot-w: max(150px, min(0.82 * (100vw - 2 * var(--gut)), (100svh - 64px - 210px) / 2.165)); }
+  @media (min-width: 641px) { .hero { --gut: 20px; } }
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: var(--gap); justify-items: center; text-align: center;
+                grid-template-rows: auto minmax(min-content, calc(100svh - 64px - var(--pad) - var(--shot-w) * 2.165 - var(--gap))) auto auto; }
+  .hero-shot { order: -1; width: var(--shot-w); min-width: 0; margin-top: 0; }
+  .hero-text { display: contents; } /* its headline, description and button become rows of the hero's grid */
+  .hero h1 { align-self: center; }
+  .hero::after { display: none; }
+  .hero-bg { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%); }
+}
+@media (max-width: 640px) { .hero-bg { filter: blur(1.5px); } }
 
 
 /* ---------- sections ---------- */
 section { padding-block: clamp(56px, 8vw, 110px); }
-section, .sec[id] { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px) + 16px); }
+/* a jump to a section lands its heading 24px under the sticky header: the section's own top padding is taken back */
+section { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px) + 24px - clamp(56px, 8vw, 110px)); }
+.sec[id] { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px) + 24px); }
 .sec { display: grid; grid-template-columns: minmax(0, 1fr) var(--animw, 200px); gap: clamp(20px, 4vw, 56px); align-items: start; }
 .side-left .sec, .sec.side-left { grid-template-columns: var(--animw, 200px) minmax(0, 1fr); }
 .side-left .sec .sec-body, .sec.side-left .sec-body { order: 2; }
@@ -243,6 +268,12 @@ section, .sec[id] { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px)
 .card p { color: var(--text2); font-size: 15.5px; }
 .pro { font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: .1em; padding: 3px 8px; border-radius: 999px; background: var(--fill); color: var(--on-fill); }
 .card.wide { grid-column: span 2; }
+/* feature and roadmap cards: the icon on top in the middle, larger, the name under it, the description below */
+#features .card, #roadmap .card { justify-items: center; text-align: center; gap: 12px; padding: 28px 24px; }
+#features .card .ico, #roadmap .card .ico { width: 64px; height: 64px; border-radius: 20px; }
+#features .card .ico svg, #roadmap .card .ico svg { width: 34px; height: 34px; }
+#features .card h3, #roadmap .card h3 { justify-content: center; }
+#features .card p, #roadmap .card p { max-width: 30ch; }
 @media (max-width: 600px) { .card.wide { grid-column: auto; } }
 
 /* split band (privacy, live) */
@@ -297,13 +328,13 @@ section, .sec[id] { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px)
 .plan .price { font-family: var(--display); font-size: 20px; color: var(--text); }
 /* Pro prices: a tile per period, the yearly one marked with the discount */
 .prices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 2px; }
-.tier { position: relative; display: grid; gap: 2px; align-content: start; padding: 14px 14px 12px; border-radius: 14px; border: 1px solid var(--sep); background: color-mix(in srgb, var(--bg) 55%, transparent); }
+.tier { position: relative; display: grid; gap: 2px; align-content: start; padding: 14px clamp(10px, 3vw, 14px) 12px; min-width: 0; border-radius: 14px; border: 1px solid var(--sep); background: color-mix(in srgb, var(--bg) 55%, transparent); }
 .tier.best { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
-.tier .amt { font-family: var(--display); font-size: 30px; font-weight: 700; line-height: 1.1; color: var(--text); white-space: nowrap; }
+.tier .amt { font-family: var(--display); font-size: clamp(21px, 6.2vw, 30px); font-weight: 700; line-height: 1.1; color: var(--text); white-space: nowrap; }
 .tier .per { font-size: 13px; color: var(--text2); }
 .tier .note { font-size: 12px; color: var(--accent); margin-top: 4px; }
 .tier .badge { position: absolute; top: -11px; right: 10px; font-size: 11px; font-weight: 700; letter-spacing: .06em; padding: 3px 9px; border-radius: 999px; background: var(--fill); color: var(--on-fill); box-shadow: 0 4px 14px var(--glow); white-space: nowrap; }
-@media (max-width: 380px) { .prices { grid-template-columns: 1fr; } }
+@media (max-width: 440px) { .prices { grid-template-columns: 1fr; } } /* phones: the two prices one under the other, each with room to breathe */
 .plan .price .pro { vertical-align: middle; margin-left: 6px; white-space: nowrap; }
 
 /* FAQ */
@@ -346,3 +377,6 @@ footer code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-
 .js .rv.in { opacity: 1; transform: none; }
 .js .rv:nth-child(2) { transition-delay: .08s; } .js .rv:nth-child(3) { transition-delay: .16s; } .js .rv:nth-child(4) { transition-delay: .24s; }
 @media (prefers-reduced-motion: reduce) { .js .rv { opacity: 1; transform: none; transition: none; } }
+
+/* a word of a heading in the brand accent, set like the hero's "see its chords" */
+h2 em.gold { font-style: normal; color: var(--accent); }

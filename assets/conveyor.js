@@ -93,6 +93,31 @@
   /* ---------------- hero background: the song page's conveyor ---------------- */
   const heroBg = document.querySelector('.hero-bg');
   if (heroBg) {
+    // The background ribbon continues the conveyor on the hero's screenshot (the song page):
+    // its pill row, its wave and its playhead are put on the screenshot's own ones and sized like them,
+    // so the track seems to run out of the phone across the page. Measured on resize, never per frame.
+    // Places on the screenshot (640 x 1386 px): pill row centre y 960, wave centre y 1050, wave half-height 46,
+    // pill height 60, playhead x 160.
+    // Layout positions (offsetTop/Left), not the painted box: the screenshot's entrance slides it with a
+    // transform, and following that made the ribbon jump about after a reload.
+    const heroShot = document.querySelector('.hero-shot img'), heroText = document.querySelector('.hero-text');
+    const host = heroBg.offsetParent;
+    const pos = (el) => { let x = 0, y = 0; for (let e = el; e && e !== host; e = e.offsetParent) { x += e.offsetLeft; y += e.offsetTop; } return { x, y }; };
+    let band = null, shown = null, measuredAt = 0;
+    const measureText = () => {
+      if (!heroShot || !heroShot.offsetWidth) { band = null; return; }
+      const s = pos(heroShot), w = heroShot.offsetWidth, h = heroShot.offsetHeight, c = { x: heroBg.offsetLeft, y: heroBg.offsetTop };
+      const fy = (v) => s.y - c.y + h * (v / 1386), fx = (v) => s.x - c.x + w * (v / 640);
+      // beside the words (wide screens) the ribbon starts only below them; under the words (phones) it does not care
+      const t = heroText ? pos(heroText) : null;
+      const textBottom = t && t.y < s.y + h * 0.5 ? t.y + heroText.offsetHeight - c.y : -1e9;
+      band = { pillY: fy(960), half: h * (46 / 1386), playX: fx(160), k: w * (60 / 640) / 44, textBottom };
+    };
+    measureText();
+    if (window.ResizeObserver) { const ro = new ResizeObserver(measureText); ro.observe(heroBg); if (heroShot) ro.observe(heroShot); if (heroText) ro.observe(heroText); }
+    if (heroShot && !heroShot.complete) heroShot.addEventListener('load', measureText, { once: true });
+    addEventListener('load', measureText);
+    if (document.fonts) document.fonts.ready.then(measureText);
     const CH = ['Em', 'G', 'D', 'C', 'Am', 'B7', 'Em', 'D'];
     // ChordTrack's own sizes in points: bar 9, gap 3, pill 44, pill font 17; a chord every 16 bars.
     // Everything is scaled by `k`: 1 on a phone, up to ~2 on a wide screen, so a desktop shows
@@ -104,15 +129,31 @@
     function draw(now) {
       if (!running) return;
       const dt = Math.min(0.05, (now - last) / 1000); last = now; if (!reduce) t += dt;
+      // fonts, the header and the screenshot's entrance move it without resizing anything: look again twice a second
+      if (now - measuredAt > 500) { measuredAt = now; measureText(); }
+      // a change (a font arriving, a resize) is glided to over a few frames, never jumped to
+      if (band) {
+        if (!shown || reduce) shown = Object.assign({}, band);
+        else { const a = 1 - Math.exp(-dt * 10); for (const key in band) { const d = band[key] - shown[key]; shown[key] = Math.abs(d) > 1e5 ? band[key] : shown[key] + d * a; } }
+      } else shown = null;
       const { ctx, W, H } = fit(heroBg, 1);
       ctx.clearRect(0, 0, W, H);
-      const k = Math.max(1, Math.min(2.1, W / 640));
+      let k, pillTop, pillH, cy, half, waveBottom, top, ribbonH, playX;
+      if (shown) {
+        const band = shown;
+        // the ribbon is drawn larger than the phone's (x3 on a wide screen, x1.9 on a phone), its pill row and
+        // playhead still on the phone's, the wave hanging below them
+        const f = W > 860 ? 3 : 1.9;
+        k = band.k * f; pillH = 44 * k; pillTop = Math.max(band.pillY - pillH / 2, band.textBottom + 28 * k); half = band.half * f;
+        cy = pillTop + pillH + 10 * k + half; waveBottom = cy + half; top = pillTop; ribbonH = waveBottom + 34 * k - top; playX = band.playX;
+      } else {
+        k = Math.max(1, Math.min(2.1, W / 640)); ribbonH = Math.min(H * 0.5, 300 * k); top = H - ribbonH - 28 * k;
+        pillH = 44 * k; pillTop = top;
+        const waveTop = pillTop + pillH + 10 * k; waveBottom = top + ribbonH - 34 * k;
+        cy = (waveTop + waveBottom) / 2; half = (waveBottom - waveTop) / 2; playX = W / 2;
+      }
       const step = STEP * k, bar = BAR * k;
-      const ribbonH = Math.min(H * 0.5, 300 * k), top = H - ribbonH - 28 * k;   // the ribbon sits low, the words above it
-      const pillH = 44 * k, pillTop = top;
-      const waveTop = pillTop + pillH + 10 * k, waveBottom = top + ribbonH - 34 * k;
-      const cy = (waveTop + waveBottom) / 2, half = (waveBottom - waveTop) / 2;
-      const playX = W / 2, shift = t * SPEED_PT * k + 90 * step; // the song is already a while in
+      const shift = t * SPEED_PT * k + 90 * step; // the song is already a while in
       const first = Math.floor(shift / step);
       const i0 = -Math.ceil(playX / step) - 1, i1 = Math.ceil((W - playX) / step) + 1;
       // wave: played bars in the accent mixed into the ground, the rest in the surface tone
@@ -146,8 +187,8 @@
         ctx.fillStyle = played ? C.fill : C.s2; rrect(ctx, cx - pw / 2, pillTop, pw, pillH, 13 * k); ctx.fill();
         ctx.fillStyle = played ? C.onFill : C.text; ctx.fillText(name, cx, pillTop + pillH / 2 + 1);
       }
-      // playhead: a 4-pt accent bar with rounded ends through the whole ribbon
-      ctx.globalAlpha = 1; ctx.fillStyle = C.accent; rrect(ctx, playX - 2 * k, top - 6 * k, 4 * k, ribbonH + 12 * k, 2 * k); ctx.fill();
+      // no playhead bar in the background: the screenshot's own playhead is the one the eye follows (user decision 2026-11-10)
+      ctx.globalAlpha = 1;
       if (!reduce) requestAnimationFrame(draw);
     }
     new IntersectionObserver((es) => {
