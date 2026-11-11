@@ -14,6 +14,6 @@
 - Coming soon: looper. Planned: stems, karaoke/backing track, bass tabs.
 
 ## Pages
-- [Home (English)](https://strunika.com/): features, pricing and a 39-question FAQ.
+- [Home (English)](https://strunika.com/): features, pricing and a 41-question FAQ.
 - [Home (Ukrainian)](https://strunika.com/ua/): the same in Ukrainian.
 - [Privacy policy](https://strunika.com/privacy.html)
