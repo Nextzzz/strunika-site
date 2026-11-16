@@ -17,3 +17,4 @@
 - [Home (English)](https://strunika.com/): features, pricing and a 41-question FAQ.
 - [Home (Ukrainian)](https://strunika.com/ua/): the same in Ukrainian.
 - [Privacy policy](https://strunika.com/privacy.html)
+- [Terms of use](https://strunika.com/terms.html)
