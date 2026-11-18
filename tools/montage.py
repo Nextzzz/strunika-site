@@ -30,7 +30,7 @@ CAPTIONS = {
     "uk": [
         ("library",    "Обери пісню з **YouTube**,\nфайлу, медіатеки чи запису", "**ШІ** знайде акорди за кілька секунд"),
         ("song",       "Акорди пливуть\nпо звуковій доріжці", "Бери гітару, і грай"),
-        ("live",       "Зіграй у мікрофон,\nі одразу побачиш акорд", "Режим Наживо: **ШІ** прямо на телефоні"),
+        ("live",       "Зіграй у мікрофон,\nі одразу побачиш акорд", "Режим Наживо"),
         ("sheet",      "Тональність,\nкапо, швидкість", "Міняй усе, не зупиняючи пісню"),
         ("editor",     "Поправ те,\nщо чуєш інакше", "Редактор акордів"),
         ("squares",    "Сітка тактів\nі бітів", "Бачиш структуру пісні цілком"),
@@ -42,7 +42,7 @@ CAPTIONS = {
     "en": [
         ("library",    "Pick a song from **YouTube**,\na file, your library or the mic", "**AI** finds its chords in seconds"),
         ("song",       "Chords flow\nalong the track", "Grab your guitar and play"),
-        ("live",       "Play into the mic\nand see the chord at once", "Live mode: **AI** right on your phone"),
+        ("live",       "Play into the mic\nand see the chord at once", "Live mode"),
         ("sheet",      "Key, capo,\nspeed", "Change it all without stopping the song"),
         ("editor",     "Fix what you\nhear differently", "Chord editor"),
         ("squares",    "A grid of bars\nand beats", "See the whole shape of the song"),
