@@ -28,9 +28,9 @@ KEY = (26, 21, 13)         # side-button face
 # (name, headline, subline) per frame, in store order
 CAPTIONS = {
     "uk": [
-        ("library",    "Обери пісню з **YouTube**,\nфайлу, медіатеки чи запису", "І за кілька секунд отримай акорди"),
+        ("library",    "Обери пісню з **YouTube**,\nфайлу, медіатеки чи запису", "**ШІ** знайде акорди за кілька секунд"),
         ("song",       "Акорди пливуть\nпо звуковій доріжці", "Бери гітару, і грай"),
-        ("live",       "Зіграй у мікрофон,\nі одразу побачиш акорд", "Режим Наживо"),
+        ("live",       "Зіграй у мікрофон,\nі одразу побачиш акорд", "Режим Наживо: **ШІ** прямо на телефоні"),
         ("sheet",      "Тональність,\nкапо, швидкість", "Міняй усе, не зупиняючи пісню"),
         ("editor",     "Поправ те,\nщо чуєш інакше", "Редактор акордів"),
         ("squares",    "Сітка тактів\nі бітів", "Бачиш структуру пісні цілком"),
@@ -40,9 +40,9 @@ CAPTIONS = {
         ("dictionary", "168 акордів\nз діаграмами", "Словник акордів"),
     ],
     "en": [
-        ("library",    "Pick a song from **YouTube**,\na file, your library or the mic", "And get its chords in seconds"),
+        ("library",    "Pick a song from **YouTube**,\na file, your library or the mic", "**AI** finds its chords in seconds"),
         ("song",       "Chords flow\nalong the track", "Grab your guitar and play"),
-        ("live",       "Play into the mic\nand see the chord at once", "Live mode"),
+        ("live",       "Play into the mic\nand see the chord at once", "Live mode: **AI** right on your phone"),
         ("sheet",      "Key, capo,\nspeed", "Change it all without stopping the song"),
         ("editor",     "Fix what you\nhear differently", "Chord editor"),
         ("squares",    "A grid of bars\nand beats", "See the whole shape of the song"),
@@ -109,7 +109,13 @@ def montage(lang, name, head, sub, caption_top=True):
         _rich_line(d, W / 2, y, line, f_head)
         y += leading
     if sub:
-        d.text((W / 2, y + 26), sub, font=f_sub, fill=TEXT2, anchor="ma")
+        # the subline may have a **gold** word as well (AI, 2026-11-18)
+        parts = _parts(sub)
+        widths = [d.textlength(t, font=f_sub) for t, _ in parts]
+        x = W / 2 - sum(widths) / 2
+        for (t, gold), w in zip(parts, widths):
+            d.text((x, y + 26), t, font=f_sub, fill=GOLD if gold else TEXT2, anchor="la")
+            x += w
 
     # the phone: whole, the same size either way, in a bezel with side buttons
     sh = H - 600 - margin - bezel
