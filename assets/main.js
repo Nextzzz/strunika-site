@@ -30,8 +30,8 @@
     history.replaceState(null, '', location.pathname + location.search);
   }));
 
-  // ---- an explicit language choice is remembered; the inline script in <head> then never redirects ----
-  document.querySelectorAll('.lang[hreflang]').forEach((a) => a.addEventListener('click', () => {
+  // ---- an explicit language choice (header EN/UA or the footer's English/Українська) is remembered; the inline script in <head> then never redirects ----
+  document.querySelectorAll('a[hreflang]').forEach((a) => a.addEventListener('click', () => {
     try { localStorage.setItem('lang', a.getAttribute('hreflang')); } catch (e) {}
   }));
 
