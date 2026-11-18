@@ -365,6 +365,7 @@ section { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px) + 24px - 
 .tier .amt { font-family: var(--display); font-size: clamp(21px, 6.2vw, 30px); font-weight: 700; line-height: 1.1; color: var(--text); white-space: nowrap; }
 .tier .per { font-size: 13px; color: var(--text2); }
 .tier .note { font-size: 12px; color: var(--accent); margin-top: 4px; }
+.prices-where { margin: 10px 2px 0; font-size: 12.5px; line-height: 1.45; color: var(--text2); }
 .tier .badge { position: absolute; top: -11px; right: 10px; font-size: 11px; font-weight: 700; letter-spacing: .06em; padding: 3px 9px; border-radius: 999px; background: var(--fill); color: var(--on-fill); box-shadow: 0 4px 14px var(--glow); white-space: nowrap; }
 @media (max-width: 440px) { .prices { grid-template-columns: 1fr; } } /* phones: the two prices one under the other, each with room to breathe */
 .plan .price .pro { vertical-align: middle; margin-left: 6px; white-space: nowrap; }
