@@ -1,6 +1,8 @@
-"""App Store marketing frames: a caption and the whole phone on the brand's
-dark background, the caption above the phone on odd frames and below it on
-even ones.
+"""App Store marketing frames: a caption and the whole phone on a warm ground
+that runs from dark under the caption through copper to gold at the far end
+(user, 2026-11-25: the old near-black ground hid the phone); the caption is
+above the phone on odd frames and below it on even ones, and the ground is
+turned over with it, so the light lettering always stands on the dark.
 
     python tools/montage.py [lang] [name]      (no args: every caption below)
 
@@ -8,7 +10,7 @@ Reads shots/appstore/<lang>/<name>.png (1290x2796, made by shots.py compose),
 writes shots/store/<lang>/<nn>_<name>.png at the same size. Captions live in
 CAPTIONS, in the order they go to App Store Connect; **word** is drawn in gold.
 """
-import re, sys, pathlib
+import re, sys, random, pathlib
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -17,13 +19,39 @@ OUT = ROOT / "shots" / "store"
 FONTS = pathlib.Path(r"D:\Projects\sideman\src\Strunika.Mobile\Resources\Fonts")
 W, H = 1290, 2796
 
-BG = (22, 17, 11)          # --bg
-TEXT = (233, 211, 162)     # --text
-TEXT2 = (164, 143, 102)    # --text2
-GOLD = (217, 172, 76)      # --accent
+TEXT = (250, 234, 198)     # lettering on the dark band
+TEXT2 = (224, 196, 150)
+GOLD = (255, 204, 104)
 BEZEL = (10, 8, 5)
-BEZEL_EDGE = (58, 46, 28)  # --sep
-KEY = (26, 21, 13)         # side-button face
+RIM = (150, 116, 62)       # the phone's bronze rim
+KEY_BODY, KEY_FACE, KEY_LIGHT = (96, 72, 38), (176, 138, 76), (226, 192, 124)   # side buttons
+DIM = 0.84                 # the whole ground a step darker than first drawn
+
+
+def ground(flip):
+    """A mesh gradient: soft colour spots blurred into each other. Dark where the
+    caption stands, copper ember and a dusty rose-brown through the middle, gold at
+    the far end. flip: the caption is at the bottom and the ground is turned over.
+    Built small and enlarged, then grained a little so the bands do not show."""
+    def c(rgb): return tuple(int(v * DIM) for v in rgb)
+    spots = [
+        (0.50, 0.00, 0.95, 0.20, c((40, 24, 18))),
+        (0.95, 0.42, 0.55, 0.26, c((150, 72, 38))),
+        (0.00, 0.55, 0.50, 0.30, c((104, 50, 44))),
+        (0.70, 1.00, 0.80, 0.30, c((188, 138, 52))),
+        (0.05, 1.02, 0.45, 0.22, c((120, 62, 34))),
+    ]
+    if flip:
+        spots = [(1 - x, 1 - y, rx, ry, col) for (x, y, rx, ry, col) in spots]
+    sw, sh = 135, 240                                   # the trial's proportions (1080x1920 / 8)
+    img = Image.new("RGB", (sw, sh), c((50, 30, 22)))
+    gd = ImageDraw.Draw(img)
+    for (cx, cy, rx, ry, colour) in spots:
+        gd.ellipse([(cx - rx) * sw, (cy - ry) * sh, (cx + rx) * sw, (cy + ry) * sh], fill=colour)
+    img = img.filter(ImageFilter.GaussianBlur(24)).resize((W, H), Image.BICUBIC)
+    rnd = random.Random(7)
+    noise = Image.frombytes("L", (W // 2, H // 2), bytes(118 + b % 20 for b in rnd.randbytes((W // 2) * (H // 2)))).resize((W, H))
+    return Image.blend(img, Image.merge("RGB", (noise, noise, noise)), 0.035)
 
 # (name, headline, subline) per frame, in store order
 CAPTIONS = {
@@ -80,14 +108,7 @@ def _rich_line(d, cx, y, line, f):
 
 def montage(lang, name, head, sub, caption_top=True):
     shot = Image.open(SRC / lang / f"{name}.png").convert("RGB")
-    canvas = Image.new("RGB", (W, H), BG)
-
-    # a soft gold glow behind the phone
-    glow = Image.new("RGB", (W, H), BG)
-    gd = ImageDraw.Draw(glow)
-    gd.ellipse([-200, 1500, W + 200, 3400], fill=(52, 38, 16))
-    glow = glow.filter(ImageFilter.GaussianBlur(220))
-    canvas.paste(glow)
+    canvas = ground(flip=not caption_top)
     d = ImageDraw.Draw(canvas)
 
     # the headline shrinks until its widest line fits between the side margins
@@ -101,8 +122,8 @@ def montage(lang, name, head, sub, caption_top=True):
     f_sub = ImageFont.truetype(r"C:\Windows\Fonts\segoeui.ttf", 46)
     # the caption block is centred in the free zone between the frame's edge
     # and the phone's bezel, so the gaps above and below it are equal
-    bezel, margin = 34, 90
-    zone = H - (H - 600 - margin - bezel) - 2 * bezel - margin      # free height either way
+    bezel, margin, top = 42, 66, 548                   # top: the screen's y when the caption is above
+    zone = top - bezel                                 # free height either way
     text_h = leading * len(lines) + (26 + 56 if sub else 0)
     y = (zone - text_h) // 2 + (0 if caption_top else H - zone)
     for line in lines:
@@ -118,23 +139,36 @@ def montage(lang, name, head, sub, caption_top=True):
             x += w
 
     # the phone: whole, the same size either way, in a bezel with side buttons
-    sh = H - 600 - margin - bezel
+    sh = H - top - margin - bezel
     scale = sh / H
     sw = int(W * scale)
-    py = 600 if caption_top else margin + bezel
+    py = top if caption_top else margin + bezel
     px = (W - sw) // 2
     screen = shot.resize((sw, sh), Image.LANCZOS)
     radius = int(165 * scale)
     body = [px - bezel, py - bezel, px + sw + bezel, py + sh + bezel]
     # action, volume up, volume down on the left, side button on the right;
     # offsets in screen points from the screen's top, as on a Pro Max
-    out, thick = int(9 * scale * 3), int(3 * scale * 3)
+    # a shadow under the phone, so it stands off the lighter ground
+    shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    ImageDraw.Draw(shadow).rounded_rectangle([body[0] + 8, body[1] + 36, body[2] - 8, body[3] + 48], radius + bezel, fill=(20, 10, 0, 150))
+    canvas.paste(Image.alpha_composite(canvas.convert("RGBA"), shadow.filter(ImageFilter.GaussianBlur(48))).convert("RGB"))
+    d = ImageDraw.Draw(canvas)
+    # bronze buttons with a lighter face and a line of light on the outer edge:
+    # they read on the dark band and on the copper alike
+    out, inn = 18, 11
     for side, y0, y1 in ((-1, 102, 132), (-1, 162, 228), (-1, 242, 308), (1, 182, 292)):
         ya, yb = py + int(y0 * 3 * scale), py + int(y1 * 3 * scale)
-        box = [body[0] - out, ya, body[0] + thick, yb] if side < 0 else [body[2] - thick, ya, body[2] + out, yb]
-        d.rounded_rectangle(box, thick, fill=BEZEL_EDGE)
-        d.rounded_rectangle([box[0] + 2, box[1] + 2, box[2] - 2, box[3] - 2], thick, fill=KEY)
-    d.rounded_rectangle(body, radius + bezel, fill=BEZEL, outline=BEZEL_EDGE, width=3)
+        box = [body[0] - out, ya, body[0] + inn, yb] if side < 0 else [body[2] - inn, ya, body[2] + out, yb]
+        d.rounded_rectangle(box, 10, fill=KEY_BODY)
+        face = [box[0] + 3, box[1] + 4, box[2] - 3, box[3] - 4]
+        d.rounded_rectangle(face, 7, fill=KEY_FACE)
+        light = [face[0] + 1, face[1] + 3, face[0] + 6, face[3] - 3] if side < 0 else [face[2] - 6, face[1] + 3, face[2] - 1, face[3] - 3]
+        d.rounded_rectangle(light, 3, fill=KEY_LIGHT)
+    # the body: a bronze rim, then the black bezel
+    d.rounded_rectangle(body, radius + bezel, fill=RIM)
+    inner = [body[0] + 6, body[1] + 6, body[2] - 6, body[3] - 6]
+    d.rounded_rectangle(inner, radius + bezel - 6, fill=BEZEL, outline=(44, 34, 20), width=3)
     mask = Image.new("L", (sw, sh), 0)
     ImageDraw.Draw(mask).rounded_rectangle([0, 0, sw - 1, sh - 1], radius, fill=255)
     canvas.paste(screen, (px, py), mask)
